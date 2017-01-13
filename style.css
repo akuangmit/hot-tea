@@ -1,0 +1,70 @@
+/*html { 
+  background: url(restaurant.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+*/
+/*Sticky Footer*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+ }
+
+#top {
+	background-image: url('restaurant.jpg');
+	background-size: cover;
+    flex: 1 0 auto;
+    margin-bottom: 15px;
+}
+
+/*Search bar resize and movement*/
+#searchbar{
+	margin-top: 200px;
+	/*margin-left: 500px;*/
+	margin-left:420px;
+	width: 500px;
+	display:inline-block;
+	z-index:0;
+	position:relative;
+	margin-right: 15px;
+}
+.toptext {
+	color:white;
+	text-align:center;
+	font-size: 24px;
+}
+#directorybutton {
+	background-color:#e57373;
+	color: white;
+/*	height:60px;*/
+}
+#abouttext {
+	font-size:24px;
+}
+.card{
+	width: 400px;
+}
+#navsearch {
+	display:inline-block;
+	margin-left:200px;
+	width:500px;
+}
+#email{
+	color:white;
+	margin-right:50px;
+}
+.margin-set {
+	margin-left:25px;
+	}
+#bottom {
+	margin-bottom: 15px;
+}
+.toppic{
+	z-index:1;
+}
+/*#name{
+	color:blue;
+}*/
