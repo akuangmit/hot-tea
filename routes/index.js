@@ -16,4 +16,16 @@ router.get('/about', function(req, res, next) {
 	res.render('about', { title: 'About' });
 })
 
+/* GET restaurant profile page */
+router.get('/restaurantprofile', function(req, res, next) {
+	res.render('restaurantprofile', { title: 'Restaurant Profile' });
+})
+
+/* GET update wait time page */
+router.get('/updatewaittime', function(req, res, next) {
+	res.render('updatewaittime', { title: 'Update Wait Time' });
+})
+
+
+
 module.exports = router;
