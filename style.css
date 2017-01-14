@@ -12,9 +12,11 @@ body {
     min-height: 100vh;
     flex-direction: column;
  }
-
-#top {
+.index{
 	background-image: url('restaurant.jpg');
+}
+#top {
+	/*background-image: url('restaurant.jpg');*/
 	background-size: cover;
     flex: 1 0 auto;
     margin-bottom: 15px;
@@ -64,6 +66,10 @@ body {
 }
 .toppic{
 	z-index:1;
+}
+
+.botimage {
+	
 }
 /*#name{
 	color:blue;
