@@ -36,5 +36,10 @@ router.get('/signupform', function(req, res, next) {
 	res.render('signupform', { title: 'Sign Up' });
 })
 
+/* GET search results page */
+router.get('/searchresults', function(req, res, next) {
+	res.render('searchresults', { title: 'Search Results' });
+})
+
 
 module.exports = router;

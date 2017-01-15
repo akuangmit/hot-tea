@@ -78,10 +78,6 @@ body {
 	margin-bottom:15px;
 	margin-left:25px;
 }
-#alreadyuser {
-	margin-bottom: 200px;
-	margin-left: 20px;
-}
 
 .formHeader {
 	display: inline-block;
@@ -97,6 +93,11 @@ body {
 
 .input-field {
 	color: black;
+}
+
+#alreadyuser {
+	margin-bottom: 15px;
+	margin-left: 20px;
 }
 
 /*the below for editing form validation*/
