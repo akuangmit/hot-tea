@@ -25,8 +25,8 @@ body {
 /*Search bar resize and movement*/
 #searchbar{
 	margin-top: 200px;
-	/*margin-left: 500px;*/
-	margin-left:420px;
+	/*margin-left:420px;*/
+	margin-left:250px;
 	width: 500px;
 	display:inline-block;
 	z-index:0;
@@ -38,7 +38,7 @@ body {
 	text-align:center;
 	font-size: 24px;
 }
-#directorybutton {
+.button {
 	background-color:#e57373;
 	color: white;
 	/*	height:60px;*/
