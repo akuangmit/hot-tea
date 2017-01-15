@@ -68,8 +68,15 @@ body {
 	z-index:1;
 }
 
-.botimage {
-	
+.updatebutton {
+	margin-left: 150px;
+}
+.selecttime {
+	margin-bottom: 200px;
+}
+#enter {
+	margin-bottom:200px;
+	margin-left:25px;
 }
 /*#name{
 	color:blue;
