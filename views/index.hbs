@@ -24,6 +24,8 @@
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat formHeader" style="float: right;">Close</a>
             <p class="formText">
               <div class="row">
+
+                <!-- log in form -->
                 <form class="col s12">
                   <div class="row">
                     <div class="input-field col s6">
@@ -41,91 +43,109 @@
                   </div>
                 </div>
               </form>
-              </p>
-            </div>
-            <div class="modal-footer">
-              <a class="deep-orange lighten-3 waves-effect waves-light btn" id="enter" href="/restaurantprofile">Log In</a>
-              <a href="/signupform" class=" modal-action modal-close waves-effect waves-green btn-flat formHeader" id="enter" >New User? Sign Up!</a>
-              <!-- <a class="deep-orange lighten-3 waves-effect waves-light btn" id="enter" href="/signupform"> New User? Sign Up!</a> -->
-            </div>
-          </div>
-        </li>
 
-        <!-- <li><a href="/loginform">Log In</a></li> -->
-      </ul>
-    </div>
-  </nav>
-  <div class="parallax-container">
-    <div id="top" class="index">
-      <div class="parallax toppic"><img src="../images/restaurant.jpg">
-        <nav id="searchbar" class="deep-orange lighten-3">
-          <div class="nav-wrapper">
-            <form id="searchform">
-              <div class="input-field">
-                <input id="search" type="search" required>
-                <label for="search"><i class="material-icons">search for a restaurant</i></label>
-                <i class="material-icons">close</i>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a class="deep-orange lighten-3 waves-effect waves-light btn" id="enter" href="/restaurantprofile">Log In</a>
+
+            <a href="/signupform" class=" modal-action modal-close waves-effect waves-light btn-flat formHeader" id="enter" >New User? Sign Up!</a>
+
+
+            <!-- Modal Trigger -->
+            <!-- <a href="#modal2" class="modal-action waves-effect waves-green btn-flat formHeader" id="enter">New User? Sign Up!</a> -->
+
+            <!-- Modal Structure -->
+            <!-- <div id="modal2" class="modal">
+              <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
               </div>
-            </form>
-          </div>
-        </nav>
-        <a class="deep-orange lighten-3 waves-effect waves-light btn-large" href="/searchresults" id="directorybutton">Search!</a>
-        <a class="deep-orange lighten-3 waves-effect waves-light btn-large" href="/directory" id="directorybutton">View Restaurants by Wait Time</a>
-        <p class="toptext"> Check restaurant wait times so that you can dine on your schedule. </p>
-      </div>
-    </div>
-  </div>
+              <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+              </div>
+            </div> -->
 
-  <div id="bottom" class="section white">
-    <div class="row container">
-      <h5 class="margin-set">In Your Area</h5>
-      <div class="col s12 m7">
-        <p class="header margin-set">Restaurant Name</p>
-        <div class="card horizontal margin-set">
-          <div class="card-image">
-            <img src="http://lorempixel.com/100/190/nature/6">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <p>Restaurant Description</p>
-            </div>
-            <div class="card-action">
-              <a href="/restaurantprofile">Link to restaurant page</a>
-            </div>
+
           </div>
         </div>
-        <a class="deep-orange lighten-3 waves-effect waves-teal btn-flat margin-set" href="/directory" id="directorybutton">See More</a>
+      </li>
+
+      <!-- <li><a href="/loginform">Log In</a></li> -->
+    </ul>
+  </div>
+</nav>
+<div class="parallax-container">
+  <div id="top" class="index">
+    <div class="parallax toppic"><img src="../images/restaurant.jpg">
+      <nav id="searchbar" class="deep-orange lighten-3">
+        <div class="nav-wrapper">
+          <form id="searchform">
+            <div class="input-field">
+              <input id="search" type="search" required>
+              <label for="search"><i class="material-icons">search for a restaurant</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+      </nav>
+      <a class="deep-orange lighten-3 waves-effect waves-light btn-large" href="/searchresults" id="directorybutton">Search!</a>
+      <a class="deep-orange lighten-3 waves-effect waves-light btn-large" href="/directory" id="directorybutton">View Restaurants by Wait Time</a>
+      <p class="toptext"> Check restaurant wait times so that you can dine on your schedule. </p>
+    </div>
+  </div>
+</div>
+
+<div id="bottom" class="section white">
+  <div class="row container">
+    <h5 class="margin-set">In Your Area</h5>
+    <div class="col s12 m7">
+      <p class="header margin-set">Restaurant Name</p>
+      <div class="card horizontal margin-set">
+        <div class="card-image">
+          <img src="http://lorempixel.com/100/190/nature/6">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>Restaurant Description</p>
+          </div>
+          <div class="card-action">
+            <a href="/restaurantprofile">Link to restaurant page</a>
+          </div>
+        </div>
+      </div>
+      <a class="deep-orange lighten-3 waves-effect waves-teal btn-flat margin-set" href="/directory" id="directorybutton">See More</a>
+    </div>
+  </div>
+</div>
+
+<div class="parallax-container">
+  <div class="parallax"><img src="../images/restaurant2.jpg" class="botimage"></div>
+</div>
+<footer class="page-footer deep-orange lighten-3">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <a class="white-text" href="/about" id="abouttext">About Us</a>
+        <!-- <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p> -->
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text" id="contactus">Contact Us</h5>
+        <ul>
+          <li><a class="white-text text-lighten-3 footerLink" href="mailto:akuang@mit.edu">Andy Kuang</a></li>
+          <li><a class="white-text text-lighten-3 footerLink" href="mailto:rhealin@mit.edu">Rhea Lin</a></li>
+          <li><a class="white-text text-lighten-3 footerLink" href="mailto:mccleary@mit.edu">Jennifer McCleary</a></li>
+        </ul>
       </div>
     </div>
   </div>
-
-  <div class="parallax-container">
-    <div class="parallax"><img src="../images/restaurant2.jpg" class="botimage"></div>
-  </div>
-  <footer class="page-footer deep-orange lighten-3">
+  <div class="footer-copyright">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <a class="white-text" href="/about" id="abouttext">About Us</a>
-          <!-- <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p> -->
-        </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text" id="contactus">Contact Us</h5>
-          <ul>
-            <li><a class="white-text text-lighten-3 footerLink" href="mailto:akuang@mit.edu">Andy Kuang</a></li>
-            <li><a class="white-text text-lighten-3 footerLink" href="mailto:rhealin@mit.edu">Rhea Lin</a></li>
-            <li><a class="white-text text-lighten-3 footerLink" href="mailto:mccleary@mit.edu">Jennifer McCleary</a></li>
-          </ul>
-        </div>
-      </div>
+      © 2017 Andy Kuang, Rhea Lin, Jennifer McCleary
+      <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
     </div>
-    <div class="footer-copyright">
-      <div class="container">
-        © 2017 Andy Kuang, Rhea Lin, Jennifer McCleary
-        <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
-      </div>
-    </div>
-  </footer>
+  </div>
+</footer>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="../javascripts/myscript.js"></script>
