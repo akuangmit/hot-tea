@@ -26,6 +26,15 @@ router.get('/updatewaittime', function(req, res, next) {
 	res.render('updatewaittime', { title: 'Update Wait Time' });
 })
 
+/* GET log in form page */
+router.get('/loginform', function(req, res, next) {
+	res.render('loginform', { title: 'Log In' });
+})
+
+/* GET sign up form page */
+router.get('/signupform', function(req, res, next) {
+	res.render('signupform', { title: 'Sign Up' });
+})
 
 
 module.exports = router;
