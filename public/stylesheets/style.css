@@ -8,18 +8,18 @@
 */
 /*Sticky Footer*/
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
- }
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
 .index{
 	background-image: url('../images/restaurant.jpg');
 }
 #top {
 	/*background-image: url('restaurant.jpg');*/
 	background-size: cover;
-    flex: 1 0 auto;
-    margin-bottom: 15px;
+	flex: 1 0 auto;
+	margin-bottom: 15px;
 }
 
 /*Search bar resize and movement*/
@@ -41,7 +41,7 @@ body {
 #directorybutton {
 	background-color:#e57373;
 	color: white;
-/*	height:60px;*/
+	/*	height:60px;*/
 }
 #abouttext {
 	font-size:24px;
@@ -60,7 +60,7 @@ body {
 }
 .margin-set {
 	margin-left:25px;
-	}
+}
 #bottom {
 	margin-bottom: 15px;
 }
@@ -75,14 +75,38 @@ body {
 	margin-bottom: 200px;
 }
 #enter {
-	margin-bottom:200px;
+	margin-bottom:15px;
 	margin-left:25px;
 }
 #alreadyuser {
 	margin-bottom: 200px;
 	margin-left: 20px;
 }
-/*#name{
-	color:blue;
-}*/
 
+.formHeader {
+	display: inline-block;
+}
+
+.formTitle {
+	color: #ffab91;
+}
+
+.formText {
+	color: black;
+}
+
+.input-field {
+	color: black;
+}
+
+/*the below for editing form validation*/
+
+/* label focus color */
+/*.input-field input[type=text]:focus + label {
+	color: #000;
+}*/
+/* label underline focus color */
+./*input-field input[type=text]:focus {
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 0 #000;
+}*/
