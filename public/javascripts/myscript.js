@@ -14,4 +14,7 @@ $(document).ready(function(){
 		$(this).css("text-decoration", "none");
 	});
 	$('.parallax').parallax();
+	 // $('.modal').modal();
+	 // $('.modal-trigger').leanModal();
+
 });
