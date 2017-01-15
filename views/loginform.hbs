@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <nav class="deep-orange lighten-3">
+   <div class="nav-wrapper">
+    <a href="/" class="brand-logo">Logo</a>
+    <nav id="navsearch" class="deep-orange lighten-3">
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label for="search"><i class="material-icons">search for a restaurant</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+    <a class="deep-orange lighten-3 waves-effect waves-teal btn-flat" href="/directory" id="directorybutton">Search!</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+     <li><a href="/restaurantprofile">Log In</a></li>
+   </ul>
+ </div>
+</nav>
+<div id="top">
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="user_name" type="text" class="validate">
+          <label for="user_name">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="password" type="text" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      </div>
+    </form>
+    <a class="deep-orange lighten-3 waves-effect waves-light btn" id="enter" href="/restaurantprofile">Log In</a>
+    <a class="deep-orange lighten-3 waves-effect waves-light btn" id="enter" href="/signupform"> New User? Sign Up!</a>
+</div>
+<footer class="page-footer deep-orange lighten-3">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <a class="white-text" href="/about" id="abouttext">About Us</a>
+        <!-- <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p> -->
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text" id="contactus">Contact Us</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="mailto:akuang@mit.edu">Andy Kuang</a></li>
+          <li><a class="grey-text text-lighten-3" href="mailto:rhealin@mit.edu">Rhea Lin</a></li>
+          <li><a class="grey-text text-lighten-3" href="mailto:mccleary@mit.edu">Jennifer McCleary</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2017 Andy Kuang, Rhea Lin, Jennifer McCleary
+      <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+    </div>
+  </div>
+</footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/myscript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+</html>
