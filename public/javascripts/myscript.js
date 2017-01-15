@@ -1,9 +1,9 @@
 $(document).ready(function(){
 	//Materialize.toast('Welcome!!', 4000);
-	$('.grey-text').mouseenter(function(){
+	$('.footerLink').mouseenter(function(){
 		$(this).css("text-decoration", "underline");
 	});
-	$('.grey-text').mouseleave(function(){
+	$('.footerLink').mouseleave(function(){
 		$(this).css("text-decoration", "none");
 	});
 
