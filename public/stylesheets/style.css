@@ -15,12 +15,14 @@ body {
 .index{
 	background-image: url('../images/restaurant.jpg');
 }
-#top {
+.topcontent {
 	/*background-image: url('restaurant.jpg');*/
 	background-size: cover;
 	flex: 1 0 auto;
 	margin-bottom: 15px;
+
 }
+
 
 /*Search bar resize and movement*/
 #searchbar{
@@ -107,6 +109,20 @@ body {
 #updateenter {
 	margin-bottom:200px;
 	margin-left:25px;
+}
+
+/*About Page*/
+.abouttop h5 {
+	text-align:center;
+}
+.abouttop p {
+	font-size: 20px;
+}
+.abouttop img {
+	width: 250px;
+	height:250px;
+ 	margin-left: 170px;
+
 }
 
 
