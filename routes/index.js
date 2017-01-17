@@ -82,19 +82,27 @@ router.get('/logout', function(req, res, next) {
   res.render('index');
 })
 
+/* POST wait time */
+router.post('/waittime', function(req, res, next) {
+  Account.findOne({'username': req.user.username}, function(err,user) {
+    if (err) {
+      console.log('error');
+    }
+    user.waitTime = req.body.time;
+    user.save();
+  })
+})
+
 /* POST add user */
 router.post('/adduser', function(req, res, next) {
     Account.register(new Account({ username : req.body.username}), req.body.password, function(err, account) {
         if (err) {
-
             console.log("error", err);
             console.log(req.body);
             return res.render('index', { account : account });
         }
-        console.log("what");
-
         passport.authenticate('local')(req, res, function () {
-            console.log("success");
+            console.log(req.user);
             res.redirect('/');
         });
     });
