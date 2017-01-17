@@ -24,8 +24,13 @@
     </nav>
     <a class="deep-orange lighten-3 waves-light waves-teal btn-flat button" href="/searchresults">Search!</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="/updatewaittime">Update Wait Time</a></li>
-     <li><a href="/">Sign Out</a></li>
+      {{#if isLoggedIn }}
+        <li><a href="/updatewaittime">Update Wait Time</a></li>
+        <li><a href="/index">Log Out</a></li>
+      {{else}}
+        <li><a href="/loginform">Log In</a></li>
+        <li><a href="/signupform">Sign Up</a></li>
+      {{/if}}
    </ul>
  </div>
 </nav>

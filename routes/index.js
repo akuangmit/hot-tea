@@ -5,73 +5,76 @@ var Account = require('../schemas/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home' });
+  if (req.user) {
+   res.render('index', {isLoggedIn: true, title: 'Home' });
+  } else {
+    res.render('index', {isLoggedIn: false, title: 'Home' });
+  }
 });
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
-	res.render('directory', { title: 'Directory' });
+  if (req.user) {
+   res.render('directory', {isLoggedIn: true, title: 'Directory' });
+  } else {
+    res.render('directory', {isLoggedIn: false, title: 'Directory' });
+  }
 })
 
 /* GET about page */
 router.get('/about', function(req, res, next) {
-	res.render('about', { title: 'About' });
+  if (req.user) {
+   res.render('about', {isLoggedIn: true, title: 'About' });
+  } else {
+    res.render('about', {isLoggedIn: false, title: 'About' });
+  }
 })
 
 /* GET restaurant profile page */
 router.get('/restaurantprofile', function(req, res, next) {
-	res.render('restaurantprofile', { title: 'Restaurant Profile' });
+  if (req.user) {
+   res.render('restaurantprofile', {isLoggedIn: true, title: 'Restaurant Profile' });
+  } else {
+    res.render('restaurantprofile', {isLoggedIn: false, title: 'Restaurant Profile' });
+  }
 })
 
 /* GET update wait time page */
 router.get('/updatewaittime', function(req, res, next) {
-	res.render('updatewaittime', { title: 'Update Wait Time' });
-})
+  if (req.user) {
+   res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time' });
+  } else {
+    res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time' });
+  }})
 
 /* GET log in form page */
 router.get('/loginform', function(req, res, next) {
-	res.render('loginform', { title: 'Log In' });
+  if (req.user) {
+   res.render('loginform', {isLoggedIn: true, title: 'Log In' });
+  } else {
+    res.render('loginform', {isLoggedIn: false, title: 'Log In' });
+  }
 })
 
 /* GET sign up form page */
 router.get('/signupform', function(req, res, next) {
-	res.render('signupform', { title: 'Sign Up' });
+  if (req.user) {
+   res.render('signupform', {isLoggedIn: true, title: 'Sign Up' });
+  } else {
+    res.render('signupform', {isLoggedIn: false, title: 'Sign Up' });
+  }
 })
 
 /* GET search results page */
 router.get('/searchresults', function(req, res, next) {
-	res.render('searchresults', { title: 'Search Results' });
+  if (req.user) {
+   res.render('searchresults', {isLoggedIn: true, title: 'Search Results' });
+  } else {
+    res.render('searchresults', {isLoggedIn: false, title: 'Search Results' });
+  }
 })
 
-// // POST add user page for sign up form
-// router.post('/adduser', function(req, res, next) {
-//   console.log(req.body);
-//   console.log("For Signup Page");
-//   var email_address = req.body.email_address;
-//   var password = req.body.password;
-//   // db.usercollect.insert({'email_address': email_address, 'password': password}) 
-//   // user.save();
-//   // User.findOne({'name': email_address}, function(err, user){
-//   //   // if (err) {
-//   //   //   user.username = username;
-//   //   //   user.userfruit = userFruit;
-//   //   // }
-//   //   // console.log(user);
-//   //   // user.save();
-//   //   res.redirect('/');
-//   // })
-//    var newUser = new User({
-//     'email_address': email_address,
-//     'password': password
-//   });
-//   newUser.save();
-//   // User.find({}, function(err, users) {
-//   //   res.send(users);
-//   // });
-// //I feel like users is made when you do User.find({}). Therefore, the new one won't show until next page update!
-//     res.send(newUser);
-// })
-
+/* POST add user */
 router.post('/adduser', function(req, res, next) {
     Account.register(new Account({ username : req.body.username}), req.body.password, function(err, account) {
         if (err) {
@@ -85,80 +88,14 @@ router.post('/adduser', function(req, res, next) {
         passport.authenticate('local')(req, res, function () {
             console.log("success");
             res.redirect('/');
-        }
-        // passport.authenticate('local', function(err, user, info) {
-        //   if (err) {
-        //     console.log("error", err);
-        //   }
-        //   console.log("success");
-        //   res.redirect('/');
-        // }
-        );
+        });
     });
 });
 
-// router.post('/loginuser', passport.authenticate('local'), function(req, res) {
-//     console.log('connected');
-//     res.redirect('/');
-// });
-
-router.post('/loginuser', function(req, res, next) {
-   passport.authenticate('local', function(err, user, info) {
-    if (err) {
-      return next(err); // will generate a 500 error
-    }
-    // Generate a JSON response reflecting authentication status
-    if (! user) {
-      return res.send({ success : false, message : 'authentication failed' });
-    }
-    // ***********************************************************************
-    // "Note that when using a custom callback, it becomes the application's
-    // responsibility to establish a session (by calling req.login()) and send
-    // a response."
-    // Source: http://passportjs.org/docs
-    // ***********************************************************************
-    req.login(user, loginErr => {
-      if (loginErr) {
-        return next(loginErr);
-      }
-      return res.send({ success : true, message : 'authentication succeeded' });
-    });      
-  })(req, res, next);
-});
-
-// router.post('/loginuser', passport.authenticate('local', {
-//   successRedirect: '/', 
-//   failureRedirect: '/loginform'
-// }));
-
-
-
-// // POST add user page for login form
-// router.post('/loginuser', function(req, res, next) {
-//   console.log(req.body);
-//   console.log("For Login Form");
-//   var email_address = req.body.email_address;
-//   var password = req.body.password;
-//   User.findOne({'email_address': email_address}, function(err, user) {
-//     if (err) {
-//       res.send('An error occurred!');
-//     } else {
-//       if (user) {
-//         res.send("Exists");
-//       } else {
-//         // If the user does not exist, use this line of code below.
-//         var newUser = new User({
-//     'email_address': email_address,
-//     'password': password
-//   });
-//         newUser.save();
-//         res.send(newUser);
-//       }
-//     }
-//   });
-//   //   User.find({}, function(err, users) {
-//   //   res.send(users);
-//   // });
-// })
+/* POST login user */
+router.post('/loginuser', passport.authenticate('local', {
+  successRedirect: '/', 
+  failureRedirect: '/loginform'
+}));
 
 module.exports = router;
