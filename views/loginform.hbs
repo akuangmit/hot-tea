@@ -30,7 +30,7 @@
 </nav>
 <div class="topcontent">
   <div class="row">
-    <form class="col s12">
+    <form class="col s12", action="/login",method="post">
       <div class="row">
         <div class="input-field col s6">
           <input id="user_name" type="text" class="validate">
@@ -43,8 +43,11 @@
           <label for="password">Password</label>
         </div>
       </div>
-    </div>
-  </form>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+  </div>
   <a class="deep-orange lighten-3 waves-effect waves-light btn" id="enter" href="/restaurantprofile">Log In</a>
   <a class="deep-orange lighten-3 waves-effect waves-light btn" id="enter" href="/signupform"> New User? Sign Up!</a>
 </div>
