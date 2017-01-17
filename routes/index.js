@@ -74,6 +74,14 @@ router.get('/searchresults', function(req, res, next) {
   }
 })
 
+/* GET logout */
+router.get('/logout', function(req, res, next) {
+  if (req.user) {
+    req.logout();
+  }
+  res.render('index');
+})
+
 /* POST add user */
 router.post('/adduser', function(req, res, next) {
     Account.register(new Account({ username : req.body.username}), req.body.password, function(err, account) {
