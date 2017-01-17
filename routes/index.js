@@ -75,9 +75,28 @@ router.post('/adduser', function(req, res, next) {
 router.post('/loginuser', function(req, res, next) {
   console.log(req.body);
   console.log("For Login Form");
-    User.find({}, function(err, users) {
-    res.send(users);
+  var email_address = req.body.email_address;
+  var password = req.body.password;
+  User.findOne({'email_address': email_address}, function(err, user) {
+    if (err) {
+      res.send('An error occurred!');
+    } else {
+      if (user) {
+        res.send("Exists");
+      } else {
+        // If the user does not exist, use this line of code below.
+        var newUser = new User({
+    'email_address': email_address,
+    'password': password
   });
+        newUser.save();
+        res.send(newUser);
+      }
+    }
+  });
+  //   User.find({}, function(err, users) {
+  //   res.send(users);
+  // });
 })
 
 module.exports = router;
