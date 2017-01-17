@@ -15,7 +15,7 @@ $(document).ready(function(){
     });
     $('.parallax').parallax(); 
     $('.wait-time').click(function() {
-        var payload = {time: parseInt(this.id,10)};
+        var payload = {time: parseInt(this.id,10)};       
         $.ajax({
             type: 'POST',
             url: '/waittime',
@@ -26,6 +26,7 @@ $(document).ready(function(){
                 console.log(data);
             }
         });
+        
     })
      // $('.modal').modal();
      // $('.modal-trigger').leanModal();

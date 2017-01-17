@@ -33,9 +33,9 @@ router.get('/about', function(req, res, next) {
 /* GET restaurant profile page */
 router.get('/restaurantprofile', function(req, res, next) {
   if (req.user) {
-   res.render('restaurantprofile', {isLoggedIn: true, title: 'Restaurant Profile' });
+   res.render('restaurantprofile', {isLoggedIn: true, waitTime: req.user.waitTime, title: 'Restaurant Profile' });
   } else {
-    res.render('restaurantprofile', {isLoggedIn: false, title: 'Restaurant Profile' });
+    res.render('restaurantprofile', {isLoggedIn: false, waitTime: 'not set yet', title: 'Restaurant Profile' });
   }
 })
 
