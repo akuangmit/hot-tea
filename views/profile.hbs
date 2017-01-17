@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <nav class="deep-orange lighten-3">
+   <div class="nav-wrapper">
+    <a href="/" class="brand-logo margin-set">Logo</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      {{#if isLoggedIn }}
+        <li><a href="/updatewaittime">Update Wait Time</a></li>
+        <li><a href="/logout">Log Out</a></li>
+      {{else}}
+        <li><a href="/loginform">Log In</a></li>
+        <li><a href="/signupform">Sign Up</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>
+<div class="topcontent">
+  <p>{{name}}</p>
+</div>
+<div class="content">
+    <p class = "display-wait-time">{{waitTime}}</p>
+</div>
+<div id="bottom">
+</div>
+<footer class="page-footer deep-orange lighten-3">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <a class="white-text" href="/about" id="abouttext">About Us</a>
+        <!-- <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p> -->
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text" id="contactus">Contact Us</h5>
+        <ul>
+          <li><a class="white-text text-lighten-3 footerLink" href="mailto:akuang@mit.edu">Andy Kuang</a></li>
+          <li><a class="white-text text-lighten-3 footerLink" href="mailto:rhealin@mit.edu">Rhea Lin</a></li>
+          <li><a class="white-text text-lighten-3 footerLink" href="mailto:mccleary@mit.edu">Jennifer McCleary</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2017 Andy Kuang, Rhea Lin, Jennifer McCleary
+      <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+    </div>
+  </div>
+</footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/myscript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+</html>

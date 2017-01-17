@@ -114,4 +114,24 @@ router.post('/loginuser', passport.authenticate('local', {
   failureRedirect: '/loginform'
 }));
 
+/* GET individual restaurant profile page */
+router.get('/users/:username', function(req,res,next) {
+  var username = req.params.username;
+  if (req.user) {
+   res.render('profile', {isLoggedIn: true, name: username, waitTime: req.user.waitTime, title: username });
+  } else {
+    var waitTime = 0;
+    Account.findOne({'username': username}, function(err, user) {
+      if (err) {
+        console.log('error');
+      }
+      waitTime = user.waitTime;
+      console.log("hello");
+      console.log(waitTime);
+    });
+    console.log(waitTime);
+    res.render('profile', {isLoggedIn: false, name: username, waitTime: waitTime, title: username });
+  }
+});
+
 module.exports = router;
