@@ -125,13 +125,10 @@ router.get('/users/:username', function(req,res,next) {
       if (err) {
         console.log('error');
       }
-      waitTime = user.waitTime;
-      console.log("hello");
-      console.log(waitTime);
+      res.render('profile', {isLoggedIn: false, name: username, waitTime: user.waitTime, title: username });
     });
-    console.log(waitTime);
-    res.render('profile', {isLoggedIn: false, name: username, waitTime: waitTime, title: username });
   }
 });
+
 
 module.exports = router;
