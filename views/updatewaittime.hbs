@@ -28,7 +28,7 @@
       <li><a href="/updatewaittime">Update Wait Time</a></li>
       <li><a href="/logout">Log Out</a></li>
       {{else}}
-      <li><a href="/loginform">Log In</a></li>
+      <li><a href="/loginform">Restaurant Log In</a></li>
       <li><a href="/signupform">Sign Up</a></li>
       {{/if}}
     </ul>
@@ -70,16 +70,46 @@
   <div id="bottom">
     <p>Manually Insert Time</p>
     <div class="row">
-      <div class="col s3 offset-s3">
-        <a class='dropdown-button btn-large selecttime deep-orange lighten-3' href='#' data-activates='dropdown1'>Select Hours</a>
+      <div class="col s3 offset-s3 input-field" href='#'>
+          <select>
+            <option value="" disabled selected>Select Hours</option>
+            <option value="1">0</option>
+            <option value="2">1</option>
+            <option value="3">2</option>
+            <option value="4">3+</option>
+          </select>
+          <label>Hours</label>
+
+        <!-- <a class='dropdown-button btn-large selecttime deep-orange lighten-3' href='#' data-activates='dropdown1'>Select Hours</a>
         <ul id='dropdown1' class='dropdown-content'>
           <li><a href="#!">0 hours</a></li>
           <li><a href="#!">1 hour</a></li>
           <li><a href="#!">2 hours</a></li>
           <li><a href="#!">3+ hours</a></li>
-        </ul>
+        </ul> -->
+
+
       </div>
-      <div class="col s3">
+      <div class="col s3 input-field" href='#'>
+          <select>
+            <option value="" disabled selected>Select Minutes</option>
+            <option value="1">0</option>
+            <option value="2">5</option>
+            <option value="3">10</option>
+            <option value="4">15</option>
+            <option value="5">20</option>
+            <option value="6">25</option>
+            <option value="7">30</option>
+            <option value="8">35</option>
+            <option value="9">40</option>
+            <option value="10">45</option>
+            <option value="11">50</option>
+            <option value="12">55</option>
+          </select>
+          <label>Minutes</label>
+      </div>
+
+      <!-- <div class="col s3">
         <a class='dropdown-button btn-large selecttime deep-orange lighten-3' href='#' data-activates='dropdown2'>Select Minutes</a>
         <ul id='dropdown2' class='dropdown-content'>
           <li><a href="#!">0 min</a></li>
@@ -95,10 +125,10 @@
           <li><a href="#!">50 min</a></li>
           <li><a href="#!">55 min</a></li>
         </ul>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col s12">
-          <a class="deep-orange lighten-3 waves-effect waves-light btn-large enterWait" href="/updatewaittime">Enter</a>
+          <a class="deep-orange lighten-3 waves-effect waves-light btn-large enterWait" href="/updatewaittime">Set Wait Time</a>
         </div>
       </div>
       <div class="row">
