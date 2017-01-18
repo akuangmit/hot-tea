@@ -75,7 +75,9 @@ router.get('/restaurantprofile', function(req, res, next) {
 /* GET update wait time page */
 router.get('/updatewaittime', function(req, res, next) {
   if (req.user) {
-   res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', restaurantName: req.user.username, waitTime: req.user.waitTime});
+   res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', 
+    restaurantName: req.user.username, waitTime: req.user.waitTime, 
+    url: "/users/" + req.user.username});
   } else {
     res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time'});
   }})
@@ -160,8 +162,9 @@ router.get('/users/:username', function(req,res,next) {
     Account.findOne({'username': username}, function(err, user) {
       if (err) {
         console.log('error');
+      } else {
+        res.render('profile', {isLoggedIn: false, name: username, waitTime: user.waitTime, title: username });
       }
-      res.render('profile', {isLoggedIn: false, name: username, waitTime: user.waitTime, title: username });
     });
   }
 });
