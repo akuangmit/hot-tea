@@ -75,9 +75,9 @@ router.get('/restaurantprofile', function(req, res, next) {
 /* GET update wait time page */
 router.get('/updatewaittime', function(req, res, next) {
   if (req.user) {
-   res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time' });
+   res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', restaurantName: req.user.username, waitTime: req.user.waitTime});
   } else {
-    res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time' });
+    res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time'});
   }})
 
 /* GET log in form page */
@@ -117,14 +117,14 @@ router.get('/logout', function(req, res, next) {
 
 /* POST wait time */
 router.post('/waittime', function(req, res, next) {
-  Account.findOne({'username': req.user.username}, function(err,user) {
+  Account.findOne({'username': req.user.username}, function(err, user) {
     if (err) {
       console.log('error');
     }
     user.waitTime = req.body.time;
     user.save();
-  })
-})
+  });
+});
 
 /* POST add user */
 router.post('/adduser', function(req, res, next) {

@@ -70,11 +70,11 @@ body {
 	z-index:1;
 }
 
-.updatebutton {
+/*.updatebutton {
 	margin-left: 150px;
-}
+}*/
 .selecttime {
-	margin-bottom: 200px;
+	margin-bottom: 15px;
 }
 #enter {
 	margin-bottom:15px;
@@ -125,7 +125,22 @@ body {
 
 }
 
+.displayWaitTime {
+	background-image: url('../images/naturebanner.jpg');
+	color: white;
+}
 
+.waitTimeContent {
+	text-align: center;
+}
+
+.updateWaitTitle {
+	margin-top: 1em;
+}
+
+.enterWait {
+	margin-top: 15px;
+}
 /*the below for editing form validation*/
 
 /* label focus color */

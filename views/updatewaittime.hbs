@@ -25,49 +25,89 @@
     <a class="deep-orange lighten-3 waves-light waves-teal btn-flat button" href="/searchresults">Search!</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       {{#if isLoggedIn }}
-        <li><a href="/updatewaittime">Update Wait Time</a></li>
-        <li><a href="/logout">Log Out</a></li>
+      <li><a href="/updatewaittime">Update Wait Time</a></li>
+      <li><a href="/logout">Log Out</a></li>
       {{else}}
-        <li><a href="/loginform">Log In</a></li>
-        <li><a href="/signupform">Sign Up</a></li>
+      <li><a href="/loginform">Log In</a></li>
+      <li><a href="/signupform">Sign Up</a></li>
       {{/if}}
-   </ul>
- </div>
+    </ul>
+  </div>
 </nav>
-<div class="topcontent">
-  <p>Quick Select</p>
-  <a class="deep-orange lighten-3 waves-effect waves-teal btn-large updatebutton wait-time" id = "5">5 Min</a>
-  <a class="deep-orange lighten-3 waves-effect waves-teal btn-large updatebutton wait-time" id = "10">10 Min</a>
-  <a class="deep-orange lighten-3 waves-effect waves-teal btn-large updatebutton wait-time" id = "15">15 Min</a>
-  <a class="deep-orange lighten-3 waves-effect waves-teal btn-large updatebutton wait-time" id = "20">20 Min</a>
-  <a class="deep-orange lighten-3 waves-effect waves-teal btn-large updatebutton wait-time" id = "30">30 Min</a>
-  
-</div>
-<div id="bottom">
-  <p>Manually Insert Time</p>
-  <a class='dropdown-button btn selecttime deep-orange lighten-3' href='#' data-activates='dropdown1'>Select Hours</a>
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">0 hours</a></li>
-    <li><a href="#!">1 hour</a></li>
-    <li><a href="#!">2 hours</a></li>
-    <li><a href="#!">3+ hours</a></li>
-  </ul>
-  <a class='dropdown-button btn selecttime deep-orange lighten-3' href='#' data-activates='dropdown2'>Select Minutes</a>
-  <ul id='dropdown2' class='dropdown-content'>
-    <li><a href="#!">0 min</a></li>
-    <li><a href="#!">5 min</a></li>
-    <li><a href="#!">10 min</a></li>
-    <li><a href="#!">15 min</a></li>
-    <li><a href="#!">20 min</a></li>
-    <li><a href="#!">25 min</a></li>
-    <li><a href="#!">30 min</a></li>
-    <li><a href="#!">35 min</a></li>
-    <li><a href="#!">40 min</a></li>
-    <li><a href="#!">45 min</a></li>
-    <li><a href="#!">50 min</a></li>
-    <li><a href="#!">55 min</a></li>
-  </ul>
-  <a class="deep-orange lighten-3 waves-effect waves-light btn" id="updateenter" href="/restaurantprofile">Enter</a>
+<div class="waitTimeContent">
+  <div class="displayWaitTime">
+    <h1>{{restaurantName}}</h1>
+    <h5>Current Wait Time:</h5>
+    <h2>{{waitTime}}</h2>
+  </div>
+  <h4 class="updateWaitTitle">Update Wait Time</h4>
+  <div class="topcontent">
+    <p>Quick Select</p>
+    <div class="row">
+      <div class="col s6 m3 l3">
+        <span class="flow-text">
+          <a class="deep-orange lighten-3 waves-effect waves-light btn-large updatebutton wait-time " id = "5" href="/updatewaittime">5 Min</a>
+        </span>
+      </div>
+      <div class="col s6 m3 l3">
+        <span class="flow-text">
+          <a class="deep-orange lighten-3 waves-effect waves-light btn-large updatebutton wait-time" id = "10" href="/updatewaittime">10 Min</a>
+        </span>
+      </div>
+      <div class="col s6 m3 l3">
+        <span class="flow-text">
+          <a class="deep-orange lighten-3 waves-effect waves-light btn-large updatebutton wait-time" id = "15" href="/updatewaittime">15 Min</a>
+        </span>
+      </div>
+      <div class="col s6 m3 l3">
+        <span class="flow-text">
+          <a class="deep-orange lighten-3 waves-effect waves-light btn-large updatebutton wait-time" id = "30" href="/updatewaittime">30 Min</a>
+        </span>
+      </div>
+    </div>
+    
+  </div>
+  <div id="bottom">
+    <p>Manually Insert Time</p>
+    <div class="row">
+      <div class="col s3 offset-s3">
+        <a class='dropdown-button btn-large selecttime deep-orange lighten-3' href='#' data-activates='dropdown1'>Select Hours</a>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">0 hours</a></li>
+          <li><a href="#!">1 hour</a></li>
+          <li><a href="#!">2 hours</a></li>
+          <li><a href="#!">3+ hours</a></li>
+        </ul>
+      </div>
+      <div class="col s3">
+        <a class='dropdown-button btn-large selecttime deep-orange lighten-3' href='#' data-activates='dropdown2'>Select Minutes</a>
+        <ul id='dropdown2' class='dropdown-content'>
+          <li><a href="#!">0 min</a></li>
+          <li><a href="#!">5 min</a></li>
+          <li><a href="#!">10 min</a></li>
+          <li><a href="#!">15 min</a></li>
+          <li><a href="#!">20 min</a></li>
+          <li><a href="#!">25 min</a></li>
+          <li><a href="#!">30 min</a></li>
+          <li><a href="#!">35 min</a></li>
+          <li><a href="#!">40 min</a></li>
+          <li><a href="#!">45 min</a></li>
+          <li><a href="#!">50 min</a></li>
+          <li><a href="#!">55 min</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <a class="deep-orange lighten-3 waves-effect waves-light btn-large enterWait" href="/updatewaittime">Enter</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <a class="deep-orange lighten-3 waves-effect waves-light btn-large" href="/restaurantprofile">Your Restaurant Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <footer class="page-footer deep-orange lighten-3">
   <div class="container">
