@@ -139,7 +139,11 @@ body {
 }
 
 .enterWait {
-	margin-top: 15px;
+	margin-top: 15px; 
+}
+
+.directoryRestaurants {
+	display: inline;
 }
 /*the below for editing form validation*/
 

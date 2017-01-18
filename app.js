@@ -14,7 +14,9 @@ var app = express();
 
 // database setup
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
+//mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
+mongoose.connect(process.env.MONGOLAB_URI || 
+  'mongodb://heroku_8nv0d3rw:va6kel8rurbjrchpgjnhjnbi3b@ds117869.mlab.com:17869/heroku_8nv0d3rw')
 var connection = mongoose.connection;
 connection.on('error', console.error.bind(console, 'connection error:'));
 connection.on('connected', function() {

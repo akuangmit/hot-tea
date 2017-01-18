@@ -26,7 +26,12 @@
   <p>Restaurant Directory</p>
 </div>
 <div class="content">
-    <p>{{users}}</p>
+  {{#each users}}
+    <div class="directoryRestaurants">
+      <h1>{{username}}</h1>
+      <p>{{waitTime}}</p>
+    </div>
+  {{/each}}
     <!-- <p class = "display-wait-time">{{waitTime}}</p> -->
 </div>
 <div id="bottom">
