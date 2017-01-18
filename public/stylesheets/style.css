@@ -145,6 +145,15 @@ body {
 .directoryRestaurants {
 	display: inline;
 }
+
+.modalTitle {
+	color: #ffab91;
+}
+
+.modal-footer {
+	color: #ffab91;
+}
+
 /*the below for editing form validation*/
 
 /* label focus color */

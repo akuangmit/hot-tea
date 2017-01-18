@@ -13,14 +13,55 @@
     <a href="/" class="brand-logo margin-set">Logo</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       {{#if isLoggedIn }}
-        <li><a href="/updatewaittime">Update Wait Time</a></li>
-        <li><a href="/logout">Log Out</a></li>
+      <li><a href="/updatewaittime">Update Wait Time</a></li>
+      <li><a href="/logout">Log Out</a></li>
       {{else}}
-        <li><a href="/loginform">Restaurant Log In</a></li>
-        <li><a href="/signupform">Sign Up</a></li>
-      {{/if}}
-    </ul>
-  </div>
+      <!-- <li><a href="/loginform">Restaurant Log In</a></li> -->
+      <li>
+        <!-- Modal Trigger -->
+        <a class="waves-effect waves-light" href="#modal1">Restaurant Log In</a>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4 class="modalTitle">Restaurant Log In</h4>
+            <p>
+
+              <div class="row">
+                <form class="col s12" method="post" action="/loginuser">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="email_address" type="text" class="validate" name="username">
+                      <label for="email_address">Email Address</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="password" type="text" class="validate" name="password">
+                      <label for="password">Password</label>
+                    </div>
+                  </div>
+                </div>
+                
+              </form>
+            </div>
+
+          </p>
+        </div>
+        <div class="modal-footer">
+        <button type="submit">Log In!</button>
+        <!-- <button href="#!" type="submit" class="modal-action modal-close waves-effect waves-light btn-flat">Log in</button> -->
+
+          <!-- insert something for sign up -->
+        </div>
+      </div>
+    </li>
+
+
+    <li><a href="/signupform">Sign Up</a></li>
+    {{/if}}
+  </ul>
+</div>
 </nav>
 <div class="parallax-container">
   <div class="topcontent index">
