@@ -14,11 +14,44 @@ router.get('/', function(req, res, next) {
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
-  if (req.user) {
-   res.render('directory', {isLoggedIn: true, title: 'Directory' });
-  } else {
-    res.render('directory', {isLoggedIn: false, title: 'Directory' });
-  }
+  // if (req.user) {
+  //  res.render('directory', {isLoggedIn: true, title: 'Directory' });
+  // } else {
+  //   res.render('directory', {isLoggedIn: false, title: 'Directory' });
+  // };
+
+  // Account.find({}, function(err, users) {
+  //     if (err) {
+  //       console.log('error');
+  //     }
+  //     res.render('profile', {isLoggedIn: false, name: username, waitTime: user.waitTime, title: username });
+  //   });
+  // }
+  // var all_accounts;
+  var all_accounts;
+  // Account.find({}, {_id: false, username: true, waitTime: true}, function(err, users){
+  Account.find({}, {_id:false, username: true, waitTime: true}, function(err, users){
+    //res.send(users);
+    // all_accounts = users;
+    // res.send(all_accounts);
+    // console.log(all_accounts);
+    if (req.user){
+      //res.render('directory', {isLoggedIn: true, name: username, waitTime: req.user.waitTime, title: username });
+      res.render('directory', {isLoggedIn: true, users:users});
+    }
+    else {
+      res.render('directory', {isLoggedIn: false, users:users});
+    }
+  }).sort({waitTime:1});
+
+
+
+  //console.log(all_accounts);
+  // if (req.user) {
+  //  res.render('directory', {isLoggedIn: true, title: 'Directory' });
+  // } else {
+  //   res.render('directory', {isLoggedIn: false, title: 'Directory' });
+  // };
 })
 
 /* GET about page */
@@ -105,7 +138,10 @@ router.post('/adduser', function(req, res, next) {
             console.log(req.user);
             res.redirect('/');
         });
+    account.waitTime=240;
+    account.save();
     });
+    
 });
 
 /* POST login user */
