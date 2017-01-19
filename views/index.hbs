@@ -26,33 +26,43 @@
           <div class="modal-content">
             <h4 class="modalTitle">Restaurant Log In</h4>
 
-              <div class="row modalText">
-                <form class="col s12" method="post" action="/loginuser">
-                  <div class="row modal-form-row">
-                    <div class="input-field col s12">
-                      <input id="email_address" type="text" class="validate" name="username">
-                      <label for="email_address">Email Address</label>
-                    </div>
+            <div class="row modalText">
+              <form class="col s12" method="post" action="/loginuser">
+                <div class="row modal-form-row">
+                  <div class="input-field col s12">
+                   <input id="email_address" type="text" class="validate" name="username">
+                    <label for="email_address">Email Address</label>
                   </div>
-                  <div class="row modalText">
-                    <div class="input-field col s12">
-                      <input id="password" type="text" class="validate" name="password">
-                      <label for="password">Password</label>
-                    </div>
+                </div>
+                <div class="row modalText">
+                  <div class="input-field col s12">
+                    <input id="password" type="text" class="validate" name="password">
+                    <label for="password">Password</label>
                   </div>
-                  <button href="#!" type="submit" class="modal-action modal-close deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter" style="float: right; color: white">Log in</button>    
+                </div>
+                <button href="#!" type="submit" class="modal-action modal-close deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter" style="float: right; color: white">Log in</button>    
               </form>
             </div>
           </div>
 
-      <!-- <div class="modal-footer"> -->
+          <!-- <div class="modal-footer">
+            <a href="#modal2" class="waves-effect waves-light btn modal-trigger">Modal 2</a>
+          </div>
+
+          <div id="modal2" class="modal">
+            <div class="modal-content">
+              <h4>Modal 2  header</h4>
+              <p>Another text...</p>
+            </div>
+          </div> -->
+
+          <!-- <div class="modal-footer"> -->
         <!-- couldn't figure out how to put log in button here; i think it has to be placed within the form. 
 
         figure out a way to get rid of extra space -->
-      <!--  </div> -->
+        <!--  </div> -->
       </div>
     </li>
-
 
     <li><a href="/signupform">Sign Up</a></li>
     {{/if}}
