@@ -146,12 +146,24 @@ body {
 	display: inline;
 }
 
+.modal {
+	max-height: 90%;
+}
+
+.modal-form-row {
+	margin-bottom: 0px;
+}
+
 .modalTitle {
 	color: #ffab91;
 }
 
-.modal-footer {
-	color: #ffab91;
+.modal-text {
+	color: grey;
+}
+
+.modalPsuedofooter {
+	margin-bottom: 0px;
 }
 
 /*the below for editing form validation*/
