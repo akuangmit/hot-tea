@@ -23,15 +23,32 @@
   </div>
 </nav>
 <div class="topcontent">
-  <p>Restaurant Directory</p>
+  <h4>Restaurant Directory</h4>
 </div>
 <div class="content">
+  <div class="directoryRestaurants">
+      <table>
+        <thead>
+          <tr>
+              <th data-field="restaurantname">Restaurant Name</th>
+              <th data-field="waittime">Wait Time</th>
+          </tr>
+        </thead>
   {{#each users}}
-    <div class="directoryRestaurants">
-      <h1>{{username}}</h1>
-      <p>{{waitTime}}</p>
+    
+
+        <tbody>
+          <tr>
+            <td>{{username}}</td>
+            <td>{{waitTime}}</td>
+          </tr>
+        </tbody>
+          {{/each}}
+      </table>
+<!--       <h1>{{username}}</h1>
+      <p>{{waitTime}}</p> -->
     </div>
-  {{/each}}
+
     <!-- <p class = "display-wait-time">{{waitTime}}</p> -->
 </div>
 <div id="bottom">
