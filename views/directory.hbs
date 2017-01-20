@@ -23,7 +23,7 @@
   </div>
 </nav>
 <div class="topcontent">
-  <h4>Restaurant Directory</h4>
+  <h4 style="text-align: center">Restaurant Directory</h4>
 </div>
 <div class="content">
   <div class="directoryRestaurants">
@@ -39,8 +39,10 @@
 
         <tbody>
           <tr>
-            <td>{{username}}</td>
-            <td>{{waitTime}}</td>
+            <!-- <div class="row"> -->
+              <td class="col s6 m6 l6">{{username}}</td>
+              <td class="col s6 m6 l6">{{waitTime}}</td>
+            <!-- </div> -->
           </tr>
         </tbody>
           {{/each}}
