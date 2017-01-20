@@ -39,7 +39,7 @@
                     <input id="password" type="text" class="validate" name="password">
                     <label for="password">Password</label>
                   </div>
-                </div>
+                </div>  
                 <button href="#!" type="submit" class="modal-action modal-close deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter" style="float: right; color: white">Log in</button>    
               </form>
             </div>
@@ -64,7 +64,34 @@
       </div>
     </li>
 
-    <li><a href="/signupform">Sign Up</a></li>
+    <!-- <li><a href="/signupform">Sign Up</a></li> -->
+    <li><!-- Modal Trigger -->
+        <a class="waves-effect waves-light" href="#signupModal">Restaurant Sign Up</a>
+
+        <!-- Modal Structure -->
+        <div id="signupModal" class="modal">
+          <div class="modal-content">
+            <h4 class="modalTitle">Restaurant Sign Up</h4>
+
+            <div class="row modalText">
+              <form class="col s12" method="post" action="/adduser">
+                <div class="row modal-form-row">
+                  <div class="input-field col s12">
+                   <input id="restaurant_name" type="text" class="validate" name="username">
+                    <label for="restaurant_name">Restaurant Name</label>
+                  </div>
+                </div>
+                <div class="row modalText">
+                  <div class="input-field col s12">
+                    <input id="password" type="text" class="validate" name="password">
+                    <label for="password">Password</label>
+                  </div>
+                </div>
+                <button href="#!" type="submit" class="modal-action modal-close deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter" style="float: right; color: white">Sign Up</button>    
+              </form>
+            </div>
+          </div>
+</div></li>
     {{/if}}
   </ul>
 </div>
