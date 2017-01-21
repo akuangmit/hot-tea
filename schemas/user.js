@@ -6,7 +6,7 @@ var Account = new Schema({
     username: String,
     password: String,
     restaurantName: String,
-    ID: String,
+    id: String,
     waitTime: Number
 });
 

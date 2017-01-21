@@ -21,24 +21,16 @@
               <th data-field="waittime">Current Wait Time (minutes)</th>
           </tr>
         </thead>
-  {{#each users}}
-    
-
-        <tbody>
-          <tr>
-            <!-- <div class="row"> -->
-              <td class="col s6 m6 l6">{{restaurantName}}</td>
+        {{#each users}}
+          <tbody>
+            <tr>
+              <td class="col s6 m6 l6"><a href="/users/{{ id }}">{{restaurantName}}</a></td>
               <td class="col s6 m6 l6">{{waitTime}}</td>
-            <!-- </div> -->
-          </tr>
-        </tbody>
-          {{/each}}
+            </tr>
+          </tbody>
+        {{/each}}
       </table>
-<!--       <h1>{{username}}</h1>
-      <p>{{waitTime}}</p> -->
     </div>
-
-    <!-- <p class = "display-wait-time">{{waitTime}}</p> -->
 </div>
 <div id="bottom">
       <ul class="pagination">
