@@ -4,6 +4,7 @@
   <title>Title</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -31,19 +32,19 @@
                 <div class="row modal-form-row">
                   <div class="input-field col s12">
                    <input id="restaurant_name" type="text" class="validate" name="username">
-                    <label for="restaurant_name">Restaurant Name</label>
-                  </div>
+                   <label for="restaurant_name">Restaurant Name</label>
+                 </div>
+               </div>
+               <div class="row modalText">
+                <div class="input-field col s12">
+                  <input id="password" type="text" class="validate" name="password">
+                  <label for="password">Password</label>
                 </div>
-                <div class="row modalText">
-                  <div class="input-field col s12">
-                    <input id="password" type="text" class="validate" name="password">
-                    <label for="password">Password</label>
-                  </div>
-                </div>  
-                <button href="#!" type="submit" class="modal-action modal-close deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter" style="float: right; color: white">Log in</button>    
-              </form>
-            </div>
+              </div>  
+              <button href="#!" type="submit" class="modal-action modal-close deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter" style="float: right; color: white">Log in</button>    
+            </form>
           </div>
+        </div>
 
           <!-- <div class="modal-footer">
             <a href="#modal2" class="waves-effect waves-light btn modal-trigger">Modal 2</a>
@@ -66,32 +67,32 @@
 
     <!-- <li><a href="/signupform">Sign Up</a></li> -->
     <li><!-- Modal Trigger -->
-        <a class="waves-effect waves-light" href="#signupModal">Restaurant Sign Up</a>
+      <a class="waves-effect waves-light" href="#signupModal">Restaurant Sign Up</a>
 
-        <!-- Modal Structure -->
-        <div id="signupModal" class="modal">
-          <div class="modal-content">
-            <h4 class="modalTitle">Restaurant Sign Up</h4>
+      <!-- Modal Structure -->
+      <div id="signupModal" class="modal">
+        <div class="modal-content">
+          <h4 class="modalTitle">Restaurant Sign Up</h4>
 
-            <div class="row modalText">
-              <form class="col s12" method="post" action="/adduser">
-                <div class="row modal-form-row">
-                  <div class="input-field col s12">
-                   <input id="restaurant_name" type="text" class="validate" name="username">
-                    <label for="restaurant_name">Restaurant Name</label>
-                  </div>
-                </div>
-                <div class="row modalText">
-                  <div class="input-field col s12">
-                    <input id="password" type="text" class="validate" name="password">
-                    <label for="password">Password</label>
-                  </div>
-                </div>
-                <button href="#!" type="submit" class="modal-action modal-close deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter" style="float: right; color: white">Sign Up</button>    
-              </form>
+          <div class="row modalText">
+            <form class="col s12" method="post" action="/adduser">
+              <div class="row modal-form-row">
+                <div class="input-field col s12">
+                 <input id="restaurant_name" type="text" class="validate" name="username">
+                 <label for="restaurant_name">Restaurant Name</label>
+               </div>
+             </div>
+             <div class="row modalText">
+              <div class="input-field col s12">
+                <input id="password" type="text" class="validate" name="password">
+                <label for="password">Password</label>
+              </div>
             </div>
-          </div>
-</div></li>
+            <button href="#!" type="submit" class="modal-action modal-close deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter" style="float: right; color: white">Sign Up</button>    
+          </form>
+        </div>
+      </div>
+    </div></li>
     {{/if}}
   </ul>
 </div>
@@ -117,26 +118,55 @@
   </div>
 </div>
 
-<div id="bottom" class="section white">
+<div id="bottom" class="section white restaurantcard">
   <div class="row container">
-    <h5 class="margin-set">In Your Area</h5>
-    <div class="col s12 m7">
-      <p class="header margin-set">Restaurant Name</p>
-      <div class="card horizontal margin-set">
-        <div class="card-image">
-          <img src="http://lorempixel.com/100/190/nature/6">
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <p>Restaurant Description</p>
-          </div>
-          <div class="card-action">
-            <a href="/restaurantprofile">Link to restaurant page</a>
-          </div>
-        </div>
+    <h5 class="margin-set cardsTitle">Restaurants by Wait Time</h5>
+
+    <div class="card firstcard">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="/images/restaurant.jpg">
       </div>
-      <a class="deep-orange lighten-3 waves-effect waves-teal btn-flat margin-set button" href="/directory">See More</a>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Restaurant Name<i class="material-icons right">more_vert</i></span>
+        <p>Wait Time: </p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Restaurant Name<i class="material-icons right">close</i></span>
+        <p>Wait Time: </p>
+        <p>Restaurant Description</p>
+      </div>
     </div>
+
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="/images/restaurant.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Restaurant Name<i class="material-icons right">more_vert</i></span>
+        <p>Wait Time: </p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Restaurant Name<i class="material-icons right">close</i></span>
+        <p>Wait Time: </p>
+        <p>Restaurant Description</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="/images/restaurant.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Restaurant Name<i class="material-icons right">more_vert</i></span>
+        <p>Wait Time: </p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Restaurant Name<i class="material-icons right">close</i></span>
+        <p>Wait Time: </p>
+        <p>Restaurant Description</p>
+      </div>
+    </div>
+
   </div>
 </div>
 

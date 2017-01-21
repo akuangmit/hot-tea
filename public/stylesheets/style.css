@@ -7,6 +7,9 @@
 }
 */
 /*Sticky Footer*/
+
+/*@import url('https://fonts.googleapis.com/css?family=Roboto');*/
+
 body {
 	display: flex;
 	min-height: 100vh;
@@ -49,7 +52,9 @@ body {
 	font-size:24px;
 }
 .card{
-	width: 400px;
+	width: 350px;
+	display:inline-block;
+	/*margin-right: 15px;*/
 }
 #navsearch {
 	display:inline-block;
@@ -60,9 +65,18 @@ body {
 	color:white;
 	margin-right:50px;
 }
+
 .margin-set {
-	margin-left:25px;
+	/*margin-left:25px;*/
 }
+
+.cardsTitle {
+	color: #ffab91;
+	font-family: sans-serif;
+	font-size: 35px;
+	/*font-weight: 10px;*/
+}
+
 #bottom {
 	margin-bottom: 15px;
 }
@@ -165,6 +179,20 @@ body {
 .modalPsuedofooter {
 	margin-bottom: 0px;
 }
+
+.cardsTitle{
+	margin-left:-175px;
+}
+.firstcard {
+	margin-left:-175px;
+	/*display:inline;*/
+}
+
+./*restaurantcard{
+	display:inline;
+}
+*/
+
 
 /*the below for editing form validation*/
 
