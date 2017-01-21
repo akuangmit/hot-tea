@@ -24,7 +24,7 @@ $(document).ready(function(){
             //dataType: 'application/json',
             success: function(data) {
                 console.log(data);
-                $('.currentWaitTime').text(payload.time.toString() + " min");
+                $('.currentWaitTime').text(payload.time.toString() + " minutes");
             }
         });
         

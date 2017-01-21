@@ -4,6 +4,20 @@ var passport = require('passport');
 var Account = require('../schemas/user');
 const uuidV4 = require('uuid/v4');
 
+/* convert wait time in minutes to display time */
+function displayTime(time) {
+  if (time > 60) {
+    var hours = time/60;
+    var minutes = time%60;
+    if (minutes == 0) {
+      return hours.toString() + " hours";
+    }
+    return hours.toString() + " hours " + minutes.toString() + " minutes";
+  } else {
+    return time.toString() + " minutes";
+  }
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (req.user) {
@@ -17,11 +31,28 @@ router.get('/', function(req, res, next) {
 router.get('/directory', function(req, res, next) {
   var all_accounts;
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, id: true}, function(err, users){
+    var usersNew = [];
+    //console.log(users);
+    for (var user in users) {
+      usersNew[user] = {};
+      //console.log(user);
+      //console.log(users[user].waitTime);
+      usersNew[user].username = users[user].username;
+      usersNew[user].id = users[user].id;
+      usersNew[user].restaurantName = users[user].restaurantName;
+      usersNew[user].waitTime = displayTime(users[user].waitTime);
+      //console.log("old: " + usersNew[user].waitTime.toString());
+      //console.log("new: " + displayTime(usersNew[user].waitTime).toString());
+      //console.log(usersNew[user]);
+      //usersNew[user].waitTime = displayTime(users[user].waitTime);
+      console.log(usersNew[user]);
+      //console.log(usersNew);
+    }
     if (req.user){
-      res.render('directory', {isLoggedIn: true, users:users, url: req.user.id});
+      res.render('directory', {isLoggedIn: true, users: usersNew, url: req.user.id});
     }
     else {
-      res.render('directory', {isLoggedIn: false, users:users});
+      res.render('directory', {isLoggedIn: false, users:usersNew});
     }
   }).sort({waitTime:1});
 })
@@ -40,7 +71,7 @@ router.get('/updatewaittime', function(req, res, next) {
   if (req.user) {
     console.log(req.user.restaurantName);
    res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', 
-    restaurantName: req.user.restaurantName, waitTime: req.user.waitTime, 
+    restaurantName: req.user.restaurantName, waitTime: displayTime(req.user.waitTime), 
     url: req.user.id});
   } else {
     res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time'});
@@ -127,13 +158,19 @@ router.post('/loginuser', passport.authenticate('local', {
 router.get('/users/:id', function(req,res,next) {
   var id = req.params.id;
   if (req.user) {
-   res.render('profile', {isLoggedIn: true, restaurantName: req.user.restaurantName, waitTime: req.user.waitTime, title: req.user.restaurantName, url: req.user.id});
+    Account.findOne({'id': id}, function(err, user) {
+      if (err) {
+        console.log('error');
+      } else {
+        res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), title: user.restaurantName, url: req.user.id});
+      }
+    });
   } else {
     Account.findOne({'id': id}, function(err, user) {
       if (err) {
         console.log('error');
       } else {
-        res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: user.waitTime, title: user.restaurantName });
+        res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), title: user.restaurantName });
       }
     });
   }
