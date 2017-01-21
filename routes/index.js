@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var Account = require('../schemas/user');
+const uuidV4 = require('uuid/v4');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -40,7 +41,7 @@ router.get('/updatewaittime', function(req, res, next) {
     console.log(req.user.restaurantName);
    res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', 
     restaurantName: req.user.restaurantName, waitTime: req.user.waitTime, 
-    url: "/users/" + req.user.restaurantName});
+    url: "/users/" + req.user.ID});
   } else {
     res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time'});
   }})
@@ -105,6 +106,7 @@ router.post('/adduser', function(req, res, next) {
         });
     account.waitTime=240;
     console.log(req.body.restaurantName);
+    account.ID = uuidV4();
     account.restaurantName = req.body.restaurantName;
     account.save();
     });
@@ -118,21 +120,20 @@ router.post('/loginuser', passport.authenticate('local', {
 }));
 
 /* GET individual restaurant profile page */
-router.get('/users/:restaurantName', function(req,res,next) {
-  var username = req.params.username;
+router.get('/users/:ID', function(req,res,next) {
+  var ID = req.params.ID;
   if (req.user) {
-   res.render('profile', {isLoggedIn: true, name: username, waitTime: req.user.waitTime, title: username });
+   res.render('profile', {isLoggedIn: true, restaurantName: req.user.restaurantName, waitTime: req.user.waitTime, title: req.user.restaurantName });
   } else {
     var waitTime = 0;
-    Account.findOne({'username': username}, function(err, user) {
+    Account.findOne({'ID': ID}, function(err, user) {
       if (err) {
         console.log('error');
       } else {
-        res.render('profile', {isLoggedIn: false, name: username, waitTime: user.waitTime, title: username });
+        res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: user.waitTime, title: user.restaurantName });
       }
     });
   }
 });
-
 
 module.exports = router;
