@@ -17,6 +17,7 @@
       <table>
         <thead>
           <tr>
+              <th data-field="profilepic">Photo</th>
               <th data-field="restaurantname">Restaurant Name</th>
               <th data-field="waittime">Current Wait Time (minutes)</th>
           </tr>
@@ -24,8 +25,9 @@
         {{#each users}}
           <tbody>
             <tr>
-              <td class="col s6 m6 l6"><a href="/users/{{ id }}">{{restaurantName}}</a></td>
-              <td class="col s6 m6 l6">{{waitTime}}</td>
+              <td class = "col s4 m4 l4"><img src = "https://robots.johnlindquist.com/{{restaurantName}}"></td>
+              <td class="col s4 m4 l4"><a href="/users/{{ id }}">{{restaurantName}}</a></td>
+              <td class="col s4 m4 l4">{{waitTime}}</td>
             </tr>
           </tbody>
         {{/each}}

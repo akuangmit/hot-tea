@@ -188,6 +188,10 @@ body {
 	/*display:inline;*/
 }
 
+.directoryRestaurants img {
+	height: 120px;
+}
+
 ./*restaurantcard{
 	display:inline;
 }
