@@ -15,15 +15,16 @@ $(document).ready(function(){
     });
     $('.parallax').parallax(); 
     $('.wait-time').click(function() {
-        var payload = {time: parseInt(this.id,10)};       
+        var payload = {time: parseInt(this.id,10)}; 
+        console.log("hello");      
         $.ajax({
             type: 'POST',
             url: '/waittime',
             data: payload,
-            dataType: 'application/json',
+            //dataType: 'application/json',
             success: function(data) {
-                console.log('success');
                 console.log(data);
+                $('.currentWaitTime').text(payload.time.toString() + " min");
             }
         });
         
@@ -38,6 +39,6 @@ $(document).ready(function(){
     $('.modal').modal();
 });
 
-    Materialize.updateTextFields();
+    //Materialize.updateTextFields();
 
 });

@@ -83,12 +83,16 @@ router.get('/logout', function(req, res, next) {
 
 /* POST wait time */
 router.post('/waittime', function(req, res, next) {
+  console.log("start");
   Account.findOne({'username': req.user.username}, function(err, user) {
     if (err) {
       console.log('error');
     }
     user.waitTime = req.body.time;
     user.save();
+    console.log("hello2");
+    res.send("success");
+    //res.redirect("/");
   });
 });
 
