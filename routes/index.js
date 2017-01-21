@@ -7,7 +7,7 @@ const uuidV4 = require('uuid/v4');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (req.user) {
-   res.render('index', {isLoggedIn: true, title: 'Home' });
+   res.render('index', {isLoggedIn: true, title: 'Home', url: req.user.ID});
   } else {
     res.render('index', {isLoggedIn: false, title: 'Home' });
   }
@@ -18,7 +18,7 @@ router.get('/directory', function(req, res, next) {
   var all_accounts;
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true}, function(err, users){
     if (req.user){
-      res.render('directory', {isLoggedIn: true, users:users});
+      res.render('directory', {isLoggedIn: true, users:users, url: req.user.ID});
     }
     else {
       res.render('directory', {isLoggedIn: false, users:users});
@@ -29,7 +29,7 @@ router.get('/directory', function(req, res, next) {
 /* GET about page */
 router.get('/about', function(req, res, next) {
   if (req.user) {
-   res.render('about', {isLoggedIn: true, title: 'About' });
+   res.render('about', {isLoggedIn: true, title: 'About', url: req.user.ID});
   } else {
     res.render('about', {isLoggedIn: false, title: 'About' });
   }
@@ -41,7 +41,7 @@ router.get('/updatewaittime', function(req, res, next) {
     console.log(req.user.restaurantName);
    res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', 
     restaurantName: req.user.restaurantName, waitTime: req.user.waitTime, 
-    url: "/users/" + req.user.ID});
+    url: req.user.ID});
   } else {
     res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time'});
   }})
@@ -49,7 +49,7 @@ router.get('/updatewaittime', function(req, res, next) {
 /* GET log in form page */
 router.get('/loginform', function(req, res, next) {
   if (req.user) {
-   res.render('loginform', {isLoggedIn: true, title: 'Log In' });
+   res.render('loginform', {isLoggedIn: true, title: 'Log In', url: req.user.ID});
   } else {
     res.render('loginform', {isLoggedIn: false, title: 'Log In' });
   }
@@ -58,7 +58,7 @@ router.get('/loginform', function(req, res, next) {
 /* GET sign up form page */
 router.get('/signupform', function(req, res, next) {
   if (req.user) {
-   res.render('signupform', {isLoggedIn: true, title: 'Sign Up' });
+   res.render('signupform', {isLoggedIn: true, title: 'Sign Up', url: req.user.ID });
   } else {
     res.render('signupform', {isLoggedIn: false, title: 'Sign Up' });
   }
@@ -67,7 +67,7 @@ router.get('/signupform', function(req, res, next) {
 /* GET search results page */
 router.get('/searchresults', function(req, res, next) {
   if (req.user) {
-   res.render('searchresults', {isLoggedIn: true, title: 'Search Results' });
+   res.render('searchresults', {isLoggedIn: true, title: 'Search Results', url: req.user.ID});
   } else {
     res.render('searchresults', {isLoggedIn: false, title: 'Search Results' });
   }
@@ -123,7 +123,7 @@ router.post('/loginuser', passport.authenticate('local', {
 router.get('/users/:ID', function(req,res,next) {
   var ID = req.params.ID;
   if (req.user) {
-   res.render('profile', {isLoggedIn: true, restaurantName: req.user.restaurantName, waitTime: req.user.waitTime, title: req.user.restaurantName });
+   res.render('profile', {isLoggedIn: true, restaurantName: req.user.restaurantName, waitTime: req.user.waitTime, title: req.user.restaurantName, url: req.user.ID});
   } else {
     var waitTime = 0;
     Account.findOne({'ID': ID}, function(err, user) {
