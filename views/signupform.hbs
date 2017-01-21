@@ -8,20 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-  <nav class="deep-orange lighten-3">
-   <div class="nav-wrapper">
-    <a href="/" class="brand-logo margin-set">Logo</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      {{#if isLoggedIn }}
-        <li><a href="/updatewaittime">Update Wait Time</a></li>
-        <li><a href="/logout">Log Out</a></li>
-      {{else}}
-        <li><a href="/loginform">Restaurant Log In</a></li>
-        <li><a href="/signupform">Sign Up</a></li>
-      {{/if}}
-    </ul>
-  </div>
-</nav>
+  {{>navbar}}
 <div class="topcontent">
     <div class="row">
     <form class="col s12" method="post" action="/adduser">
@@ -44,6 +31,8 @@
     <!-- Modal Trigger -->
   </div>
 </div>
+{{>signupModal}}
+{{>loginModal}}
 <footer class="page-footer deep-orange lighten-3">
   <div class="container">
     <div class="row">

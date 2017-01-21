@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-  <nav class="deep-orange lighten-3">
+  <!-- <nav class="deep-orange lighten-3">
    <div class="nav-wrapper">
     <a href="/" class="brand-logo margin-set">Logo</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -17,32 +17,7 @@
       <li><a href="/updatewaittime">Update Wait Time</a></li>
       <li><a href="/logout">Log Out</a></li>
       {{else}}
-      <!-- <li><a href="/loginform">Restaurant Log In</a></li> -->
       <li>
-        <!-- Modal Trigger -->
-        <a class="waves-effect waves-light" href="#loginModal">Restaurant Log In</a>
-
-          <!-- <div class="modal-footer">
-            <a href="#modal2" class="waves-effect waves-light btn modal-trigger">Modal 2</a>
-          </div>
-
-          <div id="modal2" class="modal">
-            <div class="modal-content">
-              <h4>Modal 2  header</h4>
-              <p>Another text...</p>
-            </div>
-          </div> -->
-
-          <!-- <div class="modal-footer"> -->
-        <!-- couldn't figure out how to put log in button here; i think it has to be placed within the form. 
-
-        figure out a way to get rid of extra space -->
-        <!--  </div> -->
-      <!-- </div> -->
-    </li>
-
-    <!-- <li><a href="/signupform">Sign Up</a></li> -->
-    <li><!-- Modal Trigger -->
       <a class="waves-effect waves-light" href="#signupModal">Restaurant Sign Up</a>
 
       
@@ -50,7 +25,8 @@
     {{/if}}
   </ul>
 </div>
-</nav>
+</nav>  -->
+{{>navbar}}
 <div class="parallax-container">
   <div class="topcontent index">
     <div class="parallax toppic"><img src="../images/restaurant.jpg">
@@ -129,7 +105,7 @@
 </div>
 
 <!-- Modal Structure -->
-<div id="loginModal" class="modal">
+<!-- <div id="loginModal" class="modal">
   <div class="modal-content">
     <h4 class="modalTitle">Restaurant Log In</h4>
 
@@ -151,10 +127,12 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->
+{{>loginModal}}
+{{>signupModal}}
 
 <!-- Modal Structure -->
-      <div id="signupModal" class="modal">
+      <!-- <div id="signupModal" class="modal">
         <div class="modal-content">
           <h4 class="modalTitle">Restaurant Sign Up</h4>
 
@@ -176,7 +154,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
 
 <footer class="page-footer deep-orange lighten-3">
   <div class="container">

@@ -8,32 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-  <nav class="deep-orange lighten-3">
-   <div class="nav-wrapper">
-    <a href="/" class="brand-logo">Logo</a>
-    <nav id="navsearch" class="deep-orange lighten-3">
-      <div class="nav-wrapper">
-        <form>
-          <div class="input-field">
-            <input id="search" type="search" required>
-            <label for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-          </div>
-        </form>
-      </div>
-    </nav>
-    <a class="deep-orange lighten-3 waves-light waves-teal btn-flat button" href="/searchresults">Search!</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      {{#if isLoggedIn }}
-      <li><a href="/updatewaittime">Update Wait Time</a></li>
-      <li><a href="/logout">Log Out</a></li>
-      {{else}}
-      <li><a href="/loginform">Restaurant Log In</a></li>
-      <li><a href="/signupform">Sign Up</a></li>
-      {{/if}}
-    </ul>
-  </div>
-</nav>
+  {{>navbar}}
 <div class="waitTimeContent">
   <div class="displayWaitTime">
     <h1>{{restaurantName}}</h1>
@@ -139,6 +114,8 @@
     </div>
   </div>
 </div>
+{{>signupModal}}
+{{>loginModal}}
 <footer class="page-footer deep-orange lighten-3">
   <div class="container">
     <div class="row">

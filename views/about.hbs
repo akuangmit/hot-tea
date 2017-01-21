@@ -8,20 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-  <nav class="deep-orange lighten-3">
-   <div class="nav-wrapper">
-    <a href="/" class="brand-logo margin-set">Logo</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      {{#if isLoggedIn }}
-        <li><a href="/updatewaittime">Update Wait Time</a></li>
-        <li><a href="/logout">Log Out</a></li>
-      {{else}}
-        <li><a href="/loginform">Restaurant Log In</a></li>
-        <li><a href="/signupform">Sign Up</a></li>
-      {{/if}}
-    </ul>
-  </div>
-</nav>
+  {{>navbar}}
 <div class="topcontent abouttop">
   <h5>About Webapp</h5>
   <p>Here is a description of what the app does.</p>
@@ -57,6 +44,8 @@
       <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
     </div>
   </div>
+{{>signupModal}}
+{{>loginModal}}
 </footer>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
