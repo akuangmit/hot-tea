@@ -14,44 +14,15 @@ router.get('/', function(req, res, next) {
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
-  // if (req.user) {
-  //  res.render('directory', {isLoggedIn: true, title: 'Directory' });
-  // } else {
-  //   res.render('directory', {isLoggedIn: false, title: 'Directory' });
-  // };
-
-  // Account.find({}, function(err, users) {
-  //     if (err) {
-  //       console.log('error');
-  //     }
-  //     res.render('profile', {isLoggedIn: false, name: username, waitTime: user.waitTime, title: username });
-  //   });
-  // }
-  // var all_accounts;
   var all_accounts;
-  // Account.find({}, {_id: false, username: true, waitTime: true}, function(err, users){
-  Account.find({}, {_id:false, username: true, waitTime: true}, function(err, users){
-    //res.send(users);
-    // all_accounts = users;
-    // res.send(all_accounts);
-    // console.log(all_accounts);
+  Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true}, function(err, users){
     if (req.user){
-      //res.render('directory', {isLoggedIn: true, name: username, waitTime: req.user.waitTime, title: username });
       res.render('directory', {isLoggedIn: true, users:users});
     }
     else {
       res.render('directory', {isLoggedIn: false, users:users});
     }
   }).sort({waitTime:1});
-
-
-
-  //console.log(all_accounts);
-  // if (req.user) {
-  //  res.render('directory', {isLoggedIn: true, title: 'Directory' });
-  // } else {
-  //   res.render('directory', {isLoggedIn: false, title: 'Directory' });
-  // };
 })
 
 /* GET about page */
@@ -63,21 +34,13 @@ router.get('/about', function(req, res, next) {
   }
 })
 
-/* GET restaurant profile page */
-router.get('/restaurantprofile', function(req, res, next) {
-  if (req.user) {
-   res.render('restaurantprofile', {isLoggedIn: true, waitTime: req.user.waitTime, title: 'Restaurant Profile' });
-  } else {
-    res.render('restaurantprofile', {isLoggedIn: false, waitTime: 'not set yet', title: 'Restaurant Profile' });
-  }
-})
-
 /* GET update wait time page */
 router.get('/updatewaittime', function(req, res, next) {
   if (req.user) {
+    console.log(req.user.restaurantName);
    res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', 
-    restaurantName: req.user.username, waitTime: req.user.waitTime, 
-    url: "/users/" + req.user.username});
+    restaurantName: req.user.restaurantName, waitTime: req.user.waitTime, 
+    url: "/users/" + req.user.restaurantName});
   } else {
     res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time'});
   }})
@@ -141,6 +104,8 @@ router.post('/adduser', function(req, res, next) {
             res.redirect('/');
         });
     account.waitTime=240;
+    console.log(req.body.restaurantName);
+    account.restaurantName = req.body.restaurantName;
     account.save();
     });
     
@@ -153,7 +118,7 @@ router.post('/loginuser', passport.authenticate('local', {
 }));
 
 /* GET individual restaurant profile page */
-router.get('/users/:username', function(req,res,next) {
+router.get('/users/:restaurantName', function(req,res,next) {
   var username = req.params.username;
   if (req.user) {
    res.render('profile', {isLoggedIn: true, name: username, waitTime: req.user.waitTime, title: username });
