@@ -1,18 +1,6 @@
 <nav class="deep-orange lighten-3">
   <div class="nav-wrapper">
     <a href="/" class="brand-logo margin-set">Logo</a>
-    <nav id="navsearch" class="deep-orange lighten-3">
-      <div class="nav-wrapper">
-        <form>
-          <div class="input-field">
-            <input id="search" type="search" required>
-            <label for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-          </div>
-        </form>
-      </div>
-    </nav>
-    <a class="deep-orange lighten-3 waves-light waves-teal btn-flat button" href="/searchresults">Search!</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       {{#if isLoggedIn }}
         <li><a href="/users/{{url}}">Your Profile</a></li>
