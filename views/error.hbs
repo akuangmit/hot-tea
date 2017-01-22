@@ -1,3 +1,29 @@
-<h1>{{message}}</h1>
+<!-- h1>{{message}}</h1>
 <h2>{{error.status}}</h2>
 <pre>{{error.stack}}</pre>
+<h1>Oops you can't do that<h1> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  {{>navbar}}
+<div class="topcontent abouttop">
+  <h3>Error</h3>
+  <p>You have encountered an error. Perhaps the user you are searching for doesn't exist, or you are accessing an invalid url.</p>
+</div>
+{{>signupModal}}
+{{>loginModal}}
+{{>footer}}
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/myscript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+</html>
+
