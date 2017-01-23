@@ -6,7 +6,11 @@ const uuidV4 = require('uuid/v4');
 
 /* convert wait time in minutes to display time */
 function displayTime(time) {
-  if (time >= 240) {
+  if (time == 999) {
+    return "Closed";
+  }
+
+  else if (time == 240) {
     return "Unknown";
   }
 

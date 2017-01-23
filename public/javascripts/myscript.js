@@ -35,7 +35,11 @@ $(document).ready(function(){
             //dataType: 'application/json',
             success: function(data) {
                 console.log(data);
-                if (payload.time >= 240) {
+                if (payload.time == 999) {
+                    $('.currentWaitTime').text("Closed");
+                }
+
+                else if (payload.time == 240) {
                     $('.currentWaitTime').text("Unknown");
                 }
 
