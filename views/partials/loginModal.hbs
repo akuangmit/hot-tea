@@ -7,17 +7,18 @@
       <form class="col s12" method="post" action="/loginuser">
         <div class="row modal-form-row">
           <div class="input-field col s6">
-            <input id="email_address" type="email" class="validate" name="username">
-            <label for="email_address">Email Address</label>
+            <input id="email_address" type="email" class="validate" required="" aria-required="true" name="username">
+            <label for="email_address" data-error="Please enter a valid email address.">Email Address</label>
           </div>
         </div>
         <div class="row modalText">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate" name="password">
+            <input id="password" type="password" class="validate" required="" aria-required="true" name="password">
             <label for="password">Password</label>
           </div>
         </div>  
-        <button href="#!" type="submit" class="modal-action modal-close deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter" style="float: right; color: white">Log in</button>
+
+        <button href="#!" type="submit" class="modal-action deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter modalsubmit" style="float: right; color: white">Log in</button>
       </form>
     </div>
   </div>

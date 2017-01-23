@@ -1,4 +1,15 @@
 $(document).ready(function(){
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
+
+    function validPassword(password) {
+        // at least 6 char, 1 number, 1 upper, 1 lower
+        var regex = (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/);
+        return regex.test(password);
+    }
+
     //Materialize.toast('Welcome!!', 4000);
     $('.footerLink').mouseenter(function(){
         $(this).css("text-decoration", "underline");
@@ -29,6 +40,16 @@ $(document).ready(function(){
         });
         
     });
+
+    $('.modalsubmit').click(function(){
+        var email = $("#email_address").val();
+        var password = $("#password").val();
+
+        if (isEmail(email) && validPassword(password)) {
+            $('.loginsubmit').addClass("modal-close");
+        }
+    });
+
 
     $(document).ready(function() {
         $('select').material_select();
