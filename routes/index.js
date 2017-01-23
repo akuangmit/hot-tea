@@ -6,14 +6,24 @@ const uuidV4 = require('uuid/v4');
 
 /* convert wait time in minutes to display time */
 function displayTime(time) {
-  if (time > 60) {
+  if (time >= 240) {
+    return "Unknown";
+  }
+
+  else if (time == 0) {
+    return "No Wait";
+  } 
+
+  else if (time > 60) {
     var hours = time/60;
     var minutes = time%60;
     if (minutes == 0) {
       return hours.toString() + " hours";
     }
     return hours.toString() + " hours " + minutes.toString() + " minutes";
-  } else {
+  } 
+
+  else {
     return time.toString() + " minutes";
   }
 }

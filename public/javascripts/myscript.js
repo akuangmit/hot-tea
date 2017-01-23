@@ -35,7 +35,17 @@ $(document).ready(function(){
             //dataType: 'application/json',
             success: function(data) {
                 console.log(data);
-                $('.currentWaitTime').text(payload.time.toString() + " minutes");
+                if (payload.time >= 240) {
+                    $('.currentWaitTime').text("Unknown");
+                }
+
+                else if (payload.time == 0) {
+                    $('.currentWaitTime').text("No Wait");
+                }
+
+                else {
+                    $('.currentWaitTime').text(payload.time.toString() + " minutes");
+                }
             }
         });
         
@@ -58,9 +68,6 @@ $(document).ready(function(){
     //         $('.signup_submit').addClass("modal-close");
     //     }
     // });
-
-    // Materialize.toast(message, displayLength, className, completeCallback);
-    //Materialize.toast('I am a toast!', 4000) // 4000 is the duration of the toast
 
     $(document).ready(function() {
         $('select').material_select();
