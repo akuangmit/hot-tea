@@ -41,15 +41,26 @@ $(document).ready(function(){
         
     });
 
-    $('.modalsubmit').click(function(){
-        var email = $("#email_address").val();
-        var password = $("#password").val();
+    // $('.login_submit').click(function(){
+    //     var email = $("#login_email_address").val();
+    //     var password = $("#login_password").val();
 
-        if (isEmail(email) && validPassword(password)) {
-            $('.loginsubmit').addClass("modal-close");
-        }
-    });
+    //     if (isEmail(email) && validPassword(password)) {
+    //         $('.login_submit').addClass("modal-close");
+    //     }
+    // });
 
+    // $('.signnup_submit').click(function(){
+    //     var email = $("#signup_email_address").val();
+    //     var password = $("#signup_password").val();
+
+    //     if (isEmail(email) && validPassword(password)) {
+    //         $('.signup_submit').addClass("modal-close");
+    //     }
+    // });
+
+    // Materialize.toast(message, displayLength, className, completeCallback);
+    //Materialize.toast('I am a toast!', 4000) // 4000 is the duration of the toast
 
     $(document).ready(function() {
         $('select').material_select();
