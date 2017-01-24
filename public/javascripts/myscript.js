@@ -1,14 +1,22 @@
 $(document).ready(function(){
-    function isEmail(email) {
-        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        return regex.test(email);
-    }
+    // function isEmail(email) {
+    //     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    //     return regex.test(email);
+    // }
 
-    function validPassword(password) {
-        // at least 6 char, 1 number, 1 upper, 1 lower
-        var regex = (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/);
-        return regex.test(password);
-    }
+    // function validPassword(password) {
+    //     // at least 6 char, 1 number, 1 upper, 1 lower
+    //     var regex = (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/);
+    //     return regex.test(password);
+    // }
+
+    // function checkSignupForm(form) {
+    //     if(!validPassword(form.password.value)) {
+    //         alert("password is invalid");
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
     //Materialize.toast('Welcome!!', 4000);
     $('.footerLink').mouseenter(function(){
@@ -60,15 +68,17 @@ $(document).ready(function(){
     //     var password = $("#login_password").val();
 
     //     if (isEmail(email) && validPassword(password)) {
-    //         $('.login_submit').addClass("modal-close");
+    //         //$('.login_submit').addClass("modal-close");
     //     }
     // });
 
-    // $('.signnup_submit').click(function(){
+    // $('.signup_submit').click(function(){
+    //     console.log("hello2");
     //     var email = $("#signup_email_address").val();
     //     var password = $("#signup_password").val();
 
     //     if (isEmail(email) && validPassword(password)) {
+    //         console.log("it works");
     //         $('.signup_submit').addClass("modal-close");
     //     }
     // });
