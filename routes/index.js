@@ -18,8 +18,12 @@ function displayTime(time) {
     return "No Wait";
   } 
 
+  else if (time >= 180) {
+    return "3+ hours";
+  }
+
   else if (time > 60) {
-    var hours = time/60;
+    var hours = Math.floor(time/60);
     var minutes = time%60;
     if (minutes == 0) {
       return hours.toString() + " hours";
@@ -89,7 +93,6 @@ router.get('/about', function(req, res, next) {
 /* GET update wait time page */
 router.get('/updatewaittime', function(req, res, next) {
   if (req.user) {
-    console.log(req.user.restaurantName);
    res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', 
     restaurantName: req.user.restaurantName, waitTime: displayTime(req.user.waitTime), 
     timeSinceUpdate: displayTimeSinceUpdate(Date.now()-req.user.timeOfUpdate), url: req.user.id});
@@ -195,7 +198,7 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
-        console.log(user.restaurantDescription);
+        //console.log(user.restaurantDescription);
         res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
           title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
           restaurantDescription: user.restaurantDescription, url: req.user.id});
