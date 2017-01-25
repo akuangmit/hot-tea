@@ -3,13 +3,13 @@ $(document).ready(function(){
 	function displayTimeSinceUpdate(time) {
 		time = Math.floor(time/60000);	
 		if (time<1) {
-			return "<1 minute ago";
+			return "updated < 1 minute ago";
 		} else if (time > 60) {
-			return ">1 hour ago";
+			return "updated > 1 hour ago";
 		} else if (time > 120) {
-			return ">2 hours ago";
+			return "updated > 2 hours ago";
 		} else {
-			return time.toString() + " minutes ago";
+			return "updated " + time.toString() + " minutes ago";
 		}
 	}
 

@@ -40,11 +40,11 @@ function displayTime(time) {
 function displayTimeSinceUpdate(time) {
   time = Math.floor(time/60000);
   if (time<1) {
-    return "<1 minute ago";
+    return "< 1 minute ago";
   } else if (time > 60) {
-    return ">1 hour ago";
+    return "> 1 hour ago";
   } else if (time > 120) {
-    return ">2 hours ago";
+    return "> 2 hours ago";
   } else {
     return time.toString() + " minutes ago";
   }

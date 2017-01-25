@@ -28,15 +28,15 @@ body {
 
 /*Search bar resize and movement*/
 #searchbar{
-	margin-top: 200px;
-	/*margin-left:420px;*/
+	z-index:0;
+	position:relative;
+	/*margin-top: 200px;
 	margin-left:250px;
 	width: 500px;
 	display:inline-block;
-	z-index:0;
-	position:relative;
-	margin-right: 15px;
+	margin-right: 15px;*/
 }
+
 .toptext {
 	color:white;
 	text-align:center;
@@ -79,9 +79,10 @@ body {
 	z-index:1;
 }
 
-/*.updatebutton {
-	margin-left: 150px;
-}*/
+.updatebutton {
+	margin-bottom: 5px;
+}
+
 .selecttime {
 	margin-bottom: 15px;
 }
@@ -204,6 +205,10 @@ body {
 	color: #ffab91;
 }
 
+.modalTop {
+	margin-bottom: 15px;
+}
+
 .modal-text {
 	color: grey;
 }
@@ -220,11 +225,25 @@ body {
 	height: 120px;
 }
 
-./*restaurantcard{
+/*.restaurantcard{
 	display:inline;
 }
 */
 
+.waitTimeRestaurant {
+	margin-top: 0px;
+	padding-top: 30px;
+	margin-bottom: 50px;
+}
+
+.timeSinceUpdate {
+	padding-top: 10px;
+	padding-bottom: 30px;
+}
+
+footer.page-footer {
+	margin-top: 0px;
+}
 
 /*the below for editing form validation*/
 
