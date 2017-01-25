@@ -7,7 +7,8 @@ var Account = new Schema({
     password: String,
     restaurantName: String,
     id: String,
-    waitTime: Number
+    waitTime: Number,
+    timeOfUpdate: Number
 });
 
 Account.plugin(passportLocalMongoose);

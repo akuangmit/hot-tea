@@ -5,7 +5,6 @@
 
     <div class="row modalText">
       <form class="col s12" method="post" action="/adduser">
-      <!-- <form class="col s12" method="post" action="/adduser" onsubmit="return checkSignupForm(this);"> -->
         <div class="row modal-form-row">
           <div class="input-field col s12">
             <input id="signup_restaurant_name" type="text" class="validate" required="" aria-required="true" name="restaurantName">
@@ -21,7 +20,7 @@
         <div class="row modal-form-row">
           <div class="input-field col s12">
             <input id="signup_password" type="password" class="validate" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" aria-required="true" name="password">
-            <label for="signup_password" data-error="Password must contain at least 6 characters, including a number, an uppercase letter, and a lowercase letter">Password</label>
+            <label for="signup_password" data-error="Password must contain at least 6 characters, including a number, an uppercase letter, and a lowercase letter.">Password</label>
           </div>
         </div>
         <!-- <div class="row modal-form-row">

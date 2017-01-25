@@ -32,6 +32,20 @@ function displayTime(time) {
   }
 }
 
+/* convert time since last wait time update in minutes to display time since update */
+function displayTimeSinceUpdate(time) {
+  time = Math.floor(time/60000);
+  if (time<1) {
+    return "<1 minute ago";
+  } else if (time > 60) {
+    return ">1 hour ago";
+  } else if (time > 120) {
+    return ">2 hours ago";
+  } else {
+    return time.toString() + " minutes ago";
+  }
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (req.user) {
@@ -44,23 +58,15 @@ router.get('/', function(req, res, next) {
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
   var all_accounts;
-  Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, id: true}, function(err, users){
+  Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, id: true}, function(err, users){
     var usersNew = [];
-    //console.log(users);
     for (var user in users) {
       usersNew[user] = {};
-      //console.log(user);
-      //console.log(users[user].waitTime);
       usersNew[user].username = users[user].username;
       usersNew[user].id = users[user].id;
       usersNew[user].restaurantName = users[user].restaurantName;
       usersNew[user].waitTime = displayTime(users[user].waitTime);
-      //console.log("old: " + usersNew[user].waitTime.toString());
-      //console.log("new: " + displayTime(usersNew[user].waitTime).toString());
-      //console.log(usersNew[user]);
-      //usersNew[user].waitTime = displayTime(users[user].waitTime);
-      console.log(usersNew[user]);
-      //console.log(usersNew);
+      usersNew[user].timeSinceUpdate = displayTimeSinceUpdate(Date.now()-users[user].timeOfUpdate);
     }
     if (req.user){
       res.render('directory', {isLoggedIn: true, users: usersNew, url: req.user.id});
@@ -68,7 +74,7 @@ router.get('/directory', function(req, res, next) {
     else {
       res.render('directory', {isLoggedIn: false, users:usersNew});
     }
-  }).sort({waitTime:1});
+  }).sort({waitTime:1, timeOfUpdate:-1});
 })
 
 /* GET about page */
@@ -86,7 +92,7 @@ router.get('/updatewaittime', function(req, res, next) {
     console.log(req.user.restaurantName);
    res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', 
     restaurantName: req.user.restaurantName, waitTime: displayTime(req.user.waitTime), 
-    url: req.user.id});
+    timeSinceUpdate: displayTimeSinceUpdate(Date.now()-req.user.timeOfUpdate), url: req.user.id});
   } else {
     res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time'});
   }})
@@ -134,8 +140,9 @@ router.post('/waittime', function(req, res, next) {
       console.log('error');
     }
     user.waitTime = req.body.time;
+    user.timeOfUpdate = req.body.timeOfUpdate;
     user.save();
-    console.log("hello2");
+    console.log(user.timeOfUpdate);
     res.send("success");
     //res.redirect("/");
   });
@@ -157,6 +164,7 @@ router.post('/adduser', function(req, res, next) {
     console.log(req.body.restaurantName);
     account.id = uuidV4();
     account.restaurantName = req.body.restaurantName;
+    account.timeOfUpdate = 0;
     account.save();
     });
     
@@ -176,7 +184,8 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
-        res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), title: user.restaurantName, url: req.user.id});
+        res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+          title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), url: req.user.id});
       }
     });
   } else {
@@ -184,7 +193,8 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
-        res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), title: user.restaurantName });
+        res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+          timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), title: user.restaurantName });
       }
     });
   }
