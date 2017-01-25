@@ -7,8 +7,8 @@
       <form id="loginmodalform" class="col s12" method="post" action="/editDescription">
         <div class="row modal-form-row">
           <div class="input-field col s6">
-            <input id="restaurantDescription" type="text" class="validate" required="" aria-required="true" name="restaurantDescription">
-            <label for="restaurantDescription">Description</label>
+            <input value = {{restaurantDescription}} id="restaurantDescription" type="text" class="validate" required="" aria-required="true" name="restaurantDescription">
+            <label class="active" for="restaurantDescription">Description</label>
           </div>
         </div>
         <button href="#!" type="submit" class="modal-action deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter login_submit" style="float: right; color: white">Submit</button>

@@ -195,6 +195,7 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
+        console.log(user.restaurantDescription);
         res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
           title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
           restaurantDescription: user.restaurantDescription, url: req.user.id});

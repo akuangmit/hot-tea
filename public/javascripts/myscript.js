@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	//Materialize.updateTextFields();
 	function displayTimeSinceUpdate(time) {
 		time = Math.floor(time/60000);	
 		if (time<1) {
@@ -59,35 +59,15 @@ $(document).ready(function(){
 		
 	});
 
-	// $('.login_submit').click(function(){
-	//     var email = $("#login_email_address").val();
-	//     var password = $("#login_password").val();
+	$(document).ready(function() {
+		$('select').material_select();
+	});
 
-	//     if (isEmail(email) && validPassword(password)) {
-	//         //$('.login_submit').addClass("modal-close");
-	//     }
-	// });
+	$(document).ready(function(){
+		// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+		$('.modal').modal();
+	});
 
-	// $('.signup_submit').click(function(){
-	//     console.log("hello2");
-	//     var email = $("#signup_email_address").val();
-	//     var password = $("#signup_password").val();
-
-	//     if (isEmail(email) && validPassword(password)) {
-	//         console.log("it works");
-	//         $('.signup_submit').addClass("modal-close");
-	//     }
-	// });
-
-$(document).ready(function() {
-	$('select').material_select();
-});
-
-$(document).ready(function(){
-	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-	$('.modal').modal();
-});
-
-	//Materialize.updateTextFields();
+	Materialize.updateTextFields();
 
 });
