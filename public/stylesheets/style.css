@@ -51,10 +51,14 @@ body {
 #abouttext {
 	font-size:24px;
 }
-.card{
+.pictureCard{
 	width: 350px;
 	display:inline-block;
 	/*margin-right: 15px;*/
+}
+.descriptionCard{
+	width: 700px;
+	display:inline-block;
 }
 #navsearch {
 	display:inline-block;

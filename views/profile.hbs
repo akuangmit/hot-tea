@@ -9,35 +9,42 @@
 </head>
 <body>
   {{>navbar}}
-<!-- <div class="topcontent">
-  <p>{{name}}</p>
-</div>
-<div class="content">
-    <p class = "display-wait-time">{{waitTime}}</p>
-</div> -->
 <div class="topcontent">
   <div class="row">
-        <div class="col s12 m7">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://robots.johnlindquist.com/{{restaurantName}}">
-
-            </div>
-            <div class="card-content">
-              <span class="card-title">{{restaurantName}}</span>
-            </div>
-            <div class="card-content">
-              <p>Current Wait Time: {{waitTime}}</p>
-            </div>
-            <div class="card-content">
-              <p>Last Updated: {{timeSinceUpdate}}</p>
-            </div>
-          </div>
+    <div class="col s4 m7 l4">
+      <div class="card pictureCard">
+        <div class="card-image">
+          <img src="https://robots.johnlindquist.com/{{restaurantName}}">
         </div>
       </div>
+    </div>
+    <div class="col s8 m7 l8">
+      <div class="card descriptionCard">
+        {{#if isLoggedIn}}
+        <div class="card-content">
+          <!-- <a class="waves-effect waves-light" href="#descriptionModal">Edit Description</a> -->
+          <a class="deep-orange lighten-3 waves-effect waves-light btn-large button" href="#descriptionModal">Edit Description</a>
+        </div>
+        {{/if}}
+        <div class="card-content">
+          <span class="card-title">{{restaurantName}}</span>
+        </div>
+        <div class="card-content">
+          <p>Current Wait Time: {{waitTime}}</p>
+        </div>
+        <div class="card-content">
+          <p>Last Updated: {{timeSinceUpdate}}</p>
+        </div>
+        <div class="card-content">
+          <p>{{restaurantDescription}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div id="bottom">
 </div>
+{{>descriptionModal}}
 {{>signupModal}}
 {{>loginModal}}
 {{>footer}}

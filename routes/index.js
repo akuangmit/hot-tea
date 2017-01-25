@@ -134,7 +134,6 @@ router.get('/logout', function(req, res, next) {
 
 /* POST wait time */
 router.post('/waittime', function(req, res, next) {
-  console.log("start");
   Account.findOne({'username': req.user.username}, function(err, user) {
     if (err) {
       console.log('error');
@@ -142,7 +141,6 @@ router.post('/waittime', function(req, res, next) {
     user.waitTime = req.body.time;
     user.timeOfUpdate = req.body.timeOfUpdate;
     user.save();
-    console.log(user.timeOfUpdate);
     res.send("success");
     //res.redirect("/");
   });
@@ -164,7 +162,8 @@ router.post('/adduser', function(req, res, next) {
     console.log(req.body.restaurantName);
     account.id = uuidV4();
     account.restaurantName = req.body.restaurantName;
-    account.timeOfUpdate = 0;
+    account.timeOfUpdate = Date.now();
+    account.restaurantDescription = "hello";
     account.save();
     });
     
@@ -176,6 +175,18 @@ router.post('/loginuser', passport.authenticate('local', {
   failureRedirect: '/loginform'
 }));
 
+/* POST edit description */
+router.post('/editDescription', function(req, res, next) {
+  Account.findOne({'username': req.user.username}, function(err, user) {
+    if (err) {
+      console.log('error');
+    }
+    user.restaurantDescription = req.body.restaurantDescription;
+    user.save();
+    res.redirect('/users/' + req.user.id);
+  });
+});
+
 /* GET individual restaurant profile page */
 router.get('/users/:id', function(req,res,next) {
   var id = req.params.id;
@@ -185,7 +196,8 @@ router.get('/users/:id', function(req,res,next) {
         console.log('error');
       } else {
         res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-          title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), url: req.user.id});
+          title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
+          restaurantDescription: user.restaurantDescription, url: req.user.id});
       }
     });
   } else {
@@ -194,7 +206,8 @@ router.get('/users/:id', function(req,res,next) {
         console.log('error');
       } else {
         res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-          timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), title: user.restaurantName });
+          timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
+          restaurantDescription: user.restaurantDescription, title: user.restaurantName});
       }
     });
   }
