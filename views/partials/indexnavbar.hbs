@@ -1,7 +1,8 @@
 <nav class="deep-orange lighten-3">
   <div class="nav-wrapper">
     <a href="/" class="brand-logo left">Logo</a>
-    <ul id="nav-mobile" class="right">
+    <a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
       {{#if isLoggedIn }}
         <li><a href="/users/{{url}}">Your Profile</a></li>
         <li><a href="/updatewaittime">Update Wait Time</a></li>
@@ -16,6 +17,23 @@
         </li>
       {{/if}}
     </ul>
+
+    <ul class="side-nav" id="mobile-demo">
+      {{#if isLoggedIn }}
+        <li><a href="/users/{{url}}">Your Profile</a></li>
+        <li><a href="/updatewaittime">Update Wait Time</a></li>
+        <li><a href="/logout">Log Out</a></li>
+      {{else}}
+        <li>
+          <!-- Modal Trigger -->
+          <a class="waves-effect waves-light" href="#loginModal">Restaurant Log In</a>
+        </li>
+        <li><!-- Modal Trigger -->
+          <a class="waves-effect waves-light" href="#signupModal">Restaurant Sign Up</a>  
+        </li>
+      {{/if}}
+    </ul>
+    
   </div>
 </nav>
 
