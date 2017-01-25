@@ -1,8 +1,9 @@
 <!-- Modal Structure -->
 <div id="loginModal" class="modal">
   <div class="modal-content">
-    <h4 class="modalTitle">Restaurant Log In</h4>
-
+    <h4 class="modalTitle modalTop">Restaurant Log In</h4>
+    <button href="#!" class="modalTop Topmodal-action modal-close waves-effect waves-light btn-flat" style="float: right"><i class="material-icons">close</i></button>
+    
     <div class="row modalText">
       <form id="loginmodalform" class="col s12" method="post" action="/loginuser">
         <div class="row modal-form-row">
@@ -17,8 +18,8 @@
             <label for="login_password">Password</label>
           </div>
         </div>  
-
-        <button href="#!" type="submit" class="modal-action deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter login_submit" style="float: right; color: white">Log in</button>
+        <button href="#!" class="modal-action deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter login_submit" style="float: right; color: white">Log in</button>
+        <a href="#signupModal" type="submit" class="modal-action modal-close waves-effect waves-light btn-flat modalPseudoFooter" style="float: right">New User? Sign Up!</a>
       </form>
     </div>
   </div>

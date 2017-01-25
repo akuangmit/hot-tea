@@ -26,7 +26,6 @@ body {
 
 }
 
-
 /*Search bar resize and movement*/
 #searchbar{
 	margin-top: 200px;
@@ -60,18 +59,10 @@ body {
 	width: 700px;
 	display:inline-block;
 }
-#navsearch {
-	display:inline-block;
-	margin-left:200px;
-	width:500px;
-}
+
 #email{
 	color:white;
 	margin-right:50px;
-}
-
-.margin-set {
-	/*margin-left:25px;*/
 }
 
 .cardsTitle {
@@ -201,6 +192,10 @@ body {
 	max-height: 90%;
 }
 
+.modalTop {
+	display: inline;
+}
+
 .modal-form-row {
 	margin-bottom: 0px;
 }
@@ -211,10 +206,6 @@ body {
 
 .modal-text {
 	color: grey;
-}
-
-.modalPsuedofooter {
-	margin-bottom: 0px;
 }
 
 .cardsTitle{
