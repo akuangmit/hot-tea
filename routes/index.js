@@ -130,7 +130,7 @@ router.get('/searchresults', function(req, res, next) {
 /* POST search */
 router.post('/search', function(req, res, next) {
   var input = req.body.searchInput;
-  Account.findOne({'restaurantName': input}, function(err, user) {
+  Account.findOne({'restaurantName': new RegExp('^' + input + '$', "i")}, function(err, user) {
     if (err) {
       console.log("error");
     } else {
