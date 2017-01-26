@@ -56,14 +56,27 @@ function displayTimeSinceUpdate(time) {
 
 /* calculate the average wait times per hour for a given day. Input should be an object,
     with hours mapping to arrays of objects. Those objects are minutes mapped to wait time. */
-function calculateAverageWait(input) {
+function calculateAverageWait(input, previousTime) {
   console.log(input);
-  console.log(input[0]);
+  if (input[0].length < 1) {
+    var temp = {};
+    temp[0] = previousTime;
+    input[0].push(temp);
+  }
+  for (var i = 1; i < 24; i++) {
+    if (input[i].length < 1) {
+      var temp = {};
+      var hourLastMinute = Object.keys(input[i-1][input[i-1].length-1])[0];
+      var hourLastWaitTime = input[i-1][input[i-1].length-1][hourLastMinute];
+      temp[0] = hourLastWaitTime;
+      input[i].push(temp);
+    }
+  }
   var result = {};
   for (var i = 0; i < 24; i++) {
     result[i] = null;
   }
-  result[0] = Object.keys(input[0][0])[0]*10;
+  result[0] = Object.keys(input[0][0])[0]*previousTime;
   for (var i = 0; i < input[0].length-1; i++) {
     var currentMinutes = Object.keys(input[0][i])[0];
     var nextMinutes = Object.keys(input[0][i+1])[0];
@@ -105,7 +118,7 @@ router.get('/', function(req, res, next) {
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
-  var input = { '0': [{ '3': 10 }, {'30':30}],
+  var input2 = { '0': [{ '3': 10 }, {'30':30}],
   '1': [{ '3': 10 }],
   '2': [{ '3': 10 }],
   '3': [{ '3': 10 }],
@@ -129,8 +142,32 @@ router.get('/directory', function(req, res, next) {
   '21': [{ '3': 10 }],
   '22': [{ '3': 10 }],
   '23': [{ '3': 10 }] };
-  var output = calculateAverageWait(input);
-  //console.log(output);
+  var input = { '0': [],
+  '1': [],
+  '2': [],
+  '3': [],
+  '4': [],
+  '5': [],
+  '6': [],
+  '7': [],
+  '8': [],
+  '9': [],
+  '10': [],
+  '11': [],
+  '12': [],
+  '13': [],
+  '14': [],
+  '15': [],
+  '16': [],
+  '17': [ { '46': 10 } ],
+  '18': [],
+  '19': [],
+  '20': [],
+  '21': [],
+  '22': [],
+  '23': [] }
+  var output = calculateAverageWait(input,20);
+  console.log(output);
   var all_accounts;
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     profilePicture: true, id: true}, function(err, users){
