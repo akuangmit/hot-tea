@@ -51,8 +51,8 @@ body {
 	font-size:24px;
 }
 .pictureCard{
-	width: 350px;
-	display:inline-block;
+	/*width: 350px;
+	display:inline-block;*/
 	/*margin-right: 15px;*/
 }
 .descriptionCard{
