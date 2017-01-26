@@ -57,6 +57,11 @@ $(document).ready(function(){
 		$(this).css("text-decoration", "none");
 	});
 	$('.parallax').parallax(); 
+
+	$('.search').click(function() {
+		
+	})
+
 	$('.wait-time').click(function() {
 		var payload = {time: parseInt(this.id,10), timeOfUpdate: Date.now()};      
 		sendWaitTime(payload);

@@ -127,6 +127,21 @@ router.get('/searchresults', function(req, res, next) {
   }
 })
 
+/* POST search */
+router.post('/search', function(req, res, next) {
+  var input = req.body.searchInput;
+  Account.findOne({'restaurantName': input}, function(err, user) {
+    if (err) {
+      console.log("error");
+    } else {
+      if (user!=null){
+        console.log('/users/' + user.id.toString());
+        res.redirect('/users/' + user.id);
+      }
+    }
+  });
+});
+
 /* GET logout */
 router.get('/logout', function(req, res, next) {
   if (req.user) {
