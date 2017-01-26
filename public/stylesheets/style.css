@@ -161,12 +161,6 @@ body {
 .abouttop p {
 	font-size: 20px;
 }
-.abouttop img {
-	width: 250px;
-	height:250px;
- 	margin-left: 170px;
-
-}
 
 .displayWaitTime {
 	background-image: url('../images/naturebanner.jpg');
