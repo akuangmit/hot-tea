@@ -60,6 +60,7 @@ router.get('/', function(req, res, next) {
    res.render('index', {isLoggedIn: true, title: 'Home', url: req.user.id});
   } else {
     res.render('index', {isLoggedIn: false, title: 'Home' });
+
   }
 });
 
@@ -104,7 +105,7 @@ router.get('/updatewaittime', function(req, res, next) {
     restaurantName: req.user.restaurantName, waitTime: displayTime(req.user.waitTime), 
     timeSinceUpdate: displayTimeSinceUpdate(Date.now()-req.user.timeOfUpdate), url: req.user.id});
   } else {
-    res.render('updatewaittime', {isLoggedIn: false, title: 'Update Wait Time'});
+    res.render('error', {isLoggedIn: false, title: 'Error'});
   }})
 
 /* GET log in form page */
@@ -177,6 +178,16 @@ router.post('/waittime', function(req, res, next) {
     }
     user.waitTime = req.body.time;
     user.timeOfUpdate = req.body.timeOfUpdate;
+    var currentDate = new Date();
+    var dayOfWeek = currentDate.getDay();
+    var hour = currentDate.getHours();
+    var minutes = currentDate.getMinutes();  
+    var temp = {};
+    temp[minutes] = user.waitTime;
+    user.currentDay[hour].push(temp);
+    console.log("after");
+    console.log(user.currentDay);
+    user.markModified('currentDay');
     user.save();
     res.send("success");
   });
@@ -191,16 +202,31 @@ router.post('/adduser', function(req, res, next) {
             return res.render('index', { account : account });
         }
         passport.authenticate('local')(req, res, function () {
-            console.log(req.user);
+            //console.log(req.user);
             res.redirect('/');
         });
     account.waitTime=240;
-    console.log(req.body.restaurantName);
+    //console.log(req.body.restaurantName);
     account.id = uuidV4();
     account.restaurantName = req.body.restaurantName;
     account.timeOfUpdate = Date.now();
     account.restaurantDescription = "hello";
     account.profilePicture = "/images/restaurant.jpg";
+    account.currentDay = {};
+    for (var i = 0; i < 24; i++) {
+      account.currentDay[i] = [];
+    }
+    account.previousTimes = {};
+    for (var i = 0; i < 7; i++) {
+      account.previousTimes[i] = {};
+      for (var j = 0; j < 24; j++) {
+        account.previousTimes[i][j] = null;
+      }
+    }
+    //console.log(account.previousTimes);
+    //console.log(account.currentDay);
+    console.log("account");
+    console.log(account);
     account.save();
     });
     

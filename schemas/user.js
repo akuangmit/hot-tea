@@ -10,7 +10,10 @@ var Account = new Schema({
     waitTime: Number,
     timeOfUpdate: Number,
     restaurantDescription: String,
-    profilePicture: String
+    profilePicture: String,
+    previousTimes: Object,
+    currentDay: Object,
+    dayAverages: Object
 });
 
 Account.plugin(passportLocalMongoose);
