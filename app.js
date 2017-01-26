@@ -48,6 +48,9 @@ app.use(passport.session());
 app.use('/', index);
 //app.use('/users', users);
 
+//files
+//app.use(bodyParser({uploadDir:'/public/images/'}));
+
 // passport config
 var Account = require('./schemas/user');
 passport.use(new LocalStrategy(Account.authenticate()));

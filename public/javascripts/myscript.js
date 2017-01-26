@@ -15,15 +15,15 @@ $(document).ready(function(){
 
 	/* convert wait time in minutes to display time */
 	function displayTime(time) {
-	  if (time == 999) {
+	  if (time === 999) {
 	    return "Closed";
 	  }
 
-	  else if (time == 240) {
+	  else if (time === 240) {
 	    return "Unknown";
 	  }
 
-	  else if (time == 0) {
+	  else if (time === 0) {
 	    return "No Wait";
 	  } else if (time >= 180) {
 	  	return "3+ hours";
@@ -31,7 +31,7 @@ $(document).ready(function(){
 	  else if (time > 60) {
 	    var hours = Math.floor(time/60);
 	    var minutes = time%60;
-	    if (minutes == 0) {
+	    if (minutes === 0) {
 	      return hours.toString() + " hours";
 	    }
 	    return hours.toString() + " hours " + minutes.toString() + " minutes";
@@ -58,10 +58,6 @@ $(document).ready(function(){
 	});
 	$('.parallax').parallax(); 
 
-	$('.search').click(function() {
-		
-	})
-
 	$('.wait-time').click(function() {
 		var payload = {time: parseInt(this.id,10), timeOfUpdate: Date.now()};      
 		sendWaitTime(payload);
@@ -70,10 +66,10 @@ $(document).ready(function(){
 	$('.enterWait').click(function() {
 		var hours = $('.input-hours select').val();
 		var minutes = $('.input-minutes select').val();
-		if (hours==null) {
+		if (hours===null) {
 			hours = 0;
 		}
-		if (minutes == null) {
+		if (minutes===null) {
 			minutes = 0;
 		}
 		var payload = {time: parseInt(hours,10)*60+parseInt(minutes,10), timeOfUpdate: Date.now()};
@@ -87,15 +83,15 @@ $(document).ready(function(){
 			data: payload,
 			//dataType: 'application/json',
 			success: function(data) {
-				if (payload.time == 999) {
+				if (payload.time === 999) {
 					$('.currentWaitTime').text("Closed");
 				}
 
-				else if (payload.time == 240) {
+				else if (payload.time === 240) {
 					$('.currentWaitTime').text("Unknown");
 				}
 
-				else if (payload.time == 0) {
+				else if (payload.time === 0) {
 					$('.currentWaitTime').text("No Wait");
 				}
 

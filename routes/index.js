@@ -2,19 +2,32 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var Account = require('../schemas/user');
+var path = require('path');
+var fs = require('fs');
+var multer  = require('multer');
+var upload = multer({ dest: 'public/images/' });
+// var storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, '/public/images')
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.fieldname + '-' + Date.now())
+//   }
+// })
+// var upload = multer({ storage: storage })
 const uuidV4 = require('uuid/v4');
 
 /* convert wait time in minutes to display time */
 function displayTime(time) {
-  if (time == 999) {
+  if (time === 999) {
     return "Closed";
   }
 
-  else if (time == 240) {
+  else if (time === 240) {
     return "Unknown";
   }
 
-  else if (time == 0) {
+  else if (time === 0) {
     return "No Wait";
   } 
 
@@ -65,18 +78,33 @@ router.get('/directory', function(req, res, next) {
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, id: true}, function(err, users){
     var usersNew = [];
     for (var user in users) {
+      //console.log(users[user].restaurantName);
       usersNew[user] = {};
       usersNew[user].username = users[user].username;
       usersNew[user].id = users[user].id;
       usersNew[user].restaurantName = users[user].restaurantName;
       usersNew[user].waitTime = displayTime(users[user].waitTime);
       usersNew[user].timeSinceUpdate = displayTimeSinceUpdate(Date.now()-users[user].timeOfUpdate);
+      // usersNew[user].profilePicture = users[user].profilePicture;
+      // if (users[user].restaurantName === "Chipotle") {
+      //   console.log(usersNew[user]);
+      // }
     }
     if (req.user){
       res.render('directory', {isLoggedIn: true, users: usersNew, url: req.user.id});
+      // if (usersNew[user].profilePicture!=null) {
+      //   res.render('directory', {isLoggedIn: true, photoExists: true, users: usersNew, url: req.user.id});
+      // } else {
+      //   res.render('directory', {isLoggedIn: true, photoExists: false, users: usersNew, url: req.user.id});
+      // }
     }
     else {
       res.render('directory', {isLoggedIn: false, users:usersNew});
+      // if (usersNew[user].profilePicture!=null) {
+      //   res.render('directory', {isLoggedIn: false, photoExists: true, users:usersNew});
+      // } else {
+      //   res.render('directory', {isLoggedIn: false, photoExists: false, users:usersNew});
+      // }
     }
   }).sort({waitTime:1, timeOfUpdate:-1});
 })
@@ -142,6 +170,24 @@ router.post('/search', function(req, res, next) {
   });
 });
 
+/* POST upload picture */
+router.post('/upload', upload.single('avatar'), function(req, res, next) {
+  Account.findOne({'username': req.user.username}, function(err, user) {
+    if (err) {
+      console.log('error');
+    }
+    user.profilePicture = req.file.path.replace("public", "");
+    user.save();
+  });
+  res.status(204).end();
+});
+
+// router.post('/upload', function(req, res) {
+//   upload(req, res, function(err) {
+//     console.log(request.file);
+//   })
+// });
+
 /* GET logout */
 router.get('/logout', function(req, res, next) {
   if (req.user) {
@@ -182,6 +228,7 @@ router.post('/adduser', function(req, res, next) {
     account.restaurantName = req.body.restaurantName;
     account.timeOfUpdate = Date.now();
     account.restaurantDescription = "hello";
+    account.profilePicture = "/images/restaurant.jpg";
     account.save();
     });
     
@@ -213,10 +260,16 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
-        //console.log(user.restaurantDescription);
-        res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-          title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-          restaurantDescription: user.restaurantDescription, url: req.user.id});
+        if(user.profilePicture!=null) {
+          res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+            title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
+            photo: user.profilePicture, photoExists: true,
+            restaurantDescription: user.restaurantDescription, url: req.user.id});
+        } else {
+          res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+            title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
+            restaurantDescription: user.restaurantDescription, url: req.user.id});
+        }
       }
     });
   } else {
@@ -224,9 +277,15 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
-        res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-          timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-          restaurantDescription: user.restaurantDescription, title: user.restaurantName});
+        if(user.profilePicture!=null) {
+          res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+            timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, photoExists: true,
+            restaurantDescription: user.restaurantDescription, title: user.restaurantName});
+        } else {
+          res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+            timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
+            restaurantDescription: user.restaurantDescription, title: user.restaurantName});
+        }
       }
     });
   }

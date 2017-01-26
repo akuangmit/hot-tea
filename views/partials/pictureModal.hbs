@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<!-- Modal Structure -->
+<div id="pictureModal" class="modal">
+  <div class="modal-content">
+    <h4 class="modalTitle modalTop">Update Profile Picture</h4>
+    <button href="#!" class="modalTop Topmodal-action modal-close waves-effect waves-light btn-flat" style="float: right"><i class="material-icons">close</i></button>
+
+    <div class="row modalText">
+      <form method="post" action="/upload" enctype="multipart/form-data">
+        <div class="file-field input-field">
+          <div class="btn deep-orange lighten-3">
+            <span>File</span>
+            <input type="file" name="avatar">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        <button href="#!" class="deep-orange lighten-3 waves-effect waves-light btn-large button modal-close" type="submit">Update Profile Picture</button>
+      </form>  
+    </div>
+  </div>
+</div>
