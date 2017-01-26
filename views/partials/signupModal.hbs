@@ -1,9 +1,10 @@
 <!-- Modal Structure -->
 <div id="signupModal" class="modal">
   <div class="modal-content">
-    <h4 class="modalTitle modalTop">Restaurant Sign Up</h4>
-    <button href="#!" class="modalTop Topmodal-action modal-close waves-effect waves-light btn-flat" style="float: right"><i class="material-icons">close</i></button>
-
+    <div class="row">
+      <h4 class="modalTitle modalTop col s10 l11">Restaurant Sign Up</h4>
+      <button href="#!" class="modalTop Topmodal-action modal-close waves-effect waves-light btn-flat col s2 l1" style="float: right"><i class="material-icons">close</i></button>
+    </div>
     <div class="row modalText">
       <form class="col s12" method="post" action="/adduser">
         <div class="row modal-form-row">
@@ -24,8 +25,10 @@
             <label for="signup_password" data-error="Password must contain at least 6 characters, including a number, an uppercase letter, and a lowercase letter.">Password</label>
           </div>
         </div>
-        <button href="#!" type="submit" class="modal-action deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter signup_submit" style="float: right; color: white">Sign Up</button>   
-        <a href="#loginModal" type="submit" class="modal-action modal-close waves-effect waves-light btn-flat modalPseudoFooter" style="float: right">Returning User? Log In!</a> 
+        <div class="row">   
+          <a href="#loginModal" type="submit" class="modal-action modal-close waves-effect waves-light btn-flat modalPseudoFooter col s12 m5 offset-m4 l4 offset-l6 center-align">Returning User? Log In!</a> 
+          <button href="#!" type="submit" class="modal-action deep-orange lighten-3 waves-effect waves-light btn-flat modalPseudoFooter signup_submit col s12 m3 l2 center-align" style="color: white">Sign Up</button>
+        </div>
       </form>
     </div>
   </div>
