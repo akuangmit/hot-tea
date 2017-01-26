@@ -6,15 +6,6 @@ var path = require('path');
 var fs = require('fs');
 var multer  = require('multer');
 var upload = multer({ dest: 'public/images/' });
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, '/public/images')
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + '-' + Date.now())
-//   }
-// })
-// var upload = multer({ storage: storage })
 const uuidV4 = require('uuid/v4');
 
 /* convert wait time in minutes to display time */
@@ -75,7 +66,8 @@ router.get('/', function(req, res, next) {
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
   var all_accounts;
-  Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, id: true}, function(err, users){
+  Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
+    profilePicture: true, id: true}, function(err, users){
     var usersNew = [];
     for (var user in users) {
       //console.log(users[user].restaurantName);
@@ -85,26 +77,13 @@ router.get('/directory', function(req, res, next) {
       usersNew[user].restaurantName = users[user].restaurantName;
       usersNew[user].waitTime = displayTime(users[user].waitTime);
       usersNew[user].timeSinceUpdate = displayTimeSinceUpdate(Date.now()-users[user].timeOfUpdate);
-      // usersNew[user].profilePicture = users[user].profilePicture;
-      // if (users[user].restaurantName === "Chipotle") {
-      //   console.log(usersNew[user]);
-      // }
+      usersNew[user].profilePicture = users[user].profilePicture;
     }
     if (req.user){
       res.render('directory', {isLoggedIn: true, users: usersNew, url: req.user.id});
-      // if (usersNew[user].profilePicture!=null) {
-      //   res.render('directory', {isLoggedIn: true, photoExists: true, users: usersNew, url: req.user.id});
-      // } else {
-      //   res.render('directory', {isLoggedIn: true, photoExists: false, users: usersNew, url: req.user.id});
-      // }
     }
     else {
       res.render('directory', {isLoggedIn: false, users:usersNew});
-      // if (usersNew[user].profilePicture!=null) {
-      //   res.render('directory', {isLoggedIn: false, photoExists: true, users:usersNew});
-      // } else {
-      //   res.render('directory', {isLoggedIn: false, photoExists: false, users:usersNew});
-      // }
     }
   }).sort({waitTime:1, timeOfUpdate:-1});
 })
@@ -182,12 +161,6 @@ router.post('/upload', upload.single('avatar'), function(req, res, next) {
   res.status(204).end();
 });
 
-// router.post('/upload', function(req, res) {
-//   upload(req, res, function(err) {
-//     console.log(request.file);
-//   })
-// });
-
 /* GET logout */
 router.get('/logout', function(req, res, next) {
   if (req.user) {
@@ -206,7 +179,6 @@ router.post('/waittime', function(req, res, next) {
     user.timeOfUpdate = req.body.timeOfUpdate;
     user.save();
     res.send("success");
-    //res.redirect("/");
   });
 });
 
