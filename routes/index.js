@@ -227,21 +227,28 @@ router.post('/editDescription', function(req, res, next) {
 /* GET individual restaurant profile page */
 router.get('/users/:id', function(req,res,next) {
   var id = req.params.id;
+  var currentUser = false;
+  if (req.user) {
+    if (req.user.id === id) {
+      currentUser = true;
+    }
+  }
+  
   if (req.user) {
     Account.findOne({'id': id}, function(err, user) {
       if (err) {
         console.log('error');
       } else {
-        if(user.profilePicture!=null) {
-          res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+        if (currentUser) {
+          res.render('profile', {isLoggedIn: true, currentUser: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
             title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-            photo: user.profilePicture, photoExists: true,
-            restaurantDescription: user.restaurantDescription, url: req.user.id});
+            restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture});
         } else {
-          res.render('profile', {isLoggedIn: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+          res.render('profile', {isLoggedIn: true, currentUser: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
             title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-            restaurantDescription: user.restaurantDescription, url: req.user.id});
+            restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture});
         }
+        
       }
     });
   } else {
@@ -249,15 +256,9 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
-        if(user.profilePicture!=null) {
-          res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-            timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, photoExists: true,
-            restaurantDescription: user.restaurantDescription, title: user.restaurantName});
-        } else {
-          res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-            timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-            restaurantDescription: user.restaurantDescription, title: user.restaurantName});
-        }
+        res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+          timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
+          restaurantDescription: user.restaurantDescription, title: user.restaurantName});
       }
     });
   }

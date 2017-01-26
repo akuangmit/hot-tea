@@ -14,13 +14,9 @@
     <div class="col s4 m7 l4">
       <div class="card pictureCard">
         <div class="card-image">
-          {{#if photoExists}}
-            <img src={{photo}}>
-          {{else}}
-            <img src="https://robots.johnlindquist.com/{{restaurantName}}">
-          {{/if}}
+          <img src={{photo}}>
         </div>
-        {{#if isLoggedIn}}
+        {{#if currentUser}}
         <div class="card-content">
           <a class="deep-orange lighten-3 waves-effect waves-light btn-large button" href="#pictureModal">Update Profile Picture</a>
         </div>
@@ -29,7 +25,7 @@
     </div>
     <div class="col s8 m7 l8">
       <div class="card descriptionCard">
-        {{#if isLoggedIn}}
+        {{#if currentUser}}
         <div class="card-content">
           <!-- <a class="waves-effect waves-light" href="#descriptionModal">Edit Description</a> -->
           <a class="deep-orange lighten-3 waves-effect waves-light btn-large button" href="#descriptionModal">Edit Description</a>
