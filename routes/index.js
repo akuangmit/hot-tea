@@ -54,18 +54,79 @@ function displayTimeSinceUpdate(time) {
   }
 }
 
+/* calculate the average wait times per hour for a given day. Input should be an object,
+    with hours mapping to arrays of objects. Those objects are minutes mapped to wait time. */
+function calculateAverageWait(input) {
+  var result = {};
+  for (var i = 0; i < 24; i++) {
+    result[i] = null;
+  }
+  result[0] = Object.keys(input[0][0])[0]*10;
+  for (var i = 0; i < input[0].length-1; i++) {
+    var currentMinutes = Object.keys(input[0][i])[0];
+    var nextMinutes = Object.keys(input[0][i+1])[0];
+    var currentWaitTime = input[0][i][currentMinutes];
+    result[0] += (nextMinutes - currentMinutes) * currentWaitTime;
+  }
+  var zeroLastMinute = Object.keys(input[0][input[0].length-1])[0];
+  var zeroLastWaitTime = input[0][input[0].length-1][zeroLastMinute];
+  result[0] += (60 - zeroLastMinute)*zeroLastWaitTime;
+  result[0] /= 60;
+  for (var i = 1; i < 24; i++) {
+    var lastHour = Object.keys(input[i-1][input[i-1].length-1])[0];
+    var lastWaitTime = input[i-1][input[i-1].length-1][lastHour];
+    result[i] = Object.keys(input[i][0])[0]*lastWaitTime;
+    for (var j = 1; j < input[i].length-1;j++) {
+      var currentMinutes = Object.keys(input[i][j])[0];
+      var nextMinutes = Object.keys(input[i][j+1])[0];
+      var currentWaitTime = input[i][j][currentMinutes];
+      result[i] += (nextMinutes - currentMinutes) * currentWaitTime;
+    }
+    var hourLastMinute = Object.keys(input[i][input[i].length-1])[0];
+    var hourLastWaitTime = input[i][input[i].length-1][hourLastMinute];
+    result[i] += (60 - hourLastMinute) * hourLastWaitTime;
+    result[i] /= 60;
+  }
+  return result;
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (req.user) {
    res.render('index', {isLoggedIn: true, title: 'Home', url: req.user.id});
   } else {
     res.render('index', {isLoggedIn: false, title: 'Home' });
-
   }
 });
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
+  var input = { '0': [{ '3': 10 }],
+  '1': [{ '3': 10 }],
+  '2': [{ '3': 10 }],
+  '3': [{ '3': 10 }],
+  '4': [{ '3': 10 }],
+  '5': [{ '3': 10 }],
+  '6': [{ '3': 10 }],
+  '7': [{ '3': 10 }],
+  '8': [{ '3': 10 }],
+  '9': [{ '3': 10 }],
+  '10': [{ '3': 10 }],
+  '11': [{ '3': 10 }],
+  '12': [{ '3': 10 }],
+  '13': [{ '3': 10 }],
+  '14': [{ '3': 10 }],
+  '15': [{ '3': 10 }],
+  '16': [ { '3': 10 } ],
+  '17': [{ '3': 10 }],
+  '18': [{ '3': 10 }],
+  '19': [{ '3': 10 }],
+  '20': [{ '3': 10 }],
+  '21': [{ '3': 10 }],
+  '22': [{ '3': 10 }],
+  '23': [{ '3': 10 }] };
+  var output = calculateAverageWait(input);
+  //console.log(output);
   var all_accounts;
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     profilePicture: true, id: true}, function(err, users){
@@ -178,12 +239,16 @@ router.post('/waittime', function(req, res, next) {
     }
     user.waitTime = req.body.time;
     user.timeOfUpdate = req.body.timeOfUpdate;
+    var time = user.waitTime;
+    if (time === 999 || time === 240) {
+      time = 0;
+    }
     var currentDate = new Date();
-    var dayOfWeek = currentDate.getDay();
+    //var dayOfWeek = currentDate.getDay();
     var hour = currentDate.getHours();
     var minutes = currentDate.getMinutes();  
     var temp = {};
-    temp[minutes] = user.waitTime;
+    temp[minutes] = time;
     user.currentDay[hour].push(temp);
     console.log("after");
     console.log(user.currentDay);
@@ -212,6 +277,7 @@ router.post('/adduser', function(req, res, next) {
     account.timeOfUpdate = Date.now();
     account.restaurantDescription = "hello";
     account.profilePicture = "/images/restaurant.jpg";
+    account.lastWaitTime = 0;
     account.currentDay = {};
     for (var i = 0; i < 24; i++) {
       account.currentDay[i] = [];
