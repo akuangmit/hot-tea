@@ -57,6 +57,8 @@ function displayTimeSinceUpdate(time) {
 /* calculate the average wait times per hour for a given day. Input should be an object,
     with hours mapping to arrays of objects. Those objects are minutes mapped to wait time. */
 function calculateAverageWait(input) {
+  console.log(input);
+  console.log(input[0]);
   var result = {};
   for (var i = 0; i < 24; i++) {
     result[i] = null;
@@ -74,9 +76,11 @@ function calculateAverageWait(input) {
   result[0] /= 60;
   for (var i = 1; i < 24; i++) {
     var lastHour = Object.keys(input[i-1][input[i-1].length-1])[0];
-    var lastWaitTime = input[i-1][input[i-1].length-1][lastHour];
+    var lastWaitTime = input[i-1][input[i-1].length-1][lastHour]; 
     result[i] = Object.keys(input[i][0])[0]*lastWaitTime;
-    for (var j = 1; j < input[i].length-1;j++) {
+    console.dir(input[i]);
+    for (var j = 0; j < input[i].length-1;j++) {
+      console.log(i + " Hello");
       var currentMinutes = Object.keys(input[i][j])[0];
       var nextMinutes = Object.keys(input[i][j+1])[0];
       var currentWaitTime = input[i][j][currentMinutes];
@@ -101,7 +105,7 @@ router.get('/', function(req, res, next) {
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
-  var input = { '0': [{ '3': 10 }],
+  var input = { '0': [{ '3': 10 }, {'30':30}],
   '1': [{ '3': 10 }],
   '2': [{ '3': 10 }],
   '3': [{ '3': 10 }],
@@ -110,7 +114,7 @@ router.get('/directory', function(req, res, next) {
   '6': [{ '3': 10 }],
   '7': [{ '3': 10 }],
   '8': [{ '3': 10 }],
-  '9': [{ '3': 10 }],
+  '9': [{ '3': 10 }, {'20':20}],
   '10': [{ '3': 10 }],
   '11': [{ '3': 10 }],
   '12': [{ '3': 10 }],
@@ -118,7 +122,7 @@ router.get('/directory', function(req, res, next) {
   '14': [{ '3': 10 }],
   '15': [{ '3': 10 }],
   '16': [ { '3': 10 } ],
-  '17': [{ '3': 10 }],
+  '17': [{ '3': 10 }, {'35':30}],
   '18': [{ '3': 10 }],
   '19': [{ '3': 10 }],
   '20': [{ '3': 10 }],
