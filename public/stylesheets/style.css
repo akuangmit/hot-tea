@@ -242,6 +242,12 @@ footer.page-footer {
 .loginfailbtn{
 	margin-left:20px;
 }
+
+.bar-graph{
+	margin: auto;
+	height: 400px;
+	width: 800px;
+}
 /*the below for editing form validation*/
 
 /* label focus color */

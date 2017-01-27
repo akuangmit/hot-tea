@@ -297,6 +297,17 @@ router.get('/logout', function(req, res, next) {
   res.render('index');
 })
 
+/* POST bar graph */
+router.post('/bar_graph', function(req, res, next) {
+  console.log(req.body);
+  Account.findOne({'restaurantName': req.body.name}, function(err,user){
+    if (err) {
+      console.log('error');
+    }
+    res.send(user.previousTimes);
+  });
+});
+
 /* POST wait time */
 router.post('/waittime', function(req, res, next) {
   Account.findOne({'username': req.user.username}, function(err, user) {
@@ -357,8 +368,8 @@ router.post('/adduser', function(req, res, next) {
     }
     //console.log(account.previousTimes);
     //console.log(account.currentDay);
-    console.log("account");
-    console.log(account);
+    // console.log("account");
+    // console.log(account);
     account.save();
     });
     
@@ -414,8 +425,8 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
-        console.log(user);
-        console.log(user.restaurantName);
+        // console.log(user);
+        // console.log(user.restaurantName);
         res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
           timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
           restaurantDescription: user.restaurantDescription, title: user.restaurantName});
