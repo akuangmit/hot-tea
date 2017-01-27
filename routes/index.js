@@ -414,6 +414,8 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
+        console.log(user);
+        console.log(user.restaurantName);
         res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
           timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
           restaurantDescription: user.restaurantDescription, title: user.restaurantName});
