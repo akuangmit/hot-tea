@@ -30,6 +30,7 @@ body {
 #searchbar{
 	z-index:0;
 	position:relative;
+	margin-bottom: 10px;
 /*	display:inline-block;*/
 	/*margin-top: 200px;
 	margin-left:250px;
@@ -38,6 +39,9 @@ body {
 	margin-right: 15px;*/
 }
 
+.landing-search {
+	left: 95%;
+}
 
 .toptext {
 	color:white;
