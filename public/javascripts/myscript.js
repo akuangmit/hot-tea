@@ -103,6 +103,55 @@ $(document).ready(function(){
 		});
 	}
 
+	$('.dayPageInner').click(function() {
+		$('.dayPage').removeClass("active active-page").addClass("waves-effect");
+		$(this.parentNode).addClass("active active-page").removeClass("waves-effect");
+		if($(this.parentNode).attr('id') === "Sat") {
+			$($('.right-slider')[0].parentNode).addClass("disabled").removeClass("waves-effect");
+		} else {
+			if($($('.right-slider')[0].parentNode).hasClass("disabled")) {
+				$($('.right-slider')[0].parentNode).removeClass("disabled").addClass("waves-effect");
+			}
+		}
+		if($(this.parentNode).attr('id') === "Sun") {
+			$($('.left-slider')[0].parentNode).addClass("disabled").removeClass("waves-effect");
+		} else {
+			if($($('.left-slider')[0].parentNode).hasClass("disabled")) {
+				$($('.left-slider')[0].parentNode).removeClass("disabled").addClass("waves-effect");
+			}
+		}
+	});
+
+	$('.right-slider').click(function() {
+		var parent = $('.left-slider')[0].parentNode;
+		$(parent).removeClass("disabled").addClass("waves-effect");
+		if($(".active-page").attr('id') === "Fri") {
+			var parent = $('.right-slider')[0].parentNode;
+			$(parent).addClass("disabled").removeClass("waves-effect");
+		}	
+		if($(".active-page").attr('id') != "Sat"){
+			$(".active-page").addClass("waves-effect");
+			var next = $(".active-page").next()[0];
+			$('.dayPage').removeClass("active active-page");
+			$(next).addClass("active active-page").removeClass("waves-effect");
+		}
+	});
+
+	$('.left-slider').click(function() {
+		var parent = $('.right-slider')[0].parentNode;
+		$(parent).removeClass("disabled").addClass("waves-effect");
+		if($(".active-page").attr('id') === "Mon") {
+			var parent = $('.left-slider')[0].parentNode;
+			$(parent).addClass("disabled").removeClass("waves-effect");
+		}
+		if($(".active-page").attr('id') != "Sun"){
+			$(".active-page").addClass("waves-effect");
+			var prev = $(".active-page").prev()[0];
+			$('.dayPage').removeClass("active active-page");
+			$(prev).addClass("active active-page").removeClass("waves-effect");
+		}
+	});
+
 	if (top.location.pathname.includes("/users")) {
 		var ctx = document.getElementById("myChart");
 		var restaurantName = document.getElementById("restaurant-name").textContent;
@@ -113,6 +162,8 @@ $(document).ready(function(){
 			data: {name: restaurantName},
 			success: function(data) {
 				dataPoints = []
+				var dayOfWeek = 0;
+
 				thursdayData = data[4];
 				for (var i=0; i<24;i++) {
 					dataPoints.push(thursdayData[i]);

@@ -255,6 +255,10 @@ footer.page-footer {
 	height: 400px;
 	width: 800px;
 }
+
+.chart-pages{
+	margin: auto;
+}
 /*the below for editing form validation*/
 
 /* label focus color */
