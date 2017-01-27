@@ -6,6 +6,7 @@ var path = require('path');
 var fs = require('fs');
 var multer  = require('multer');
 var upload = multer({ dest: 'public/images/' });
+var schedule = require('node-schedule');
 const uuidV4 = require('uuid/v4');
 
 /* convert wait time in minutes to display time */
@@ -40,6 +41,27 @@ function displayTime(time) {
   }
 }
 
+var j = schedule.scheduleJob('0 59 23 * * *', function() {
+  console.log("entering scheduler");
+  Account.find({}, {_id:true, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
+    previousTimes: true, currentDay: true, lastWaitTime: true, id: true}, function(err, users){
+      for (var index in users) {
+        user = users[index];
+        var currentDate = new Date();
+        var dayOfWeek = currentDate.getDay();
+        var dayAverages = calculateAverageWait(user.currentDay, user.lastWaitTime);
+        user.previousTimes[dayOfWeek] = dayAverages;
+        var lastWaitInput = Object.keys(user.currentDay[23][user.currentDay[23].length-1])[0];
+        user.lastWaitTime = user.currentDay[23][user.currentDay[23].length-1][lastWaitInput];
+        user.markModified('currentDay');
+        user.markModified('previousTimes');
+        console.log(user);
+        user.save();
+      }
+    });
+    console.log("It works!!");
+});
+
 /* convert time since last wait time update in minutes to display time since update */
 function displayTimeSinceUpdate(time) {
   time = Math.floor(time/60000);
@@ -57,7 +79,7 @@ function displayTimeSinceUpdate(time) {
 /* calculate the average wait times per hour for a given day. Input should be an object,
     with hours mapping to arrays of objects. Those objects are minutes mapped to wait time. */
 function calculateAverageWait(input, previousTime) {
-  console.log(input);
+  //console.log(input);
   if (input[0].length < 1) {
     var temp = {};
     temp[0] = previousTime;
@@ -91,9 +113,9 @@ function calculateAverageWait(input, previousTime) {
     var lastHour = Object.keys(input[i-1][input[i-1].length-1])[0];
     var lastWaitTime = input[i-1][input[i-1].length-1][lastHour]; 
     result[i] = Object.keys(input[i][0])[0]*lastWaitTime;
-    console.dir(input[i]);
+    //console.dir(input[i]);
     for (var j = 0; j < input[i].length-1;j++) {
-      console.log(i + " Hello");
+      //console.log(i + " Hello");
       var currentMinutes = Object.keys(input[i][j])[0];
       var nextMinutes = Object.keys(input[i][j+1])[0];
       var currentWaitTime = input[i][j][currentMinutes];
@@ -118,56 +140,56 @@ router.get('/', function(req, res, next) {
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
-  var input2 = { '0': [{ '3': 10 }, {'30':30}],
-  '1': [{ '3': 10 }],
-  '2': [{ '3': 10 }],
-  '3': [{ '3': 10 }],
-  '4': [{ '3': 10 }],
-  '5': [{ '3': 10 }],
-  '6': [{ '3': 10 }],
-  '7': [{ '3': 10 }],
-  '8': [{ '3': 10 }],
-  '9': [{ '3': 10 }, {'20':20}],
-  '10': [{ '3': 10 }],
-  '11': [{ '3': 10 }],
-  '12': [{ '3': 10 }],
-  '13': [{ '3': 10 }],
-  '14': [{ '3': 10 }],
-  '15': [{ '3': 10 }],
-  '16': [ { '3': 10 } ],
-  '17': [{ '3': 10 }, {'35':30}],
-  '18': [{ '3': 10 }],
-  '19': [{ '3': 10 }],
-  '20': [{ '3': 10 }],
-  '21': [{ '3': 10 }],
-  '22': [{ '3': 10 }],
-  '23': [{ '3': 10 }] };
-  var input = { '0': [],
-  '1': [],
-  '2': [],
-  '3': [],
-  '4': [],
-  '5': [],
-  '6': [],
-  '7': [],
-  '8': [],
-  '9': [],
-  '10': [],
-  '11': [],
-  '12': [],
-  '13': [],
-  '14': [],
-  '15': [],
-  '16': [],
-  '17': [ { '46': 10 } ],
-  '18': [],
-  '19': [],
-  '20': [],
-  '21': [],
-  '22': [],
-  '23': [] }
-  var output = calculateAverageWait(input,20);
-  console.log(output);
+  // var input2 = { '0': [{ '3': 10 }, {'30':30}],
+  // '1': [{ '3': 10 }],
+  // '2': [{ '3': 10 }],
+  // '3': [{ '3': 10 }],
+  // '4': [{ '3': 10 }],
+  // '5': [{ '3': 10 }],
+  // '6': [{ '3': 10 }],
+  // '7': [{ '3': 10 }],
+  // '8': [{ '3': 10 }],
+  // '9': [{ '3': 10 }, {'20':20}],
+  // '10': [{ '3': 10 }],
+  // '11': [{ '3': 10 }],
+  // '12': [{ '3': 10 }],
+  // '13': [{ '3': 10 }],
+  // '14': [{ '3': 10 }],
+  // '15': [{ '3': 10 }],
+  // '16': [ { '3': 10 } ],
+  // '17': [{ '3': 10 }, {'35':30}],
+  // '18': [{ '3': 10 }],
+  // '19': [{ '3': 10 }],
+  // '20': [{ '3': 10 }],
+  // '21': [{ '3': 10 }],
+  // '22': [{ '3': 10 }],
+  // '23': [{ '3': 10 }] };
+  // var input = { '0': [],
+  // '1': [],
+  // '2': [],
+  // '3': [],
+  // '4': [],
+  // '5': [],
+  // '6': [],
+  // '7': [],
+  // '8': [],
+  // '9': [],
+  // '10': [],
+  // '11': [],
+  // '12': [],
+  // '13': [],
+  // '14': [],
+  // '15': [],
+  // '16': [],
+  // '17': [ { '46': 10 } ],
+  // '18': [],
+  // '19': [],
+  // '20': [],
+  // '21': [],
+  // '22': [],
+  // '23': [] }
+  // var output = calculateAverageWait(input,20);
+  // console.log(output);
   var all_accounts;
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     profilePicture: true, id: true}, function(err, users){
