@@ -30,12 +30,14 @@ body {
 #searchbar{
 	z-index:0;
 	position:relative;
+/*	display:inline-block;*/
 	/*margin-top: 200px;
 	margin-left:250px;
 	width: 500px;
 	display:inline-block;
 	margin-right: 15px;*/
 }
+
 
 .toptext {
 	color:white;
