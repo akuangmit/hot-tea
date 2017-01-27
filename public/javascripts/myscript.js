@@ -42,6 +42,11 @@ $(document).ready(function(){
 	  }
 	}
 
+	function getDayOfWeek(day) {
+		var days = {"Sun": 0, "Mon": 1, "Tue": 2, "Wed": 3, "Thu": 4, "Fri": 5, "Sat": 6};
+		return days[day];
+	}
+
 	//Materialize.toast('Welcome!!', 4000);
 	$('.footerLink').mouseenter(function(){
 		$(this).css("text-decoration", "underline");
@@ -120,6 +125,10 @@ $(document).ready(function(){
 				$($('.left-slider')[0].parentNode).removeClass("disabled").addClass("waves-effect");
 			}
 		}
+		var ctx = document.getElementById("myChart");
+		var restaurantName = document.getElementById("restaurant-name").textContent;
+		var dayOfWeek = getDayOfWeek($(this.parentNode).attr('id'));
+		sendGraph(ctx, restaurantName, dayOfWeek);
 	});
 
 	$('.right-slider').click(function() {
@@ -134,6 +143,10 @@ $(document).ready(function(){
 			var next = $(".active-page").next()[0];
 			$('.dayPage').removeClass("active active-page");
 			$(next).addClass("active active-page").removeClass("waves-effect");
+			var ctx = document.getElementById("myChart");
+			var restaurantName = document.getElementById("restaurant-name").textContent;
+			var dayOfWeek = getDayOfWeek($(next).attr('id'));
+			sendGraph(ctx, restaurantName, dayOfWeek);
 		}
 	});
 
@@ -149,24 +162,29 @@ $(document).ready(function(){
 			var prev = $(".active-page").prev()[0];
 			$('.dayPage').removeClass("active active-page");
 			$(prev).addClass("active active-page").removeClass("waves-effect");
+			var ctx = document.getElementById("myChart");
+			var restaurantName = document.getElementById("restaurant-name").textContent;
+			var dayOfWeek = getDayOfWeek($(prev).attr('id'));
+			sendGraph(ctx, restaurantName, dayOfWeek);
 		}
 	});
 
 	if (top.location.pathname.includes("/users")) {
 		var ctx = document.getElementById("myChart");
 		var restaurantName = document.getElementById("restaurant-name").textContent;
-		// console.log({name: restaurantName});
+		sendGraph(ctx, restaurantName, 0);
+	};
+
+	function sendGraph(ctx, restaurantName, dayOfWeek) {
 		$.ajax({
 			type: 'POST',
 			url: '/bar_graph ',
 			data: {name: restaurantName},
 			success: function(data) {
 				dataPoints = []
-				var dayOfWeek = 0;
-
-				thursdayData = data[4];
+				dayData = data[dayOfWeek];
 				for (var i=0; i<24;i++) {
-					dataPoints.push(thursdayData[i]);
+					dataPoints.push(dayData[i]);
 				}
 				var myChart = new Chart(ctx, {
 			    type: 'bar',
@@ -240,7 +258,7 @@ $(document).ready(function(){
 			    	}, 
 			    	title: {
                     display: true,
-                    text: "Estimated Wait Time for previous insert day (Minutes)"
+                    text: "Average Wait Times from Previous Week (Minutes)"
                 },
 			        scales: {
 			            yAxes: [{
@@ -254,7 +272,9 @@ $(document).ready(function(){
 			  });
 			}
 		});
-	};
+	}
+
+	
 
 	$('.button-collapse').sideNav({
     	menuWidth: 300,

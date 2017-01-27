@@ -41,14 +41,14 @@ function displayTime(time) {
   }
 }
 
-var j = schedule.scheduleJob('0 7 0 * * *', function() {
-  console.log("entering scheduler");
+var j = schedule.scheduleJob('0 0 0 * * *', function() {
+  //console.log("entering scheduler");
   Account.find({}, {_id:true, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     previousTimes: true, currentDay: true, lastWaitTime: true, id: true}, function(err, users){
       for (var index in users) {
         user = users[index];
         var currentDate = new Date();
-        var dayOfWeek = currentDate.getDay();
+        var dayOfWeek = (currentDate.getDay()-1)%7;
         var dayAverages = calculateAverageWait(user.currentDay, user.lastWaitTime);
         user.previousTimes[dayOfWeek] = dayAverages;
         var lastWaitInput = Object.keys(user.currentDay[23][user.currentDay[23].length-1])[0];
@@ -58,11 +58,11 @@ var j = schedule.scheduleJob('0 7 0 * * *', function() {
         }
         user.markModified('currentDay');
         user.markModified('previousTimes');
-        console.log(user);
+        //console.log(user);
         user.save();
       }
     });
-    console.log("It works!!");
+    //console.log("It works!!");
 });
 
 /* convert time since last wait time update in minutes to display time since update */
@@ -270,7 +270,7 @@ router.post('/search', function(req, res, next) {
       console.log("error");
     } else {
       if (user!=null){
-        console.log('/users/' + user.id.toString());
+        //console.log('/users/' + user.id.toString());
         res.redirect('/users/' + user.id);
       }
     }
@@ -299,7 +299,7 @@ router.get('/logout', function(req, res, next) {
 
 /* POST bar graph */
 router.post('/bar_graph', function(req, res, next) {
-  console.log(req.body);
+  //console.log(req.body);
   Account.findOne({'restaurantName': req.body.name}, function(err,user){
     if (err) {
       console.log('error');
