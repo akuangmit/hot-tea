@@ -197,7 +197,14 @@ $(document).ready(function(){
 		});
 	};
 
-	$(".button-collapse").sideNav();
+	$('.button-collapse').sideNav({
+    	menuWidth: 300,
+    	closeOnClick: true,
+    	edge: 'right',
+    	}
+  	);
+  	
+  	$('.collapsible').collapsible();
 
 	$('select').material_select();
 
