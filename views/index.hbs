@@ -13,17 +13,17 @@
   <div class="topcontent index">
     <div class="parallax toppic valign-wrapper"><img src="../images/restaurant.jpg">
       <div class="valign">
-        <nav id="searchbar" class="deep-orange lighten-3 landing-search">
-            <form id="searchform">
+        <nav id="searchbar" class="deep-orange lighten-3">
+            <form id="searchform" method="post" action="/search">
               <div class="input-field">
-                <input id="search" type="search" required>
+                <input id="search" type="search" required name="searchInput">
                 <label for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
+              <button type="submit" class="deep-orange lighten-3 waves-effect waves-light btn-large button landing-search">Search!</button>
+              <a class="deep-orange lighten-3 waves-effect waves-light btn-large button landing-search" href="/directory">View Restaurants by Wait Time</a>
             </form>
         </nav>
-        <a class="deep-orange lighten-3 waves-effect waves-light btn-large button landing-search" href="/searchresults">Search!</a>
-        <a class="deep-orange lighten-3 waves-effect waves-light btn-large button landing-search" href="/directory">View Restaurants by Wait Time</a>
       </div>
 
       <p class="toptext"> Check restaurant wait times so that you can dine on your schedule. </p>
