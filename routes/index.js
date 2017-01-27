@@ -41,7 +41,7 @@ function displayTime(time) {
   }
 }
 
-var j = schedule.scheduleJob('0 59 23 * * *', function() {
+var j = schedule.scheduleJob('0 7 0 * * *', function() {
   console.log("entering scheduler");
   Account.find({}, {_id:true, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     previousTimes: true, currentDay: true, lastWaitTime: true, id: true}, function(err, users){
@@ -53,6 +53,9 @@ var j = schedule.scheduleJob('0 59 23 * * *', function() {
         user.previousTimes[dayOfWeek] = dayAverages;
         var lastWaitInput = Object.keys(user.currentDay[23][user.currentDay[23].length-1])[0];
         user.lastWaitTime = user.currentDay[23][user.currentDay[23].length-1][lastWaitInput];
+        for (var i = 0; i < 24; i++) {
+          user.currentDay[i] = [];
+        }
         user.markModified('currentDay');
         user.markModified('previousTimes');
         console.log(user);
@@ -313,8 +316,8 @@ router.post('/waittime', function(req, res, next) {
     var temp = {};
     temp[minutes] = time;
     user.currentDay[hour].push(temp);
-    console.log("after");
-    console.log(user.currentDay);
+    // console.log("after");
+    // console.log(user.currentDay);
     user.markModified('currentDay');
     user.save();
     res.send("success");
