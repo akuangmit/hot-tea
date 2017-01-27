@@ -124,7 +124,7 @@ $(document).ready(function(){
 			        "9 am", "10 am", "11 am", "12 pm", "1 pm", "2 pm", "3 pm", "4 pm", "5 pm", "6 pm",
 			        "7 pm", "8 pm", "9 pm", "10 pm", "11 pm"],
 			        datasets: [{
-			            label: 'Thursday',
+			        	label: "",
 			            data: dataPoints,
 			            backgroundColor: [
 			                'rgba(255, 99, 132, 0.2)',
@@ -179,16 +179,24 @@ $(document).ready(function(){
 			                'rgba(255, 159, 64, 1)'
 			            ],
 			            borderWidth: 1
-			            // xAxisID: "Time of Day",
+			            // xAxisID: "xAxis"
 			            // yAxisID: "Wait Time"
 			        }]
 			    },
 			    options: {
+			    	legend: {
+			    		display: false
+			    	}, 
+			    	title: {
+                    display: true,
+                    text: "Estimated Wait Time for previous insert day (Minutes)"
+                },
 			        scales: {
 			            yAxes: [{
 			                ticks: {
 			                    beginAtZero:true
 			                }
+
 			            }]
 			        }
 			    }
