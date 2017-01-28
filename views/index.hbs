@@ -1,59 +1,99 @@
+<!DOCTYPE html>
 <html>
-
 <head>
-
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"> -->
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css' />
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script type="text/javascript" src="../javascripts/myscript.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta charset="utf-8" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-
 <body>
-
-  <div class="navigation">
-    <a id="heading" href="#">logo</a>
-
-  </div>
-
-  <div class="button_container">
-    <span class="top"></span>
-    <span class="middle"></span>
-    <span class="bottom"></span>
-  </div>
-  <div class="overlay">
-    <div class="nav">
-      <ul>
-        <li><a href="#">Item 1</a></li>
-        <li><a href="#">Item 2</a></li>
-        <li><a href="#">Item 3</a></li>
-        <li><a href="#">Item 4</a></li>
-      </ul>
+{{>navbar}}
+<div class="parallax-container">
+  <div class="topcontent index">
+    <div class="parallax toppic valign-wrapper"><img id="landing-bg" src="../images/jellycookiess.jpg">
+      <div class="valign">
+        <nav id="searchbar" class="white">
+            <form id="searchform" method="post" action="/search">
+              <div class="input-field">
+                <input id="search" type="search" required name="searchInput">
+                <label for="search"><i class="material-icons black-text">search</i></label>
+                <i class="material-icons clear-search">close</i>
+              </div>
+              <button type="submit" class="white waves-effect waves-light btn-large search-button black-text">Search!</button>
+              <a class="waves-effect waves-light btn-large directory-button white black-text" href="/directory">Restaurant Directory</a>
+            </form>
+        </nav>
+      </div>
+      <p class="landing-text"> Check restaurant wait times and dine on your schedule. </p>
     </div>
   </div>
+</div>
 
-  <div class="site">
-    <div class="home">
+<!-- <div id="bottom" class="section grey restaurantcard landing-middle">
+  <div class="row container">
+    <h5 class="margin-set cardsTitle">Restaurants by Wait Time</h5>
 
-      <h1 id="logo">hot tea</h1>
-      <form class="search" class="landing-search" action="">
-        <input type="search" placeholder="Search for a Restaurant" required>
-        <button type="submit">Search</button>
-      </form> 
-
-    </div>  
-
-    <div class="footer">
-
+    <div class="card firstcard">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="/images/restaurant.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Restaurant Name<i class="material-icons right">more_vert</i></span>
+        <p>Wait Time: </p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Restaurant Name<i class="material-icons right">close</i></span>
+        <p>Wait Time: </p>
+        <p>Restaurant Description</p>
+      </div>
     </div>
+
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="/images/restaurant.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Restaurant Name<i class="material-icons right">more_vert</i></span>
+        <p>Wait Time: </p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Restaurant Name<i class="material-icons right">close</i></span>
+        <p>Wait Time: </p>
+        <p>Restaurant Description</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="/images/restaurant.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Restaurant Name<i class="material-icons right">more_vert</i></span>
+        <p>Wait Time: </p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Restaurant Name<i class="material-icons right">close</i></span>
+        <p>Wait Time: </p>
+        <p>Restaurant Description</p>
+      </div>
+    </div>
+
   </div>
+</div> -->
+
+<!-- <div class="parallax-container">
+  <div class="parallax"><img src="../images/restaurant2.jpg" class="botimage"></div>
+</div> -->
+
+{{>loginModal}}
+{{>searchModal}}
+{{>signupModal}}
+
+{{>footer}}
 
 </body>
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script> -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../javascripts/myscript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 </html>
