@@ -287,7 +287,8 @@ router.get('/sign-s3', (req, res) => {
     accessKeyId: process.env.S3_KEY,
     secretAccessKey: process.env.S3_SECRET
   });
-  const fileName = req.query['file-name'];
+  var fileName = req.query['file-name'];
+  fileName = encodeURIComponent(fileName);
   const fileType = req.query['file-type'];
   const s3Params = {
     Bucket: process.env.S3_BUCKET_NAME,

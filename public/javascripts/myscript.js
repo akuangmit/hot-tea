@@ -308,8 +308,6 @@ $(document).ready(function(){
 						
 					}
 				});
-              // document.getElementById('preview').src = url;
-              // document.getElementById('avatar-url').value = url;
             }
             else{
               alert('Could not upload file.');
