@@ -35,64 +35,47 @@ nav ul li a {
 	height: 600px;
 }
 
-
-
-/*Search bar resize and movement*/
-#searchbar{
+/*#searchbar{
 	z-index:0;
 	position:relative;
 	margin-bottom: 10px;
 	left: 150%;
 	width: 200%;
-/*	display:inline-block;*/
-	/*margin-top: 200px;
-	margin-left:250px;
-	width: 500px;
-	display:inline-block;
-	margin-right: 15px;*/
-}
+}*/
 
-.search-button{
+/*.search-button{
 	display: block;
 	margin: auto;
 	width: 100%; 
 	margin-top: 12px;
 	margin-bottom: 5px;
-}
+}*/
 
-.directory-button {
+/*.directory-button {
 	display: inline-block;
 	margin: auto;
 	width: 100%;
-}
+}*/
 
-.landing-text {
+/*.landing-text {
 	color:white;
-	/*text-align: center;*/
 	font-size: 1.5em;
 	z-index: 0;
 	position: relative;
 	left: 8%;
 	margin-top: 450px;
-}
+}*/
+
 .button {
 	background-color:#e57373;
 	color: white;
-	/*	height:60px;*/
 }
 
-/*.directory-button {
-	opacity: 0;
-}*/
 
 #abouttext {
 	font-size:24px;
 }
-.pictureCard{
-	/*width: 350px;
-	display:inline-block;*/
-	/*margin-right: 15px;*/
-}
+
 .descriptionCard{
 	width: 700px;
 	display:inline-block;
@@ -107,7 +90,6 @@ nav ul li a {
 	color: #ffab91;
 	font-family: sans-serif;
 	font-size: 35px;
-	/*font-weight: 10px;*/
 }
 
 #bottom {
