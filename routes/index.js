@@ -7,7 +7,11 @@ var fs = require('fs');
 var multer  = require('multer');
 var upload = multer({ dest: 'public/images/' });
 var schedule = require('node-schedule');
+const aws = require('aws-sdk');
+const S3_BUCKET = process.env.S3_BUCKET;
 const uuidV4 = require('uuid/v4');
+aws.config.region = 'us-east-1';
+
 
 /* convert wait time in minutes to display time */
 function displayTime(time) {
@@ -277,6 +281,42 @@ router.post('/search', function(req, res, next) {
   });
 });
 
+/* GET signed request for file upload */
+router.get('/sign-s3', (req, res) => {
+  const s3 = new aws.S3({
+    accessKeyId: process.env.S3_KEY,
+    secretAccessKey: process.env.S3_SECRET
+  });
+  const fileName = req.query['file-name'];
+  const fileType = req.query['file-type'];
+  const s3Params = {
+    Bucket: process.env.S3_BUCKET_NAME,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: 'public-read'
+  };
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if(err){
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+    };
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
+});
+
+/* POST upload file */
+router.post('/save-details', (req, res) => {
+  //console.log(req.body);
+  res.redirect('/');
+});
+
+
 /* POST upload picture */
 router.post('/upload', upload.single('avatar'), function(req, res, next) {
   Account.findOne({'username': req.user.username}, function(err, user) {
@@ -366,10 +406,6 @@ router.post('/adduser', function(req, res, next) {
         account.previousTimes[i][j] = null;
       }
     }
-    //console.log(account.previousTimes);
-    //console.log(account.currentDay);
-    // console.log("account");
-    // console.log(account);
     account.save();
     });
     

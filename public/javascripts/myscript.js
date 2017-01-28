@@ -187,6 +187,7 @@ $(document).ready(function(){
 					dataPoints.push(dayData[i]);
 				}
 				var myChart = new Chart(ctx, {
+				responsive: true,
 			    type: 'bar',
 			    data: {
 			        labels: ["12 am", "1 am", "2 am", "3 am", "4 am", "5 am", "6 am", "7 am", "8 am", 

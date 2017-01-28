@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var aws = require('aws-sdk');
+var S3_BUCKET = process.env.S3_BUCKET;
 
 var index = require('./routes/index');
 //var users = require('./routes/users');
