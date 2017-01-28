@@ -8,7 +8,7 @@ var multer  = require('multer');
 var upload = multer({ dest: 'public/images/' });
 var schedule = require('node-schedule');
 const aws = require('aws-sdk');
-const S3_BUCKET = process.env.S3_BUCKET;
+const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME;
 const uuidV4 = require('uuid/v4');
 aws.config.region = 'us-east-1';
 
@@ -303,7 +303,7 @@ router.get('/sign-s3', (req, res) => {
     }
     const returnData = {
       signedRequest: data,
-      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+      url: `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`
     };
     res.write(JSON.stringify(returnData));
     res.end();
@@ -311,9 +311,15 @@ router.get('/sign-s3', (req, res) => {
 });
 
 /* POST upload file */
-router.post('/save-details', (req, res) => {
-  //console.log(req.body);
-  res.redirect('/');
+router.post('/save-picture', function(req, res) {
+  console.log(req.body);
+  Account.findOne({'username':req.user.username}, function(err,user) {
+    if (err) {
+      console.log('error');
+    } 
+    user.profilePicture = req.body.picture;
+    user.save();
+  }) 
 });
 
 
