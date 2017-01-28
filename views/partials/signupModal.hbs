@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!-- Modal Structure -->
 <div id="signupModal" class="modal">
   <div class="modal-content">
@@ -6,7 +7,7 @@
       <button href="#!" class="modalTop Topmodal-action modal-close waves-effect waves-light btn-flat col s2 l1" style="float: right"><i class="material-icons">close</i></button>
     </div>
     <div class="row modalText">
-      <form class="col s12" method="post" action="/adduser">
+      <form id="signup-modal" class="col s12" method="post" action="/adduser">
         <div class="row modal-form-row">
           <div class="input-field col s12">
             <input id="signup_restaurant_name" type="text" class="validate" required="" aria-required="true" name="restaurantName">
@@ -21,8 +22,14 @@
         </div>
         <div class="row modal-form-row">
           <div class="input-field col s12">
-            <input id="signup_password" type="password" class="validate" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" aria-required="true" name="password">
+            <input id="signup-password" type="password" class="validate" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" aria-required="true" name="password">
             <label for="signup_password" data-error="Password must contain at least 6 characters, including a number, an uppercase letter, and a lowercase letter.">Password</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s12">
+            <input id="confirm-password" type="password" class="validate" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" aria-required="true" name="confirm_password">
+            <label for="confirm_password" data-error="Passwords must match.">Confirm Password</label>
           </div>
         </div>
         <div class="row">   

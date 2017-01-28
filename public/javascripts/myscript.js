@@ -357,6 +357,14 @@ $(document).ready(function(){
       	document.getElementById('file-input').onchange = initUpload;
       }
 
+    $('#signup-modal').submit(function() {
+    	if($("#signup-password").val() != $('#confirm-password').val()) {
+    		$("#confirm-password").addClass("invalid");
+    		$("#confirm-password").prop("aria-invalid", "true");
+    		return false;
+    	}
+    });
+
 	$('.button-collapse').sideNav({
     	menuWidth: 300,
     	closeOnClick: true,
