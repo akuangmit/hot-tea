@@ -6,10 +6,12 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse right black-text"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {{#if isLoggedIn }}
+          <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
           <li><a href="/users/{{url}}">Your Profile</a></li>
           <li><a href="/updatewaittime">Update Wait Time</a></li>
           <li><a href="/logout">Log Out</a></li>
         {{else}}
+          <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
           <li>
             <!-- Modal Trigger -->
             <a class="waves-effect waves-light" href="#loginModal">Restaurant Log In</a>
@@ -22,10 +24,12 @@
 
       <ul class="side-nav" id="mobile-demo">
         {{#if isLoggedIn }}
+          <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
           <li><a href="/users/{{url}}">Your Profile</a></li>
           <li><a href="/updatewaittime">Update Wait Time</a></li>
           <li><a href="/logout">Log Out</a></li>
         {{else}}
+          <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
           <li>
             <!-- Modal Trigger -->
             <a class="waves-effect waves-light" href="#loginModal">Restaurant Log In</a>
