@@ -305,7 +305,7 @@ $(document).ready(function(){
 					url: '/save-picture',
 					data: {picture: url},
 					success: function(data) {
-						
+						$('.update-picture').removeClass("disabled");
 					}
 				});
             }
@@ -342,6 +342,7 @@ $(document).ready(function(){
        start upload procedure by asking for a signed request from the app.
       */
       function initUpload(){
+      	$('.update-picture').addClass("disabled");
         const files = document.getElementById('file-input').files;
         const file = files[0];
         if(file == null){

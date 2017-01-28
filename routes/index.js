@@ -323,7 +323,8 @@ router.post('/save-picture', function(req, res) {
     } 
     user.profilePicture = req.body.picture;
     user.save();
-    res.redirect('/users/' + req.user.id);
+    res.send("success");
+    //res.redirect('/users/' + req.user.id);
   }) 
 });
 
