@@ -444,8 +444,7 @@ router.get('/users/:id', function(req,res,next) {
         console.log('error');
       } else {
         if (currentUser) {
-          console.log("user profile picture");
-          console.log(user.profilePicture);
+          //user.restaurantDescription = user.restaurantDescription.replace("\w","&nbsp;")
           res.render('profile', {isLoggedIn: true, currentUser: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
             title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
             restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture});
