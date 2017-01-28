@@ -1,35 +1,43 @@
 $(document).ready(function(){
 	/* randomize landing page background */
 
-	var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'pasta.jpg', 'beefnoodlesoup.jpg', 'macarons.jpg', 'sushi.jpg'];
+	var bgArray = ['../images/jellycookies.jpg', '../images/bowls.jpg', '../images/pasta.jpg', '../images/beefnoodlesoup.jpg', '../images/macarons.jpg', '../images/sushi.jpg'];
 	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
     var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
-    var path = '../images/';
+    // var path = '../images/';
+    var path = "url("+bg+")"
+    $('.home').css('background-image', path);
 
-    $('#landing-bg').attr('src', path+bg);
+	  var a = $(".footer").offset().top -50;
 
-	$('.button-collapse').sideNav({
-    	menuWidth: 300,
-    	closeOnClick: true,
-    	edge: 'right',
-    	}
-  	);
+	  $(document).scroll(function() {
+	    if ($(this).scrollTop() > a) {
+	      $('.navigation').css({
+	        "background": "white"
+	      });
+	      $('.navigation').css({
+	        "box-shadow": "0px 2px 2px rgba(0, 0, 0, .1)"
+	      });
+	    } else {
+	      $('.navigation').css({
+	        "background": "transparent"
+	      });
+	      $('.navigation').css({
+	        "box-shadow": "0px 2px 2px rgba(0, 0, 0, 0)"
+	      });
+	    }
+	  });
 
-  	// var options = [
-   //    {selector: '.landing-middle', offset: 50, callback: function(el) {
-   //      Materialize.toast("This is our ScrollFire Demo!", 1500 );
-   //    } }
-   //    // {selector: '#staggered-test', offset: 205, callback: function(el) {
-   //    //   Materialize.toast("Please continue scrolling!", 1500 );
-   //    // } },
-   //    // {selector: '#staggered-test', offset: 400, callback: function(el) {
-   //    //   Materialize.showStaggeredList($(el));
-   //    // } },
-   //    // {selector: '#image-test', offset: 500, callback: function(el) {
-   //    //   Materialize.fadeInImage($(el));
-   //    // } }
-   //  ];
-   //  Materialize.scrollFire(options);
+
+	window.onload = function() {
+
+	  $('.button_container').click(function() {
+	    $('.button_container').toggleClass('active');
+	    $('.overlay').toggleClass('open');
+	    $('body').toggleClass('active');
+	  });
+
+	}
 
    $('.clear-search').click(function() {
    		$('#search').val("");
@@ -96,7 +104,7 @@ $(document).ready(function(){
 	$('#abouttext').mouseleave(function(){
 		$(this).css("text-decoration", "none");
 	});
-	$('.parallax').parallax(); 
+	// $('.parallax').parallax(); 
 
 	$('.wait-time').click(function() {
 		var payload = {time: parseInt(this.id,10), timeOfUpdate: Date.now()};      

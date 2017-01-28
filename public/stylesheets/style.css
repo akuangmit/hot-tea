@@ -9,12 +9,313 @@
 /*Sticky Footer*/
 
 /*@import url('https://fonts.googleapis.com/css?family=Roboto');*/
-
+/*
 body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
+}*/
+
+body {
+  margin: 0;
+  padding: 0;
 }
+
+.navigation {
+  width: 100%;
+  position: fixed;
+  height: 55px;
+  z-index: 2;  
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+}
+
+.navigation #heading {
+  text-decoration: none;
+  display: inline-block;
+  font: 22px 'Pacifico';
+  margin-top: 4px;
+  margin-left: 30px;
+  color: #555;
+}
+
+.navigation #heading:hover {
+  color: black;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Vollkorn|Roboto);
+.button_container {
+  position: fixed;
+  width: 20px;
+  height: 25px;
+  z-index: 1000;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  -webkit-transition: opacity .25s;
+  transition: opacity .25s;
+}
+
+.button_container span {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #555;
+  -webkit-transition: all .35s ease;
+  transition: all .35s ease;
+}
+
+.middle {
+  top: 6px;
+}
+
+.bottom {
+  top: 12px;
+}
+
+.button_container.active .top {
+  -webkit-transform: translateY(6px) translateX(0) rotate(45deg);
+  transform: translateY(6px) translateX(0) rotate(45deg);
+  background: white;
+}
+
+.button_container.active .middle {
+  opacity: 0;
+}
+
+.button_container.active .bottom {
+  -webkit-transform: translateY(-6px) translateX(0) rotate(-45deg);
+  transform: translateY(-6px) translateX(0) rotate(-45deg);
+  background: white;
+}
+
+.overlay {
+  position: fixed;
+  background: #222;
+  visibility: hidden;
+  width: 100%;
+  height: 0%;
+  left: 0px;
+  z-index: 998;
+  top: 0px;
+  opacity: 0;
+  overflow-y: visible;
+  overflow-x: hidden;
+  -webkit-transition: opacity .35s, height .35s, visibility .35s;
+  transition: opacity .35s, height .35s, visibility .35s;
+}
+
+.overlay.open {
+  position: fixed;
+  height: 100vh;
+  opacity: .95;
+  visibility: visible;
+}
+
+.overlay.open li {
+  -webkit-animation: fadeInTop .5s ease forwards;
+  animation: fadeInTop .5s ease forwards;
+  -webkit-animation-delay: .35s;
+  animation-delay: .35s;
+}
+
+.overlay.open li:nth-of-type(2) {
+  -webkit-animation-delay: .4s;
+  animation-delay: .4s;
+}
+
+.overlay.open li:nth-of-type(3) {
+  -webkit-animation-delay: .45s;
+  animation-delay: .45s;
+}
+
+.overlay.open li:nth-of-type(4) {
+  -webkit-animation-delay: .50s;
+  animation-delay: .50s;
+}
+
+.overlay .nav {
+  position: relative;
+  height: 70vh;
+  top: 50vh;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 50px;
+  font-family: 'Vollkorn', serif;
+  font-weight: 400;
+  text-align: center;
+  z-index: 900000;
+}
+
+.overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  z-index: 900000;
+}
+
+.overlay ul li {
+  color: white;
+  display: block;
+  height: 25vh;
+  height: calc(100% / 4);
+  min-height: 50px;
+  position: relative;
+  opacity: 0;
+  z-index: 900000;
+}
+
+.overlay ul li a {
+  display: block;
+  position: relative;
+  color: #FFF;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 900000;
+}
+
+.overlay ul li a:hover:after,
+.overlay ul li a:focus:after,
+.overlay ul li a:active:after {
+  width: 100%;
+}
+
+.overlay ul li a:after {
+  color: white;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height: 3px;
+  background: #FFF;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+
+@-webkit-keyframes fadeInTop {
+  0% {
+    opacity: 0;
+    bottom: 20vh;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+@keyframes fadeInTop {
+  0% {
+    opacity: 0;
+    bottom: 20vh;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+.site {
+  margin: 0;
+  padding: 0;
+}
+
+html.active {
+ overflow:hidden;
+}
+
+.home {
+  position: fixed;
+  width: 100%;
+  height: 600px;
+  background-image: url("../images/jellycookies.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
+
+.home #logo {
+  text-align: center;
+  margin-top: 100px;
+  font: 100px 'Pacifico';
+  color: white;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  height: 900px;
+  background: white;
+  z-index: 1;
+  top: 600px;
+}
+
+body.active {
+    overflow: hidden;
+}
+
+.search {
+	width: 500px;
+	height: 40px;
+	margin: 100px auto;
+	background: #444;
+	background: rgba(0,0,0,.2);
+	border-radius: 3px;
+	border: 1px solid #fff;
+}
+
+.search input {
+	width: 370px;
+	padding: 12.5px 25px 14px 15px;
+	float: left;
+	color: black;
+	border: 0;
+	background: white;
+	border-radius: 3px 0 0 3px;
+}
+
+.search input:focus {
+	outline: 0;
+	background: white;
+}
+
+.search button {
+	position: relative;
+	float: right;
+	border: 0;
+	padding: 0;
+	margin-right: 10px;
+	cursor: pointer;
+	height: 40px;
+	width: 120px;
+	color: #fff;
+	background: transparent;
+	border-left: 1px solid #fff;
+	border-radius: 0 3px 3px 0;
+}   
+
+.search button:hover {
+	background: transparent;
+	color: #ccc;
+}
+
+.search button:active {
+	box-shadow: 0px 0px 12px 0px rgba(225, 225, 225, 1);
+}
+
+.search button:focus {
+	outline: 0;
+}
+
+
+/* end landing page */
+
+
 .index{
 	background-image: url('../images/restaurant.jpg');
 }
