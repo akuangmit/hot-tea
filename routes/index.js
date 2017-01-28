@@ -323,20 +323,8 @@ router.post('/save-picture', function(req, res) {
     } 
     user.profilePicture = req.body.picture;
     user.save();
+    res.redirect('/users/' + req.user.id);
   }) 
-});
-
-
-/* POST upload picture */
-router.post('/upload', upload.single('avatar'), function(req, res, next) {
-  Account.findOne({'username': req.user.username}, function(err, user) {
-    if (err) {
-      console.log('error');
-    }
-    user.profilePicture = req.file.path.replace("public", "");
-    user.save();
-  });
-  res.status(204).end();
 });
 
 /* GET logout */
