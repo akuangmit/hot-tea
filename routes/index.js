@@ -290,7 +290,7 @@ router.get('/sign-s3', (req, res) => {
   var fileName = req.query['file-name'];
   console.log(fileName);
   //fileName = encodeURIComponent(fileName);
-  fileName = req.user.id;
+  fileName = uuidV4();
   console.log(fileName);
   const fileType = req.query['file-type'];
   const s3Params = {
