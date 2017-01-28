@@ -288,7 +288,10 @@ router.get('/sign-s3', (req, res) => {
     secretAccessKey: process.env.S3_SECRET
   });
   var fileName = req.query['file-name'];
-  fileName = encodeURIComponent(fileName);
+  console.log(fileName);
+  //fileName = encodeURIComponent(fileName);
+  fileName = req.user.id;
+  console.log(fileName);
   const fileType = req.query['file-type'];
   const s3Params = {
     Bucket: process.env.S3_BUCKET_NAME,
@@ -452,6 +455,8 @@ router.get('/users/:id', function(req,res,next) {
         console.log('error');
       } else {
         if (currentUser) {
+          console.log("user profile picture");
+          console.log(user.profilePicture);
           res.render('profile', {isLoggedIn: true, currentUser: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
             title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
             restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture});
