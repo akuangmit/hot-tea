@@ -3,10 +3,21 @@ $(document).ready(function(){
 
 	var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'pasta.jpg', 'beefnoodlesoup.jpg', 'macarons.jpg', 'sushi.jpg'];
 	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
-    var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+    var index = Math.floor(Math.random() * bgArray.length);
+    var bg = bgArray[index]
     var path = '../images/';
 
-    $('#landing-bg').attr('src', path+bg);
+    $('#parallax1').attr('src', path+bg);
+    
+    index = (index + 1) % bgArray.length;
+    bg = bgArray[index];
+
+    $('#parallax2').attr('src', path+bg);
+
+    index = (index + 2) % bgArray.length;
+    bg = bgArray[index];
+    
+    $('#parallax3').attr('src', path+bg);
 
 	$('.button-collapse').sideNav({
     	menuWidth: 300,

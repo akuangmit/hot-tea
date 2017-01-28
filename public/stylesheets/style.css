@@ -15,6 +15,7 @@ body {
 	min-height: 100vh;
 	flex-direction: column;
 }
+
 .index{
 	background-image: url('../images/restaurant.jpg');
 }
@@ -33,6 +34,7 @@ nav ul li a {
 .parallax-container {
 	height: 600px;
 }
+
 
 
 /*Search bar resize and movement*/
@@ -350,7 +352,9 @@ p {
     top: 0;
   }
 }
-
+#index-banner{
+	height:700px;
+}
 .icon-block {
   padding: 0 15px;
 }
