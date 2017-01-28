@@ -26,6 +26,15 @@ body {
 
 }
 
+.nav-bar {
+	opacity: 1;
+}
+
+.parallax-container {
+	height: 550px;
+}
+
+
 /*Search bar resize and movement*/
 #searchbar{
 	z-index:0;
@@ -259,6 +268,15 @@ footer.page-footer {
 .chart-pages{
 	margin: auto;
 }
+
+.x-content-band {
+border-top: none !important;
+}
+
+.x-content-band.bg-image {
+	background-position: 50% 0px !important;
+}
+
 /*the below for editing form validation*/
 
 /* label focus color */

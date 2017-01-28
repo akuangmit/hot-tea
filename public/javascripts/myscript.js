@@ -1,5 +1,20 @@
 $(document).ready(function(){
+	/* randomize landing page background */
 
+	var bgArray = ['jellycookies.jpg', 'bowls.jpg'];
+	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
+    var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+    var path = '../images/';
+
+    $('#landing-bg').attr('src', path+bg);
+
+	$('.button-collapse').sideNav({
+    	menuWidth: 300,
+    	closeOnClick: true,
+    	edge: 'right',
+    	}
+  	);
+	
 	function displayTimeSinceUpdate(time) {
 		time = Math.floor(time/60000);	
 		if (time<1) {
@@ -273,15 +288,6 @@ $(document).ready(function(){
 			}
 		});
 	}
-
-	
-
-	$('.button-collapse').sideNav({
-    	menuWidth: 300,
-    	closeOnClick: true,
-    	edge: 'right',
-    	}
-  	);
   	
   	$('.collapsible').collapsible();
 
