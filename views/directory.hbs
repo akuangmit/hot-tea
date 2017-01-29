@@ -17,6 +17,7 @@
       <table>
         <thead>
           <tr>
+              <th></th>
               <th data-field="profilepic">Photo</th>
               <th data-field="restaurantname">Restaurant Name</th>
               <th data-field="waittime">Current Wait Time (minutes)</th>
@@ -26,10 +27,11 @@
         {{#each users}}
           <tbody>
             <tr>
-              <td class = "col s3 m3 l3"><img src={{profilePicture}}></td>
-              <td class="col s3 m3 l3"><a href="/users/{{ id }}">{{restaurantName}}</a></td>
-              <td class="col s3 m3 l3">{{waitTime}}</td>
-              <td class="col s3 m3 l3">{{timeSinceUpdate}}</td>
+              <td></td>
+              <td class = "col s3 m3 l2"><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
+              <td class="col s3 m3 l2"><a href="/users/{{ id }}">{{restaurantName}}</a></td>
+              <td class="col s3 m3 l2">{{waitTime}}</td>
+              <td class="col s3 m3 l2">{{timeSinceUpdate}}</td>
             </tr>
           </tbody>
         {{/each}}
