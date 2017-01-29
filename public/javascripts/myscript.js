@@ -304,7 +304,7 @@ $(document).ready(function(){
 			    	}, 
 			    	title: {
                     display: true,
-                    text: "Average Wait Times for Previous Week (Minutes)"
+                    text: "Average Wait Times for Previous Week (Mins)"
                 },
 			        scales: {
 			            yAxes: [{
