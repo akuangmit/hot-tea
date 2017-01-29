@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	/* randomize landing page background */
 
-	var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'pasta.jpg', 'beefnoodlesoup.jpg', 'macarons.jpg', 'sushi.jpg'];
+	var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'macarons.jpg', 'sushi.jpg'];
 	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
     var index = Math.floor(Math.random() * bgArray.length);
     var bg = bgArray[index]
