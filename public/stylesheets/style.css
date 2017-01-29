@@ -389,13 +389,17 @@ hr {
 }
 #pagination-short li{
 	display: inline-block;
+	border-radius: 2px;
+	text-align: center;
+	vertical-align: top;
+	/*padding-left: 2em;*/
+	padding-top: 4px;
 	width: 30px;
-	height: 25px;
+	height: 30px;
 }
 #page-display {
 	margin: auto;
 }
-<<<<<<< Updated upstream
 #toast-container {
 	top: auto !important;
 	right: auto !important;
