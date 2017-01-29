@@ -147,7 +147,13 @@ router.get('/', function(req, res, next) {
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
+  console.log(req.query);
   var page = req.query.page;
+  if (page === undefined) {
+    console.log("yes");
+    page = 1;
+  }
+  console.log(page);
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     profilePicture: true, id: true}, function(err, users){
     var usersNew = [];
