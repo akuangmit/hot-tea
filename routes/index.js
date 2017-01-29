@@ -147,69 +147,20 @@ router.get('/', function(req, res, next) {
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
-  // var input2 = { '0': [{ '3': 10 }, {'30':30}],
-  // '1': [{ '3': 10 }],
-  // '2': [{ '3': 10 }],
-  // '3': [{ '3': 10 }],
-  // '4': [{ '3': 10 }],
-  // '5': [{ '3': 10 }],
-  // '6': [{ '3': 10 }],
-  // '7': [{ '3': 10 }],
-  // '8': [{ '3': 10 }],
-  // '9': [{ '3': 10 }, {'20':20}],
-  // '10': [{ '3': 10 }],
-  // '11': [{ '3': 10 }],
-  // '12': [{ '3': 10 }],
-  // '13': [{ '3': 10 }],
-  // '14': [{ '3': 10 }],
-  // '15': [{ '3': 10 }],
-  // '16': [ { '3': 10 } ],
-  // '17': [{ '3': 10 }, {'35':30}],
-  // '18': [{ '3': 10 }],
-  // '19': [{ '3': 10 }],
-  // '20': [{ '3': 10 }],
-  // '21': [{ '3': 10 }],
-  // '22': [{ '3': 10 }],
-  // '23': [{ '3': 10 }] };
-  // var input = { '0': [],
-  // '1': [],
-  // '2': [],
-  // '3': [],
-  // '4': [],
-  // '5': [],
-  // '6': [],
-  // '7': [],
-  // '8': [],
-  // '9': [],
-  // '10': [],
-  // '11': [],
-  // '12': [],
-  // '13': [],
-  // '14': [],
-  // '15': [],
-  // '16': [],
-  // '17': [ { '46': 10 } ],
-  // '18': [],
-  // '19': [],
-  // '20': [],
-  // '21': [],
-  // '22': [],
-  // '23': [] }
-  // var output = calculateAverageWait(input,20);
-  // console.log(output);
-  var all_accounts;
+  var page = req.query.page;
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     profilePicture: true, id: true}, function(err, users){
     var usersNew = [];
     for (var user in users) {
-      //console.log(users[user].restaurantName);
-      usersNew[user] = {};
-      usersNew[user].username = users[user].username;
-      usersNew[user].id = users[user].id;
-      usersNew[user].restaurantName = users[user].restaurantName;
-      usersNew[user].waitTime = displayTime(users[user].waitTime);
-      usersNew[user].timeSinceUpdate = displayTimeSinceUpdate(Date.now()-users[user].timeOfUpdate);
-      usersNew[user].profilePicture = users[user].profilePicture;
+      if (user > (page-1)*20-1 && user < page*20) {
+        usersNew[user] = {};
+        usersNew[user].username = users[user].username;
+        usersNew[user].id = users[user].id;
+        usersNew[user].restaurantName = users[user].restaurantName;
+        usersNew[user].waitTime = displayTime(users[user].waitTime);
+        usersNew[user].timeSinceUpdate = displayTimeSinceUpdate(Date.now()-users[user].timeOfUpdate);
+        usersNew[user].profilePicture = users[user].profilePicture;
+      }
     }
     if (req.user){
       res.render('directory', {isLoggedIn: true, users: usersNew, url: req.user.id});
@@ -350,6 +301,15 @@ router.post('/bar_graph', function(req, res, next) {
   });
 });
 
+/* POST number of directory pages */
+router.post('/page_numbers', function(req, res, next) {
+  Account.find({}, {_id:true, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
+    previousTimes: true, currentDay: true, lastWaitTime: true, id: true}, function(err, users){
+      console.log(users.length);
+      res.send({length: users.length});
+  });
+});
+
 /* POST wait time */
 router.post('/waittime', function(req, res, next) {
   Account.findOne({'username': req.user.username}, function(err, user) {
@@ -484,3 +444,54 @@ router.get('/users/:id', function(req,res,next) {
 });
 
 module.exports = router;
+
+// var input2 = { '0': [{ '3': 10 }, {'30':30}],
+  // '1': [{ '3': 10 }],
+  // '2': [{ '3': 10 }],
+  // '3': [{ '3': 10 }],
+  // '4': [{ '3': 10 }],
+  // '5': [{ '3': 10 }],
+  // '6': [{ '3': 10 }],
+  // '7': [{ '3': 10 }],
+  // '8': [{ '3': 10 }],
+  // '9': [{ '3': 10 }, {'20':20}],
+  // '10': [{ '3': 10 }],
+  // '11': [{ '3': 10 }],
+  // '12': [{ '3': 10 }],
+  // '13': [{ '3': 10 }],
+  // '14': [{ '3': 10 }],
+  // '15': [{ '3': 10 }],
+  // '16': [ { '3': 10 } ],
+  // '17': [{ '3': 10 }, {'35':30}],
+  // '18': [{ '3': 10 }],
+  // '19': [{ '3': 10 }],
+  // '20': [{ '3': 10 }],
+  // '21': [{ '3': 10 }],
+  // '22': [{ '3': 10 }],
+  // '23': [{ '3': 10 }] };
+  // var input = { '0': [],
+  // '1': [],
+  // '2': [],
+  // '3': [],
+  // '4': [],
+  // '5': [],
+  // '6': [],
+  // '7': [],
+  // '8': [],
+  // '9': [],
+  // '10': [],
+  // '11': [],
+  // '12': [],
+  // '13': [],
+  // '14': [],
+  // '15': [],
+  // '16': [],
+  // '17': [ { '46': 10 } ],
+  // '18': [],
+  // '19': [],
+  // '20': [],
+  // '21': [],
+  // '22': [],
+  // '23': [] }
+  // var output = calculateAverageWait(input,20);
+  // console.log(output);

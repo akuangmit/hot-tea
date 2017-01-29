@@ -414,3 +414,14 @@ hr {
 #returning{
 	margin-top: 10px;
 }
+.pagination li{
+	display: inline-block;
+	width: 30px;
+	height: 25px;
+}
+/*div.pagination{
+  margin-top: 1em;
+}
+#pagination-short{
+	width:20px;
+}*/
