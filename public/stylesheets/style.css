@@ -37,37 +37,6 @@ nav ul li a {
 	height: 600px;
 }
 
-/*#searchbar{
-	z-index:0;
-	position:relative;
-	margin-bottom: 10px;
-	left: 150%;
-	width: 200%;
-}*/
-
-/*.search-button{
-	display: block;
-	margin: auto;
-	width: 100%; 
-	margin-top: 12px;
-	margin-bottom: 5px;
-}*/
-
-/*.directory-button {
-	display: inline-block;
-	margin: auto;
-	width: 100%;
-}*/
-
-/*.landing-text {
-	color:white;
-	font-size: 1.5em;
-	z-index: 0;
-	position: relative;
-	left: 8%;
-	margin-top: 450px;
-}*/
-
 .button {
 	background-color:#e57373;
 	color: white;

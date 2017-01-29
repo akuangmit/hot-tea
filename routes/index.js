@@ -138,12 +138,36 @@ function calculateAverageWait(input, previousTime) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
+    profilePicture: true, id: true}, function(err, users){
+    var usersNew = [];
+    for (var user in users) {
+      //console.log(users[user].restaurantName);
+      usersNew[user] = {};
+      usersNew[user].id = users[user].id;
+      usersNew[user].restaurantName = users[user].restaurantName;
+      usersNew[user].waitTime = displayTime(users[user].waitTime);
+      usersNew[user].timeSinceUpdate = displayTimeSinceUpdate(Date.now()-users[user].timeOfUpdate);
+      usersNew[user].profilePicture = users[user].profilePicture;
+    }
+    if (req.user){
+      res.render('index', {isLoggedIn: true, users: usersNew, url: req.user.id});
+    }
+    else {
+      res.render('index', {isLoggedIn: false, users: usersNew});
+    }
+  }).sort({waitTime:1, timeOfUpdate:-1});
+})
+
+/* GET update wait time page */
+router.get('/updatewaittime', function(req, res, next) {
   if (req.user) {
-   res.render('index', {isLoggedIn: true, title: 'Home', url: req.user.id});
+   res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', 
+    restaurantName: req.user.restaurantName, waitTime: displayTime(req.user.waitTime), 
+    timeSinceUpdate: displayTimeSinceUpdate(Date.now()-req.user.timeOfUpdate), url: req.user.id});
   } else {
-    res.render('index', {isLoggedIn: false, title: 'Home' });
-  }
-});
+    res.render('error', {isLoggedIn: false, title: 'Error'});
+  }})
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {

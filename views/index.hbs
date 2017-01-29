@@ -42,15 +42,54 @@
 
       </div>
     </div>
-    <div class="parallax"><img id="parallax1" src="../images/macarons.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img id="parallax1" src="../images/pudding.jpg" alt="Unsplashed background img 1"></div>
   </div>
 
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4>Find Restaurants by Wait Time</h4>
+          <div class="carousel">
+          {{#each users}}
+            <div class="card carousel-item">
+              <div class="card-image">
+                <img src={{profilePicture}}>
+                <!-- <span class="card-title">Card Title</span> -->
+              </div>
+              <div class="card-content left-align">
+                <a href="/users/{{id}}"><h6>{{restaurantName}}</h6></a>
+                <p>Current Wait Time: {{waitTime}} (updated {{timeSinceUpdate}})</p>
+              </div>
+            </div>
+            <!-- <a class="carousel-item" href="/users/{{id}}"><img src={{profilePicture}}></a> -->
+          {{/each}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <!-- <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5> -->
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img id="parallax2" src="../images/applepie.jpg" alt="Unsplashed background img 2"></div>
+  </div>
 
   <div class="container">
     <div class="section">
 
       <!--   Icon Section   -->
       <div class="row">
+        <h4 class="center-align" style="margin-top: 1em;">How to Hot Tea</h4>
         <div class="col s12 m6">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">store</i></h2>
@@ -63,7 +102,7 @@
         <div class="col s12 m6">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">For Customers</h5>
+            <h5 class="center">For Guests</h5>
 
             <p class="light">Click on "View Restaurants by Wait Time" to view a directory of all restaurants, sorted by shortest wait time. From the directory, you can click on the restaurants to view their profiles. If you have a specific restaurant in mind, you can search for the restaurant and be directed to that restaurant's profile.</p>
           </div>
@@ -73,33 +112,6 @@
 
     </div>
   </div>
-
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <!-- <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5> -->
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img id="parallax2" src="../images/bowls.jpg" alt="Unsplashed background img 2"></div>
-  </div>
-
-  <div class="container">
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Restaurants Carousel</h4>
-          <p class="left-align light">Insert Carousel Here</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
 
   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">

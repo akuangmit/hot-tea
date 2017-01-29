@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	/* randomize landing page background */
-	var bgArray = ['macarons.jpg'];
+
+	var bgArray = ['macarons.jpg', 'brownies.jpg', 'choco.jpg'];
+
 	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
     var index = Math.floor(Math.random() * bgArray.length);
     var bg = bgArray[index]
@@ -8,7 +10,7 @@ $(document).ready(function(){
 
     $('#parallax1').attr('src', path+bg);
     
-    var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'pasta.jpg', 'macarons.jpg', 'sushi.jpg'];
+    var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'pasta.jpg', 'macarons.jpg', 'sushi.jpg', 'applepie.jpg', 'tableofcookies.jpg'];
 	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
     var index = Math.floor(Math.random() * bgArray.length);
     var bg = bgArray[index]
@@ -30,25 +32,16 @@ $(document).ready(function(){
     	}
   	);
 
-  	// var options = [
-   //    {selector: '.landing-middle', offset: 50, callback: function(el) {
-   //      Materialize.toast("This is our ScrollFire Demo!", 1500 );
-   //    } }
-   //    // {selector: '#staggered-test', offset: 205, callback: function(el) {
-   //    //   Materialize.toast("Please continue scrolling!", 1500 );
-   //    // } },
-   //    // {selector: '#staggered-test', offset: 400, callback: function(el) {
-   //    //   Materialize.showStaggeredList($(el));
-   //    // } },
-   //    // {selector: '#image-test', offset: 500, callback: function(el) {
-   //    //   Materialize.fadeInImage($(el));
-   //    // } }
-   //  ];
-   //  Materialize.scrollFire(options);
-
    $('.clear-search').click(function() {
    		$('#search').val("");
    });
+
+   $('.carousel').carousel({
+            dist: 0,
+            shift: 20,
+            padding: 15
+
+      });
 	
 	function displayTimeSinceUpdate(time) {
 		time = Math.floor(time/60000);	
@@ -480,7 +473,5 @@ $(document).ready(function(){
 
 	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
 	$('.modal').modal();
-
-	// Materialize.updateTextFields();
 
 });
