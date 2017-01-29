@@ -4,36 +4,16 @@
     <div class="nav-wrapper">
       <a href="/" class="brand-logo left black-text">&nbsp;&nbsp;Logo</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse right black-text"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         {{#if isLoggedIn }}
           <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
-          <li><a href="/directory" class="hide-on-med-and-down">Restaurant Directory</a></li>
-          <li><a href="/updatewaittime" class="hide-on-med-and-down">Update Wait Time</a></li>
-          <li><a href="/users/{{url}}" class="hide-on-med-and-down">Your Profile</a></li>
-          <li><a href="/logout" class="hide-on-med-and-down">Log Out</a></li>
+          <li><a href="/directory">Restaurant Directory</a></li>
+          <li><a href="/updatewaittime">Update Wait Time</a></li>
+          <li><a href="/users/{{url}}">Your Profile</a></li>
+          <li><a href="/logout">Log Out</a></li>
         {{else}}
           <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
-          <li><a href="/directory" class="hide-on-med-and-down">Restaurant Directory</a></li>
-          <li>
-            <!-- Modal Trigger -->
-            <a class="waves-effect waves-light hide-on-med-and-down" href="#loginModal">Restaurant Log In</a>
-          </li>
-          <li><!-- Modal Trigger -->
-            <a class="waves-effect waves-light hide-on-med-and-down" href="#signupModal">Restaurant Sign Up</a>  
-          </li>
-        {{/if}}
-      </ul>
-
-      <ul class="side-nav right" id="mobile-demo">
-        {{#if isLoggedIn }}
-          <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
-          <li><a href="/directory" class="hide-on-med-and-down">Restaurant Directory</a></li>
-          <li><a href="/updatewaittime" class="hide-on-med-and-down">Update Wait Time</a></li>
-          <li><a href="/users/{{url}}" class="hide-on-med-and-down">Your Profile</a></li>
-          <li><a href="/logout" class="hide-on-med-and-down">Log Out</a></li>
-        {{else}}
-          <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
-          <li><a href="/directory" class="hide-on-med-and-down">Restaurant Directory</a></li>
+          <li><a href="/directory">Restaurant Directory</a></li>
           <li>
             <!-- Modal Trigger -->
             <a class="waves-effect waves-light" href="#loginModal">Restaurant Log In</a>
@@ -41,6 +21,26 @@
           <li><!-- Modal Trigger -->
             <a class="waves-effect waves-light" href="#signupModal">Restaurant Sign Up</a>  
           </li>
+        {{/if}}
+      </ul>
+
+      <ul class="side-nav" id="mobile-demo">
+        {{#if isLoggedIn }}
+          <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
+          <li><a href="/users/{{url}}">Your Profile</a></li>
+          <li><a href="/updatewaittime">Update Wait Time</a></li>
+          <li><a href="/directory">Restaurant Directory</a></li>
+          <li><a href="/logout">Log Out</a></li>
+        {{else}}
+          <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
+          <li>
+            <!-- Modal Trigger -->
+            <a class="waves-effect waves-light" href="#loginModal">Restaurant Log In</a>
+          </li>
+          <li><!-- Modal Trigger -->
+            <a class="waves-effect waves-light" href="#signupModal">Restaurant Sign Up</a>  
+          </li>
+          <li><a href="/directory">Restaurant Directory</a></li>
         {{/if}}
       </ul>
 

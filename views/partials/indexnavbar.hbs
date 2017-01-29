@@ -7,11 +7,13 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         {{#if isLoggedIn }}
           <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
-          <li><a href="/users/{{url}}">Your Profile</a></li>
+          <li><a href="/directory">Restaurant Directory</a></li>
           <li><a href="/updatewaittime">Update Wait Time</a></li>
+          <li><a href="/users/{{url}}">Your Profile</a></li>
           <li><a href="/logout">Log Out</a></li>
         {{else}}
           <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
+          <li><a href="/directory">Restaurant Directory</a></li>
           <li>
             <!-- Modal Trigger -->
             <a class="waves-effect waves-light" href="#loginModal">Restaurant Log In</a>
@@ -27,6 +29,7 @@
           <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
           <li><a href="/users/{{url}}">Your Profile</a></li>
           <li><a href="/updatewaittime">Update Wait Time</a></li>
+          <li><a href="/directory">Restaurant Directory</a></li>
           <li><a href="/logout">Log Out</a></li>
         {{else}}
           <li><a class="waves-effect waves-light" href="#searchModal"><i class="material-icons">search</i></a>
@@ -37,6 +40,7 @@
           <li><!-- Modal Trigger -->
             <a class="waves-effect waves-light" href="#signupModal">Restaurant Sign Up</a>  
           </li>
+          <li><a href="/directory">Restaurant Directory</a></li>
         {{/if}}
       </ul>
       
