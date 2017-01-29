@@ -407,6 +407,7 @@ $(document).ready(function(){
 					url: '/save-picture',
 					data: {picture: url},
 					success: function(data) {
+						$('.pictureprogress').removeClass("progress");
 						$('.update-picture').removeClass("disabled");
 					}
 				});
@@ -445,6 +446,7 @@ $(document).ready(function(){
       */
       function initUpload(){
       	$('.update-picture').addClass("disabled");
+      	$('.pictureprogress').addClass("progress");
         const files = document.getElementById('file-input').files;
         const file = files[0];
         if(file == null){
