@@ -140,7 +140,6 @@ function calculateAverageWait(input, previousTime) {
 router.get('/', function(req, res, next) {
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     profilePicture: true, id: true}, function(err, users){
-    console.log(users);
     var usersNew = [];
     for (var user in users) {
       //console.log(users[user].restaurantName);

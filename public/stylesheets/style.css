@@ -1,16 +1,6 @@
-/*html { 
-  background: url(restaurant.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+html {
+	font-family: 'Lato', sans-serif;
 }
-*/
-/*Sticky Footer*/
-
-/*@import url('https://fonts.googleapis.com/css?family=Roboto');*/
-
-
 
 .index{
 	background-image: url('../images/restaurant.jpg');
@@ -22,7 +12,6 @@ body {
 	flex-direction: column;
 }
 .topcontent {
-	/*background-image: url('restaurant.jpg');*/
 	background-size: cover;
 	flex: 1 0 auto;
 	margin-bottom: 15px;
@@ -407,6 +396,11 @@ hr {
 	left: 50%;
 }
 
+.hot-tea {
+	font-family: 'Bree Serif', serif;
+	font-size: 800%;
+}
+
 .hot-tea-logo {
 	margin-left: 15px;
 	margin-top: 7px;
@@ -415,4 +409,10 @@ hr {
 	height: 35px;
 	/*width: 3%;
 	height: 3%;*/
+}
+
+.text-logo {
+	font-family: 'Bree Serif', serif;
+	font-size: 150% !important;
+	margin-left: 2.5em;
 }
