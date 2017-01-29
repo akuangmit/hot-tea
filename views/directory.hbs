@@ -5,7 +5,7 @@
   <link rel="shortcut icon" type="image/png" href="../images/hot-tea-logo.png"/>
   <link rel="shortcut icon" type="image/png" href="http://eg.com/hot-tea-logo.png"/>
   
-  <title>restaurant directory</title>
+  <title>Restaurant Directory</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:light|Bree+Serif" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,7 +34,7 @@
             <tr>
               <td><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
               <td><a style="display: block; font-size: 1.5em; margin-left: 50px; margin-right: 50px;" href="/users/{{ id }}">{{restaurantName}}</a><div style="margin-left: 50px; margin-right: 50px;">{{restaurantDescription}}</div></td>
-              <td><div style="display: block; font-size: 1.25em; margin-right: 5em;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td>
+              <td><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td>
             </tr>
         {{/each}}
         </tbody>
