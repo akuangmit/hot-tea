@@ -140,6 +140,7 @@ function calculateAverageWait(input, previousTime) {
 router.get('/', function(req, res, next) {
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     profilePicture: true, id: true}, function(err, users){
+    console.log(users);
     var usersNew = [];
     for (var user in users) {
       //console.log(users[user].restaurantName);
@@ -281,29 +282,35 @@ router.get('/sign-s3', (req, res) => {
   });
   var fileName = req.query['file-name'];
   console.log(fileName);
+  console.log(fileName.endsWith('jpg') || fileName.endsWith('png'));
   //fileName = encodeURIComponent(fileName);
-  fileName = uuidV4();
-  console.log(fileName);
-  const fileType = req.query['file-type'];
-  const s3Params = {
-    Bucket: process.env.S3_BUCKET_NAME,
-    Key: fileName,
-    Expires: 60,
-    ContentType: fileType,
-    ACL: 'public-read'
-  };
-  s3.getSignedUrl('putObject', s3Params, (err, data) => {
-    if(err){
-      console.log(err);
-      return res.end();
-    }
-    const returnData = {
-      signedRequest: data,
-      url: `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`
+  //if (fileName.endsWith('jpg') || fileName.endsWith('png')) {
+    console.log("yay!");
+    fileName = uuidV4();
+    console.log(fileName);
+    const fileType = req.query['file-type'];
+    const s3Params = {
+      Bucket: process.env.S3_BUCKET_NAME,
+      Key: fileName,
+      Expires: 60,
+      ContentType: fileType,
+      ACL: 'public-read'
     };
-    res.write(JSON.stringify(returnData));
-    res.end();
-  });
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      if(err){
+        console.log(err);
+        return res.end();
+      }
+      const returnData = {
+        signedRequest: data,
+        url: `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`
+      };
+      res.write(JSON.stringify(returnData));
+      res.end();
+    });
+  // } else {
+  //   return res.end();
+  // }
 });
 
 /* POST upload file */

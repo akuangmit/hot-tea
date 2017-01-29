@@ -426,7 +426,7 @@ $(document).ready(function(){
               uploadFile(file, response.signedRequest, response.url);
             }
             else{
-              alert('Could not get signed URL.');
+              	alert('Could not get signed URL.');
             }
           }
         };
@@ -444,7 +444,16 @@ $(document).ready(function(){
         if(file == null){
           return alert('No file selected.');
         }
-        getSignedRequest(file);
+        var fileName = file["name"];
+        if (fileName.endsWith('jpg') || fileName.endsWith('png')) {
+        	getSignedRequest(file);
+        } else {
+        	$("#file-text").addClass("invalid");
+        	$("#file-text").removeClass("valid");
+    		$("#file-text").prop("aria-invalid", "true");
+    		$('.pictureprogress').removeClass("progress");
+    		Materialize.toast('Please enter a valid .jpg or .png file!', 4000)
+        }
       }
       /*
        Bind listeners when the page loads.
