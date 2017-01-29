@@ -325,7 +325,8 @@ router.get('/logout', function(req, res, next) {
   if (req.user) {
     req.logout();
   }
-  res.render('index');
+  // res.render('index');
+  res.redirect('/');
 })
 
 /* POST bar graph */
