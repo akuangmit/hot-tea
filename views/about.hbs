@@ -9,22 +9,51 @@
 </head>
 <body>
   {{>navbar}}
-<div class="topcontent abouttop">
-  <h5>About Webapp</h5>
-  <p>Webapp was created for the 2017 MIT 6.148 Web Programming Competition. The purpose of the website is to provide customers with up-to-date restaurant wait times, without having to call or physically being at the restaurants. This allows customers to have convenient information when deciding where to eat, and allows restaurant workers to completely focus on serving the customers currently at their restaurants.</p>
-  <h5>How to Use Webapp</h5>
-  <p>For restaurants: Sign up for a restaurant account, and on the "Update Wait Time" page, you can use quick select or manual selection to select the current wait time. When the restaurant is closed for the day, feel free to update by clicking the "Closed" button. This wait time will be shown on your personalized restaurant profile, where you can upload a restaurant photo and edit your restaurant description.</p>
-  <p>For other users: Click on "View Restaurants by Wait Time" to view a directory of all restaurants, sorted by shortest wait time. From the directory, you can click on the restaurants to view their profiles. If you have a specific restaurant in mind, you can search for the restaurant and be directed to that restaurant's profile.</p>
-  <h5>The Team</h5>
   <div class="row">
-    <img src="/images/andy.jpg" class="col s12 m4 l3 offset-l1">
-    <img src="/images/rhea.jpg" class="col s12 m4 l3">
-    <img src="/images/jenn.jpg" class="col s12 m4 l3">
+    <div class="topcontent abouttop col l6 offset-l3">
+      <h5>About Webapp</h5>
+      <p>Webapp was created for the 2017 MIT 6.148 Web Programming Competition. The purpose of the website is to provide customers with up-to-date restaurant wait times, without having to call or physically being at the restaurants. This allows customers to have convenient information when deciding where to eat, and allows restaurant workers to completely focus on serving the customers currently at their restaurants.</p>
+      <h5 class="center-align" style="margin-top: 1em;">How to Hot Tea</h5>
+    </div>
+      <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">store</i></h2>
+            <h5 class="center">For Restaurants</h5>
+
+            <p class="light">Sign up for a restaurant account, and on the "Update Wait Time" page, you can use quick select or manual selection to select the current wait time. When the restaurant is closed for the day, feel free to update by clicking the "Closed" button. This wait time will be shown on your personalized restaurant profile, where you can upload a restaurant photo and edit your restaurant description.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">For Guests</h5>
+
+            <p class="light">Click on "View Restaurants by Wait Time" to view a directory of all restaurants, sorted by shortest wait time. From the directory, you can click on the restaurants to view their profiles. If you have a specific restaurant in mind, you can search for the restaurant and be directed to that restaurant's profile.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
   </div>
-  <h5>Frequently Asked Questions</h5>
-  <p>Q: Why is your team name "Hot Tea"?</p>
-  <p>A: Slowly say it a few times and you will understand why!</p>
-</div>
+    <div class="row">
+      <h5 class="center-align">The Team</h5>
+    </div>
+      <div class="row">
+        <img src="/images/andy.jpg" class="col s12 m4 l4">
+        <img src="/images/rhea.jpg" class="col s12 m4 l4">
+        <img src="/images/jenn.jpg" class="col s12 m4 l4">
+      </div>
+      <div class="row">
+        <p class="center-align">Q: Why is your team name "Hot Tea"?</p>
+        <p class="center-align">A: Slowly say it a few times and you will understand why!</p>
+      </div>
 {{>searchModal}}
 {{>signupModal}}
 {{>loginModal}}
