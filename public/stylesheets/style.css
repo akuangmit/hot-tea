@@ -165,12 +165,16 @@ nav ul li a {
 	margin-top: 15px; 
 }
 
-.directoryRestaurants {
-	display: inline;
+.directory-top {
+	background-image: url("../images/naturebanner.jpg");
+	color: white;
+	padding-top: 5em;
+	padding-bottom: 5em;
 }
 
 .directoryRestaurants table {
-	padding-left:100px;
+	margin: auto;
+	max-width: 65%;
 }
 .modal {
 	max-height: 90%;

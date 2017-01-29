@@ -13,13 +13,13 @@
 </head>
 <body>
   {{>navbar}}
-<div class="topcontent">
-  <h4 style="text-align: center">Restaurant Directory</h4>
+<div class="topcontent directory-top">
+  <h3 style="text-align: center;">Restaurant Directory</h3>
 </div>
 <div class="content">
   <div class="directoryRestaurants">
-      <table>
-        <thead>
+      <table class="bordered highlight">
+        <!-- <thead>
           <tr>
               <th></th>
               <th data-field="profilepic">Photo</th>
@@ -27,18 +27,16 @@
               <th data-field="waittime">Current Wait Time (minutes)</th>
               <th data-field="timeSinceUpdate">Last Updated</th>
           </tr>
-        </thead>
+        </thead> -->
+        <tbody>
         {{#each users}}
-          <tbody>
             <tr>
-              <td></td>
-              <td class = "col s3 m3 l2"><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
-              <td class="col s3 m3 l2"><a href="/users/{{ id }}">{{restaurantName}}</a></td>
-              <td class="col s3 m3 l2">{{waitTime}}</td>
-              <td class="col s3 m3 l2">{{timeSinceUpdate}}</td>
+              <td><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
+              <td><a style="display: block; font-size: 1.5em; margin-left: 50px; margin-right: 50px;" href="/users/{{ id }}">{{restaurantName}}</a><div style="margin-left: 50px; margin-right: 50px;">{{restaurantDescription}}</div></td>
+              <td><div style="display: block; font-size: 1.25em; margin-right: 5em;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td>
             </tr>
-          </tbody>
         {{/each}}
+        </tbody>
       </table>
     </div>
 </div>
