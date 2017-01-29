@@ -372,4 +372,11 @@ p {
 
 footer.page-footer {
   margin: 0;
+  padding-top: 0;
 }
+
+hr {
+	border-color: rgba(248, 249, 249, 0.4);
+	border-width: 1px;
+}
+
