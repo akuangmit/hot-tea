@@ -397,12 +397,18 @@ router.post('/adduser', function(req, res, next) {
             res.redirect('/');
         });
         account.waitTime=240;
-        //console.log(req.body.restaurantName);
+        
         account.id = uuidV4();
         account.restaurantName = req.body.restaurantName;
         account.timeOfUpdate = Date.now();
         account.restaurantDescription = "hello";
-        account.profilePicture = "/images/restaurant.jpg";
+        
+        var ppArray = ['ramen.jpg', 'burger.jpg', 'sandwich.jpg', 'strawberries.jpg', 'cookies3.jpg'];
+        var index = Math.floor(Math.random() * ppArray.length);
+        var pp = ppArray[index];
+        var path = '../images/';
+        account.profilePicture = path + pp;
+        
         account.lastWaitTime = 0;
         account.currentDay = {};
         for (var i = 0; i < 24; i++) {
