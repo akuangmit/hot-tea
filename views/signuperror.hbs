@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Hot Tea</title>
+
+  <!-- CSS  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+  {{>navbar}}
+
+  <div id="index-banner" class="valign-wrapper loginform topcontent">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h4 class="header center white-text">Email address already registered. Try logging in or create a new account.</h4>
+        <div class="row center">
+          <div class="row modalText">
+      <form class="col s12 white" method="post" action="/adduser">
+        <div class="row modal-form-row">
+          <div class="input-field col s12 l6 offset-l3">
+            <input id="signup_restaurant_name" type="text" class="validate" required="" aria-required="true" name="restaurantName">
+            <label for="signup_restaurant_name">Restaurant Name</label>
+          </div>
+
+          <div class="input-field col s12 l6 offset-l3">
+            <input id="login_email_address" class="validate" type="email" required="" aria-required="true" name="username">
+            <label for="login_email_address" data-error="Please enter a valid email address.">Email Address</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s12 l6 offset-l3">
+            <input id="signup-password" type="password" class="validate" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" aria-required="true" name="password">
+            <label for="signup_password" data-error="Password must contain at least 6 characters, including a number, an uppercase letter, and a lowercase letter.">Password</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s12 l6 offset-l3">
+            <input id="confirm-password" type="password" class="validate" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" aria-required="true" name="confirm_password">
+            <label for="confirm_password" data-error="Passwords must match.">Confirm Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="signupformbutton">
+             <button href="#!" type="submit" class="modal-action black waves-effect waves-light btn-large signup_submit" style="color: white">Sign Up</button>
+          </div>
+          <a href="#loginModal" id="returning" type="submit" class="modal-action modal-close waves-effect waves-light btn-large black white-text">Returning User? Log In!</a> 
+        </div>
+      </form>
+    </div>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="../images/beefnoodlesoup.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+{{>searchModal}}
+{{>loginModal}}
+{{>signupModal}}
+{{>footer}}
+
+  <!--  Scripts-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/javascripts/myscript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../javascripts/materialize.js"></script>
+  <script src="../javascripts/init.js"></script>
+
+  </body>
+</html>

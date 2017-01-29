@@ -379,38 +379,47 @@ router.post('/waittime', function(req, res, next) {
 
 /* POST add user */
 router.post('/adduser', function(req, res, next) {
-    Account.register(new Account({ username : req.body.username}), req.body.password, function(err, account) {
+  Account.findOne({'username': req.body.username}, function(err, user) {
+    console.log("hello");
+    if (user != null) {
+      console.log("yes");
+      // res.redirect('/signuperror');
+      res.render('signuperror');
+    } else {
+      Account.register(new Account({ username : req.body.username}), req.body.password, function(err, account) {
         if (err) {
             console.log("error", err);
             console.log(req.body);
             return res.render('index', { account : account });
         }
         passport.authenticate('local')(req, res, function () {
-            //console.log(req.user);
+            console.log("hello");
+            console.log(req.body);
             res.redirect('/');
         });
-    account.waitTime=240;
-    //console.log(req.body.restaurantName);
-    account.id = uuidV4();
-    account.restaurantName = req.body.restaurantName;
-    account.timeOfUpdate = Date.now();
-    account.restaurantDescription = "hello";
-    account.profilePicture = "/images/restaurant.jpg";
-    account.lastWaitTime = 0;
-    account.currentDay = {};
-    for (var i = 0; i < 24; i++) {
-      account.currentDay[i] = [];
+        account.waitTime=240;
+        //console.log(req.body.restaurantName);
+        account.id = uuidV4();
+        account.restaurantName = req.body.restaurantName;
+        account.timeOfUpdate = Date.now();
+        account.restaurantDescription = "hello";
+        account.profilePicture = "/images/restaurant.jpg";
+        account.lastWaitTime = 0;
+        account.currentDay = {};
+        for (var i = 0; i < 24; i++) {
+          account.currentDay[i] = [];
+        }
+        account.previousTimes = {};
+        for (var i = 0; i < 7; i++) {
+          account.previousTimes[i] = {};
+          for (var j = 0; j < 24; j++) {
+            account.previousTimes[i][j] = null;
+          }
+        }
+        account.save();
+      });
     }
-    account.previousTimes = {};
-    for (var i = 0; i < 7; i++) {
-      account.previousTimes[i] = {};
-      for (var j = 0; j < 24; j++) {
-        account.previousTimes[i][j] = null;
-      }
-    }
-    account.save();
-    });
-    
+  });  
 });
 
 /* POST login user */
