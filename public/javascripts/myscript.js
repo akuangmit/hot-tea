@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	/* randomize landing page background */
 
-	var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'macarons.jpg', 'sushi.jpg'];
+	var bgArray = ['macarons.jpg'];
 	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
     var index = Math.floor(Math.random() * bgArray.length);
     var bg = bgArray[index]
@@ -9,12 +9,17 @@ $(document).ready(function(){
 
     $('#parallax1').attr('src', path+bg);
     
-    index = (index + 1) % bgArray.length;
+    var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'pasta.jpg', 'macarons.jpg', 'sushi.jpg'];
+	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
+    var index = Math.floor(Math.random() * bgArray.length);
+    var bg = bgArray[index]
+    var path = '../images/';
+
     bg = bgArray[index];
 
     $('#parallax2').attr('src', path+bg);
 
-    index = (index + 2) % bgArray.length;
+    index = (index + 1) % bgArray.length;
     bg = bgArray[index];
     
     $('#parallax3').attr('src', path+bg);
@@ -402,6 +407,6 @@ $(document).ready(function(){
 	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
 	$('.modal').modal();
 
-	//Materialize.updateTextFields();
+	Materialize.updateTextFields();
 
 });

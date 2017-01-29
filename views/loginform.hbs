@@ -1,45 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Title</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Hot Tea</title>
+
+  <!-- CSS  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="/stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+
   {{>navbar}}
-<div class="topcontent">
-  <h4 class="col s10 l11 black-text">&nbsp;&nbsp;Restaurant Log In</h4>
-  <div class="row">
-    <form class="col s12" method="post" action="/loginuser">
-      <div class="row">
-        <div class="input-field col s12 m12 l6">
-          <input id="login_email_address" type="email" class="validate" required="" aria-required="true" name="username">
-          <label for="login_email_address">Email Address</label>
+
+  <div id="index-banner" class="valign-wrapper loginform topcontent">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h4 class="header center white-text">Invalid Username/Password Combination. Please Try Again.</h4>
+        <div class="row center">
+          <div class="row modalText">
+      <form class="col s12 white" method="post" action="/loginuser">
+        <div class="row modal-form-row">
+          <div class="input-field col s12 l6 offset-l3">
+            <input id="login_email_address" type="email" required="" aria-required="true" name="username">
+            <label for="login_email_address" data-error="Please enter a valid email address.">Email Address</label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12 m12 l6">
-          <input id="login_password" type="password" class="validate" required="" aria-required="true" name="password">
-          <label for="login_password">Password</label>
+        <div class="row modalText">
+          <div class="input-field col s12 l6 offset-l3">
+            <input id="login_password" type="password" required="" aria-required="true" name="password">
+            <label for="login_password">Password</label>
+          </div>
+        </div>  
+        <div class="row">
+          <div class="loginformbuttons">
+            <button href="#!" class="modal-action black waves-effect waves-light btn-large login_submit" style="color: white">Log in</button>
+          </div>
+          <a href="#signupModal" type="submit" class="modal-action modal-close waves-effect waves-light btn-large black white-text">New User? Sign Up!</a>
         </div>
+      </form>
+    </div>
+        </div>
+        <br><br>
+
       </div>
     </div>
-    <button type="submit" class="black large btn loginfailbtn white-text">Log In!</button>
-  </form>
-  <!-- <a class="deep-orange lighten-3 waves-effect waves-light btn" id="enter" href="/restaurantprofile">Log In</a>
-  <a class="deep-orange lighten-3 waves-effect waves-light btn" id="enter" href="/signupform"> New User? Sign Up!</a> -->
-</div>
+    <div class="parallax"><img src="../images/beefnoodlesoup.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
 {{>searchModal}}
-{{>signupModal}}
 {{>loginModal}}
-<div>
-  <hr>
-</div>
+{{>signupModal}}
 {{>footer}}
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="/javascripts/myscript.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+  <!--  Scripts-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/javascripts/myscript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../javascripts/materialize.js"></script>
+  <script src="../javascripts/init.js"></script>
+
+  </body>
 </html>

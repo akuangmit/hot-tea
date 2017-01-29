@@ -322,6 +322,7 @@ p {
 	margin:auto;
 	width:70%;
 	height:100%;
+	padding-bottom: 100px;
 }
 
 /*Good settings*/
@@ -394,4 +395,15 @@ hr {
 .no-result h4 {
 	z-index:100;
 	color:white;
+}
+.footer-line{
+	padding-top: 80px;
+}
+.loginformbuttons{
+	display:block;
+	padding-bottom:10px;
+}
+
+.loginform{
+	margin:auto;
 }
