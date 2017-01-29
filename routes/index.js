@@ -277,6 +277,9 @@ router.post('/search', function(req, res, next) {
         //console.log('/users/' + user.id.toString());
         res.redirect('/users/' + user.id);
       }
+      else{
+        res.render('noresult');
+      }
     }
   });
 });

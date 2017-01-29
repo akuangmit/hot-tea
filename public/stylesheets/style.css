@@ -10,14 +10,16 @@
 
 /*@import url('https://fonts.googleapis.com/css?family=Roboto');*/
 
+
+
+.index{
+	background-image: url('../images/restaurant.jpg');
+}
+
 body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-}
-
-.index{
-	background-image: url('../images/restaurant.jpg');
 }
 .topcontent {
 	/*background-image: url('restaurant.jpg');*/
@@ -383,3 +385,13 @@ hr {
 	border-width: 1px;
 }
 
+.no-result img{
+	position:absolute;
+/*	left:0;
+	top:0;*/
+}
+
+.no-result h4 {
+	z-index:100;
+	color:white;
+}
