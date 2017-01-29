@@ -419,6 +419,9 @@ hr {
 	width: 30px;
 	height: 25px;
 }
+#page-display {
+	margin: auto;
+}
 /*div.pagination{
   margin-top: 1em;
 }

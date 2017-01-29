@@ -242,6 +242,7 @@ $(document).ready(function(){
 
 	$('#pagination-short li').click(function(){
 		window.location.reload();
+		$(document).scrollTop(0);
 	});
 
 	// $('.number-page-inner').click(function() {

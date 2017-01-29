@@ -148,17 +148,21 @@ router.get('/', function(req, res, next) {
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
   console.log(req.query);
-  var page = req.query.page;
+  var page = req.query.page; 
   if (page === undefined) {
     console.log("yes");
     page = 1;
   }
+  var begin = (page-1)*20;
+  var end = page*20;
+  var total;
   console.log(page);
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     profilePicture: true, id: true}, function(err, users){
+    total = users.length;
     var usersNew = [];
     for (var user in users) {
-      if (user > (page-1)*20-1 && user < page*20) {
+      if (user >= begin && user < end) {
         usersNew[user] = {};
         usersNew[user].username = users[user].username;
         usersNew[user].id = users[user].id;
@@ -168,11 +172,15 @@ router.get('/directory', function(req, res, next) {
         usersNew[user].profilePicture = users[user].profilePicture;
       }
     }
+    begin += 1;
+    if (end > total) {
+      end = total;
+    }
     if (req.user){
-      res.render('directory', {isLoggedIn: true, users: usersNew, url: req.user.id});
+      res.render('directory', {isLoggedIn: true, users: usersNew, begin: begin, end: end, total: total, url: req.user.id});
     }
     else {
-      res.render('directory', {isLoggedIn: false, users:usersNew});
+      res.render('directory', {isLoggedIn: false, begin: begin, end: end, total: total, users:usersNew});
     }
   }).sort({waitTime:1, timeOfUpdate:-1});
 })
