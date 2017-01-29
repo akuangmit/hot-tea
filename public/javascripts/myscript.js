@@ -394,13 +394,6 @@ $(document).ready(function(){
     		return false;
     	}
     });
-
-	$('.button-collapse').sideNav({
-    	menuWidth: 300,
-    	closeOnClick: true,
-    	edge: 'right',
-    	}
-  	);
   	
   	$('.collapsible').collapsible();
 
