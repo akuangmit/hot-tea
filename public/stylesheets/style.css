@@ -391,15 +391,20 @@ hr {
 #page-display {
 	margin: auto;
 }
+<<<<<<< Updated upstream
 #toast-container {
 	top: auto !important;
 	right: auto !important;
 	bottom: 65%;
 	left: 50%;
 }
-/*div.pagination{
-  margin-top: 1em;
+
+.hot-tea-logo {
+	margin-left: 15px;
+	margin-top: 7px;
+	margin-bottom: 3px;
+	width: 35px;
+	height: 35px;
+	/*width: 3%;
+	height: 3%;*/
 }
-#pagination-short{
-	width:20px;
-}*/
