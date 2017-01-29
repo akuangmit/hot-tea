@@ -320,9 +320,18 @@ p {
 .bar-graph{
 	/*margin:auto;*/
 	margin:auto;
-	width:50%;
+	width:80%;
 	height:100%;
 }
+
+/*Good settings*/
+/*.bar-graph{
+	margin:auto;
+	width:80%;
+	height:100%;
+}
+*/
+
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
