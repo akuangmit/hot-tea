@@ -220,6 +220,55 @@ $(document).ready(function(){
 		}
 	});
 
+	$('.number-page-inner').click(function() {
+		$('.number-page').removeClass("active active-page").addClass("waves-effect");
+		$(this.parentNode).addClass("active active-page").removeClass("waves-effect");
+		if($(this.parentNode).attr('id') === "page-5") {
+			$($('.right-slider-directory')[0].parentNode).addClass("disabled").removeClass("waves-effect");
+		} else {
+			if($($('.right-slider-directory')[0].parentNode).hasClass("disabled")) {
+				$($('.right-slider-directory')[0].parentNode).removeClass("disabled").addClass("waves-effect");
+			}
+		}
+		if($(this.parentNode).attr('id') === "page-1") {
+			$($('.left-slider-directory')[0].parentNode).addClass("disabled").removeClass("waves-effect");
+		} else {
+			if($($('.left-slider-directory')[0].parentNode).hasClass("disabled")) {
+				$($('.left-slider-directory')[0].parentNode).removeClass("disabled").addClass("waves-effect");
+			}
+		}
+	});
+
+	$('.right-slider-directory').click(function() {
+		var parent = $('.left-slider-directory')[0].parentNode;
+		$(parent).removeClass("disabled").addClass("waves-effect");
+		if($(".active-page").attr('id') === "page-4") {
+			var parent = $('.right-slider-directory')[0].parentNode;
+			$(parent).addClass("disabled").removeClass("waves-effect");
+		}	
+		if($(".active-page").attr('id') != "page-5"){
+			$(".active-page").addClass("waves-effect");
+			var next = $(".active-page").next()[0];
+			$('.number-page').removeClass("active active-page");
+			$(next).addClass("active active-page").removeClass("waves-effect");
+		}
+	});
+
+	$('.left-slider-directory').click(function() {
+		var parent = $('.right-slider-directory')[0].parentNode;
+		$(parent).removeClass("disabled").addClass("waves-effect");
+		if($(".active-page").attr('id') === "page-2") {
+			var parent = $('.left-slider-directory')[0].parentNode;
+			$(parent).addClass("disabled").removeClass("waves-effect");
+		}
+		if($(".active-page").attr('id') != "page-1"){
+			$(".active-page").addClass("waves-effect");
+			var prev = $(".active-page").prev()[0];
+			$('.number-page').removeClass("active active-page");
+			$(prev).addClass("active active-page").removeClass("waves-effect");
+		}
+	});
+
 	if (top.location.pathname.includes("/users")) {
 		var ctx = document.getElementById("myChart");
 		var restaurantName = document.getElementById("restaurant-name").textContent;
