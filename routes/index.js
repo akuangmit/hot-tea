@@ -404,10 +404,8 @@ router.post('/adduser', function(req, res, next) {
         account.restaurantDescription = "hello";
         
         var ppArray = ['ramen.jpg', 'burger.jpg', 'sandwich.jpg', 'strawberries.jpg', 'cookies3.jpg'];
-        var index = Math.floor(Math.random() * ppArray.length);
-        var pp = ppArray[index];
-        var path = '../images/';
-        account.profilePicture = path + pp;
+        var pp = ppArray[Math.floor(Math.random() * ppArray.length)]; 
+        account.profilePicture = '../images/'+pp;
         
         account.lastWaitTime = 0;
         account.currentDay = {};

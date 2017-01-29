@@ -2,28 +2,20 @@ $(document).ready(function(){
 	/* randomize landing page background */
 
 	var bgArray = ['macarons.jpg', 'brownies.jpg', 'choco.jpg'];
+    var bg1 = bgArray[Math.floor(Math.random() * bgArray.length)];
 
-	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
-    var index = Math.floor(Math.random() * bgArray.length);
-    var bg = bgArray[index]
-    var path = '../images/';
-
-    $('#parallax1').attr('src', path+bg);
+    $('#parallax1').attr('src', '../images/'+bg1);
     
-    var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'pasta.jpg', 'macarons.jpg', 'sushi.jpg', 'applepie.jpg', 'tableofcookies.jpg'];
-	// 'strawberries.jpg', 'cookies3.jpg', 'rhubarb.jpg'
-    var index = Math.floor(Math.random() * bgArray.length);
-    var bg = bgArray[index]
-    var path = '../images/';
+    var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'pasta.jpg', 'sushi.jpg', 'applepie.jpg', 'tableofcookies.jpg'];
+    var picIndex = Math.floor(Math.random() * bgArray.length);
+    var bg2 = bgArray[picIndex]
 
-    bg = bgArray[index];
+    $('#parallax2').attr('src', '../images/'+bg2);
 
-    $('#parallax2').attr('src', path+bg);
-
-    index = (index + 1) % bgArray.length;
-    bg = bgArray[index];
+    picIndex = (picIndex + 1) % bgArray.length;
+    bg3 = bgArray[picIndex];
     
-    $('#parallax3').attr('src', path+bg);
+    $('#parallax3').attr('src', '../images/'+bg3);
 
 	$('.button-collapse').sideNav({
     	menuWidth: 300,
