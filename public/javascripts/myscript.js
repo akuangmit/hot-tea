@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	/* randomize landing page background */
-
+	var myChart;
 	var bgArray = ['macarons.jpg', 'brownies.jpg', 'choco.jpg'];
     var bg1 = bgArray[Math.floor(Math.random() * bgArray.length)];
 
@@ -296,7 +296,10 @@ $(document).ready(function(){
 				for (var i=0; i<24;i++) {
 					dataPoints.push(dayData[i]);
 				}
-				var myChart = new Chart(ctx, {
+				if (myChart) {
+					myChart.destroy();
+				}
+				myChart = new Chart(ctx, {
 			    type: 'bar',
 			    data: {
 			        labels: ["12 am", "1 am", "2 am", "3 am", "4 am", "5 am", "6 am", "7 am", "8 am", 
