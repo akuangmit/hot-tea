@@ -27,7 +27,7 @@ nav ul li a {
 }
 
 .button {
-	background-color:#e57373;
+	background-color: #e57373;
 	color: white;
 }
 
@@ -157,23 +157,6 @@ nav ul li a {
 	font-size: 20px;
 }
 
-.displayWaitTime {
-	background-image: url('../images/naturebanner.jpg');
-	color: white;
-}
-
-.waitTimeContent {
-	text-align: center;
-}
-
-.updateWaitTitle {
-	margin-top: 1em;
-}
-
-.enterWait {
-	margin-top: 15px; 
-}
-
 .directory-top {
 	background-image: url("../images/naturebanner.jpg");
 	color: white;
@@ -221,21 +204,7 @@ nav ul li a {
 	height: 120px;
 }
 
-/*.restaurantcard{
-	display:inline;
-}
-*/
-
-.waitTimeRestaurant {
-	margin-top: 0px;
-	padding-top: 30px;
-	margin-bottom: 50px;
-}
-
-.timeSinceUpdate {
-	padding-top: 10px;
-	padding-bottom: 30px;
-}
+/*
 
 footer.page-footer {
 	margin-top: 0px;
@@ -437,8 +406,40 @@ hr {
 	margin-left: 2.5em;
 }
 
+/* UPDATE WAIT TIME PAGE */
+
+.update-wait-time-page {
+	background-image: url('../images/pasta.jpg');
+}
+
+.waitTimeRestaurant {
+	margin-top: 0px;
+	margin-bottom: 50px;
+}
+
+.timeSinceUpdate {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.restaurant-card {
+	margin-top: 2.5em;
+}
+
+.waitTimeContent {
+	text-align: center;
+}
+
+.updateWaitTitle {
+	margin-bottom: 1em;
+}
+
+.enterWait {
+	margin-top: 15px; 
+}
+
 .time-select {
-	margin: 2em;
+	margin-bottom: 2em;
 }
 
 .time-line {
@@ -456,3 +457,5 @@ hr {
 	width: 150px;
 	font-size: 0.75em;
 }
+
+/* END UPDATE WAIT TIME PAGE */

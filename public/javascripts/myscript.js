@@ -1,21 +1,28 @@
 $(document).ready(function(){
-	/* randomize landing page background */
+	/* randomize background pics */
 	var myChart;
 	var bgArray = ['macarons.jpg', 'brownies.jpg', 'choco.jpg'];
     var bg1 = bgArray[Math.floor(Math.random() * bgArray.length)];
 
-    $('#parallax1').attr('src', '../images/'+bg1);
+    $('#parallax1').attr('src', '../images/' + bg1);
     
     var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'pasta.jpg', 'sushi.jpg', 'applepie.jpg', 'tableofcookies.jpg'];
     var picIndex = Math.floor(Math.random() * bgArray.length);
     var bg2 = bgArray[picIndex]
 
-    $('#parallax2').attr('src', '../images/'+bg2);
+    $('#parallax2').attr('src', '../images/' + bg2);
 
     picIndex = (picIndex + 1) % bgArray.length;
     bg3 = bgArray[picIndex];
     
-    $('#parallax3').attr('src', '../images/'+bg3);
+    $('#parallax3').attr('src', '../images/' + bg3);
+
+    // var bgArray = ['pasta.jpg'];
+    // var picIndex = Math.floor(Math.random() * bgArray.length);
+    // var waitBg = bgArray[picIndex]
+
+    // $('.update-wait-time-page').css('background-image', 'url(' + '../images/' + waitBg + ')');
+
 
 	$('.button-collapse').sideNav({
     	menuWidth: 300,
