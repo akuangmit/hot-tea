@@ -282,7 +282,12 @@ $(document).ready(function(){
 	if (top.location.pathname.includes("/users")) {
 		var ctx = document.getElementById("myChart");
 		var restaurantName = document.getElementById("restaurant-name").textContent;
-		sendGraph(ctx, restaurantName, 0);
+		var date = new Date();
+		var daynum = date.getDay();
+		var num_day= {0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thu", 5: "Fri", 6: "Sat"};
+		var day = num_day[daynum];
+		$('#'+day).addClass("active active-page");
+		sendGraph(ctx, restaurantName, daynum);
 	};
 
 	function sendGraph(ctx, restaurantName, dayOfWeek) {
