@@ -1,2 +1,6 @@
 node_modules/
 npm-debug.log
+.DS_Store
+views/.DS_Store
+public/.DS_Store
+node_modules/.DS_Store
