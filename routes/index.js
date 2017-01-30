@@ -256,6 +256,19 @@ router.get('/searchresults', function(req, res, next) {
   }
 })
 
+/* POST search autocomplete */
+router.post('/search_results', function(req,res) {
+  Account.find({}, {_id:true, restaurantName: true}, function(err, users){
+    var usersNew = {}
+    for (var user in users) {
+      restaurantName = users[user].restaurantName
+      usersNew[restaurantName] = null;
+    }
+    //console.log(usersNew);
+    res.send(usersNew);
+  });
+});
+
 /* POST search */
 router.post('/search', function(req, res, next) {
   var input = req.body.searchInput;

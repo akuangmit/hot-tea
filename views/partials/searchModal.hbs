@@ -6,13 +6,12 @@
     <button href="#!" class="modalTop Topmodal-action modal-close waves-effect waves-light btn-flat" style="float: right"><i class="material-icons">close</i></button>
 
     <div class="row searchmodalText">
-    	<form id="searchBar" method="post" action="/search">
-			<div class="input-field searchInput">
-				<input class="searchInput" type="text" name="searchInput">
-        <label for="searchInput"></label>
-			</div>
-
-			<button href="#!" type="submit" class="modal-action black white-text waves-effect waves-light btn-flat modalPseudoFooter search black-text" style="float: right">Search</button>
+    	<form id="searchBar" method="post" action="/search" autocomplete="off">
+  			<div class="input-field searchInput">
+  				<input id="autocomplete-input" class="searchInput autocomplete" type="text" name="searchInput" autocomplete="off">
+          <label for="autocomplete-input"></label>
+  			</div>
+  			<button href="#!" type="submit" class="modal-action black white-text waves-effect waves-light btn-flat modalPseudoFooter search black-text" style="float: right">Search</button>
 		</form>
     </div>
   </div>

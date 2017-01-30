@@ -487,7 +487,37 @@ $(document).ready(function(){
     		return false;
     	}
     });
-  	
+
+    $('#autocomplete-input').focus(function(){
+    	console.log("hello");
+    	var names;
+    	$.ajax({
+			type: 'POST',
+			url: '/search_results',
+			async: false,
+			success: function(data) {
+				//console.log(data);
+				names = data;
+				console.log(names);
+				$('#autocomplete-input').autocomplete({  
+				    data: names,
+				    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+				});
+			}
+		});
+		// $('#autocomplete-input').autocomplete({   	
+		//     // data: {
+		//     //   "Apple": null,
+		//     //   "Microsoft": null,
+		//     //   "Google": 'http://placehold.it/250x250'
+		//     // },
+		//     data: names,
+		//     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+		// });
+    })
+
+    
+
   	$('.collapsible').collapsible();
 
 	$('select').material_select();
