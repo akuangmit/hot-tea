@@ -25,6 +25,12 @@ hr {
 	border-width: 1px;
 }
 
+.nav-button {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 0.5rem;
+}
+
 .button-collapse {
   color: #26a69a;
 }
@@ -275,20 +281,16 @@ footer.page-footer {
 	padding-bottom: 10px;
 }
 
-.restaurant-card {
-	margin-top: 2.5em;
-}
-
 .waitTimeContent {
 	text-align: center;
 }
 
-.updateWaitTitle {
-	margin-bottom: 1em;
+.restaurant-card {
+	margin-top: 2.5em;
 }
 
-.enterWait {
-	margin-top: 15px; 
+.updateWaitTitle {
+	margin-bottom: 1em;
 }
 
 .time-select {
@@ -302,17 +304,18 @@ footer.page-footer {
 }
 
 .wait-time {
+	margin-bottom: 5px;
 	width: 150px;
 	font-size: 0.75em;
 }
 
 .manualset {
-	width: 150px;
-	font-size: 0.75em;
+	width: 200px;
+	font-size: 1em;
 }
 
-.updatebutton {
-	margin-bottom: 5px;
+.enterWait {
+	margin-top: 15px; 
 }
 
 /* end update wait time */
