@@ -101,7 +101,12 @@ $(document).ready(function(){
 	$('.wait-time').click(function() {
 		var payload = {time: parseInt(this.id,10), timeOfUpdate: Date.now()};      
 		sendWaitTime(payload);
+		Materialize.toast('Wait Time Updated Successfully!', 4000) // 4000 is the duration of the toast
 	});
+
+	// $('.manualset').click(function(){
+	// 	Materialize.toast('Wait Time Updated Successfully!', 4000) // 4000 is the duration of the toast
+	// });
 
 	$('.enterWait').click(function() {
 		var hours = $('.input-hours select').val();
@@ -113,6 +118,11 @@ $(document).ready(function(){
 			minutes = 0;
 		}
 		var payload = {time: parseInt(hours,10)*60+parseInt(minutes,10), timeOfUpdate: Date.now()};
+		if (payload.time===0){
+			Materialize.toast('Wait Time Set To No Wait', 4000); // 4000 is the duration of the toast
+		} else{
+			Materialize.toast('Wait Time Updated Successfully!', 4000); // 4000 is the duration of the toast
+		}
 		sendWaitTime(payload);
 	});
 

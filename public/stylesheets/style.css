@@ -402,12 +402,12 @@ hr {
 #page-display {
 	margin: auto;
 }
-#toast-container {
+/*#toast-container {
 	top: auto !important;
 	right: auto !important;
 	bottom: 65%;
 	left: 50%;
-}
+}*/
 
 .hot-tea {
 	font-family: 'Bree Serif', serif;
