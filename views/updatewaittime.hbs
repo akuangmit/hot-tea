@@ -1,130 +1,133 @@
 <!DOCTYPE html>
 <html class="update-wait-time-page">
 <head>
+
   <link rel="shortcut icon" type="image/png" href="../images/hot-tea-logo.png"/>
   <link rel="shortcut icon" type="image/png" href="http://eg.com/hot-tea-logo.png"/>
 
-  <title>Update Wait Time</title>
+  <title>About</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:light|Bree+Serif" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 </head>
+
 <body>
+
   {{>navbar}}
 
-<div class="waitTimeContent">
-  <div class="row">
-    <div class="col l6 offset-l3">
-      <div class="card restaurant-card">
-        <div class="card-content">
-          <div class="displayWaitTime">
-            <h1 class="waitTimeRestaurant">{{restaurantName}}</h1>
-            <h5>Current Wait Time:</h5>
-            <h2 class="currentWaitTime">{{waitTime}}</h2>
-            <h6 class="timeSinceUpdate">updated {{timeSinceUpdate}}</h6>
+  <div class="waitTimeContent">
+    <div class="row">
+      <div class="col l6 offset-l3">
+        <div class="card restaurant-card">
+          <div class="card-content">
+            <div class="displayWaitTime">
+              <h1 class="waitTimeRestaurant">{{restaurantName}}</h1>
+              <h5>Current Wait Time:</h5>
+              <h2 class="currentWaitTime">{{waitTime}}</h2>
+              <h6 class="timeSinceUpdate">updated {{timeSinceUpdate}}</h6>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row"> 
-    <div class="card col l10 offset-l1">
-      <div class="topcontent card-content">
-      <h4 class="updateWaitTitle">Update Wait Time</h4>
-        <hr class="time-line">
-        <h5 class="time-select">Quick Select</h5>
-        <div class="row">
-          <div class="col s12 m12 l2 offset-l4">
-            <span class="flow-text">
-              <a class="black waves-effect waves-light btn-large updatebutton wait-time " id = "0">No Wait</a>
-            </span>
-          </div>
-          <div class="col s12 m12 l2">
-            <span class="flow-text">
-              <a class="black waves-effect waves-light btn-large updatebutton wait-time " id = "999">Closed</a>
-            </span>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col s12 m12 l2 offset-l2">
-            <span class="flow-text">
-              <a class="black waves-effect waves-light btn-large updatebutton wait-time " id = "5">5 Min</a>
-            </span>
-          </div>
-          <div class="col s12 m12 l2">
-            <span class="flow-text">
-              <a class="black waves-effect waves-light btn-large updatebutton wait-time" id = "10">10 Min</a>
-            </span>
-          </div>
-          <div class="col s12 m12 l2">
-            <span class="flow-text">
-              <a class="black waves-effect waves-light btn-large updatebutton wait-time" id = "15">15 Min</a>
-            </span>
-          </div>
-          <div class="col s12 m12 l2">
-            <span class="flow-text">
-              <a class="black waves-effect waves-light btn-large updatebutton wait-time" id = "30">30 Min</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <hr class="time-line">
-
-      <div id="bottom">
-        <h5 class="time-select">Manually Insert Time</h5>
-        <div class="row">
-          <div class="col s6 m4 offset-m2 l2 offset-l4 input-field input-hours" href='#'>
-              <select>
-                <option value="0" disabled selected>Hours</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3+</option>
-              </select>
-              <!-- <label>Hours</label> -->
-          </div>
-          <div class="col s6 m4 l2 input-field input-minutes" href='#'>
-              <select>
-                <option value="0" disabled selected>Minutes</option>
-                <option value="0">0</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-                <option value="25">25</option>
-                <option value="30">30</option>
-                <option value="35">35</option>
-                <option value="40">40</option>
-                <option value="45">45</option>
-                <option value="50">50</option>
-                <option value="55">55</option>
-              </select>
-              <!-- <label>Minutes</label> -->
-          </div>
+    <div class="row"> 
+      <div class="card col l10 offset-l1">
+        <div class="topcontent card-content">
+        <h4 class="updateWaitTitle">Update Wait Time</h4>
+          <hr class="time-line">
+          <h5 class="time-select">Quick Select</h5>
           <div class="row">
-            <div class="col s12">
-              <a class="black waves-effect waves-light btn-large enterWait manualset">Set Wait Time</a>
+            <div class="col s12 m12 l2 offset-l4">
+              <span class="flow-text">
+                <a class="black waves-effect waves-light btn-large updatebutton wait-time " id = "0">No Wait</a>
+              </span>
+            </div>
+            <div class="col s12 m12 l2">
+              <span class="flow-text">
+                <a class="black waves-effect waves-light btn-large updatebutton wait-time " id = "999">Closed</a>
+              </span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12 m12 l2 offset-l2">
+              <span class="flow-text">
+                <a class="black waves-effect waves-light btn-large updatebutton wait-time " id = "5">5 Min</a>
+              </span>
+            </div>
+            <div class="col s12 m12 l2">
+              <span class="flow-text">
+                <a class="black waves-effect waves-light btn-large updatebutton wait-time" id = "10">10 Min</a>
+              </span>
+            </div>
+            <div class="col s12 m12 l2">
+              <span class="flow-text">
+                <a class="black waves-effect waves-light btn-large updatebutton wait-time" id = "15">15 Min</a>
+              </span>
+            </div>
+            <div class="col s12 m12 l2">
+              <span class="flow-text">
+                <a class="black waves-effect waves-light btn-large updatebutton wait-time" id = "30">30 Min</a>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="time-line">
+
+        <div id="bottom">
+          <h5 class="time-select">Manually Insert Time</h5>
+          <div class="row">
+            <div class="col s6 m4 offset-m2 l2 offset-l4 input-field input-hours" href='#'>
+                <select>
+                  <option value="0" disabled selected>Hours</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3+</option>
+                </select>
+            </div>
+            <div class="col s6 m4 l2 input-field input-minutes" href='#'>
+                <select>
+                  <option value="0" disabled selected>Minutes</option>
+                  <option value="0">0</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
+                  <option value="35">35</option>
+                  <option value="40">40</option>
+                  <option value="45">45</option>
+                  <option value="50">50</option>
+                  <option value="55">55</option>
+                </select>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <a class="black waves-effect waves-light btn-large enterWait manualset">Set Wait Time</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-{{>searchModal}}
-{{>signupModal}}
-{{>loginModal}}
-<!-- <div class="footer-line">
-  <hr>
-</div> -->
-{{>footer}}
+
+  {{>searchModal}}
+  {{>signupModal}}
+  {{>loginModal}}
+  {{>footer}}
+
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/myscript.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
 </html>

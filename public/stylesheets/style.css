@@ -459,3 +459,31 @@ hr {
 }
 
 /* END UPDATE WAIT TIME PAGE */
+
+/* ABOUT PAGE */
+
+.about-logo {
+	width: 15%;
+	height: 15%;
+}
+
+.about-title {
+	margin-top: 0px;
+	margin-bottom: 50px;
+}
+
+.about-content {
+	text-align: center;
+}
+
+.about-card {
+	margin-top: 2.5em;
+	margin-bottom: -1em;
+	padding-bottom: 1em;
+}
+
+.team-card {
+	margin-bottom: 1.5em;
+}
+
+/* END ABOUT PAGE */

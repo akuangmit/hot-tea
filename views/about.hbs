@@ -1,89 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html class="update-wait-time-page">
 <head>
+
   <link rel="shortcut icon" type="image/png" href="../images/hot-tea-logo.png"/>
   <link rel="shortcut icon" type="image/png" href="http://eg.com/hot-tea-logo.png"/>
-  
+
   <title>About</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:light|Bree+Serif" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 </head>
+
 <body>
+
   {{>navbar}}
-  <div class="row">
-    <div class="topcontent abouttop col l6 offset-l3">
-      <h5 style="font-size:30px;"><b>About Hot Tea</b></h5>
-      <p style="font-size: 18px;">Hot Tea was created for the 2017 MIT 6.148 Web Programming Competition. The purpose of the website is to provide customers with up-to-date restaurant wait times, without having to call or physically being at the restaurants. This allows customers to have convenient information when deciding where to eat, and allows restaurant workers to completely focus on serving the customers currently at their restaurants.</p>
-      <h5 class="center-align" style="margin-top: 1em; font-size:30px;"><b>How to Hot Tea</b></h5>
-    </div>
-      <div class="container">
-    <div class="section">
 
-      <!--   Icon Section   -->
-      <div class="col s12 m6">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center"><b>For Guests</b></h5>
-            <ul>
-              <li>
-                <p> <b style="font-size:20px;">Directory</b>: Click "View Restaurants Wait Times" to view the restaurant directory, sorted by shortest wait time. 
-                  From the directory, you can click on restaurants to view their profiles.</p>
-              </li>
-              <li>
-                <p> <b style="font-size:20px;">Search</b>: You can search for a specific restaurant and be directed to that restaurant's profile.</p>
-              </li>
-            </ul>
+  <div class="about-content">
+    <div class="row">
+      <div class="col s12 m12 l8 offset-l2">
+        <div class="card about-card">
+          <div class="card-content">
+            <div>
+              <img class="about-logo" src="../images/hot-tea-logo.svg">
+              <h3 class="about-title">About Hot Tea</h3>
+              <div class="row">
+                <p class="left-align col l10 offset-l1" style="display: block;">Hot Tea provides customers with live restaurant wait times. With a click of a button, restaurants can easily provide information that customers can conveniently view when deciding where to eat.</p>
+              </div>
+              <p class="grey-text">Hot Tea was created by Jennifer, Andy, and Rhea for the 2017 MIT 6.148 Web Programming Competition.</p>
+            </div>
           </div>
         </div>
-      <div class="row">
-        <div class="col s12 m6">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">store</i></h2>
-            <h5 class="center"><b>For Restaurants</b></h5>
-            <ul>
-              <li><p><b style="font-size:20px;">Update Wait Time</b>: Create a restaurant account and click on "Update Wait Time." Use quick select or manual select to select current wait time.</p>
-              </li>
-              <li><p><b style="font-size:20px;"> Profile</b>: Wait time will be shown on your personalized restaurant profile, where you can upload a restaurant photo and edit your restaurant description.</p>
-              </li>
-            </ul> 
-
-<!--             <p class="light">Sign up for a restaurant account, and on the "Update Wait Time" page, you can use quick select or manual selection to select the current wait time. When the restaurant is closed for the day, feel free to update by clicking the "Closed" button. This wait time will be shown on your personalized restaurant profile, where you can upload a restaurant photo and edit your restaurant description.</p> -->
-          </div>
-        </div>
-
       </div>
+    </div>
 
+    <div class="row">
+      <div class="col s12 m12 l8 offset-l2">
+        <div class="card about-card">
+          <div class="card-content">
+            <div>
+              <h3>How to Hot Tea</h3>
+                <div class="row">
+                  <div class="col s12 m6">
+                    <div class="icon-block">
+                      <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                      <h5 class="center"><b>For Guests</b></h5>
+                      <ul>
+                        <li><p class="left-align"><b style="font-size:20px;">Directory</b>: Click "View Restaurants Wait Times" to view the restaurant directory, sorted by shortest wait time. From the directory, you can click on restaurants to view their profiles.</p></li>
+                        <li><p class="left-align"><b style="font-size:20px;">Search</b>: You can search for a specific restaurant and be directed to that restaurant's profile.</p></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="col s12 m6">
+                    <div class="icon-block">
+                      <h2 class="center brown-text"><i class="material-icons">store</i></h2>
+                      <h5 class="center"><b>For Restaurants</b></h5>
+                      <ul>
+                        <li><p class="left-align"><b style="font-size:20px;">Update Wait Time</b>: Create a restaurant account and click on "Update Wait Time." Use quick select or manual select to select current wait time.</p>
+                        </li>
+                        <li><p class="left-align"><b style="font-size:20px;">Profile</b>: Wait time will be shown on your personalized restaurant profile, where you can upload a restaurant photo and edit your restaurant description.</p>
+                        </li>
+                      </ul> 
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m12 l8 offset-l2">
+        <div class="card about-card team-card">
+          <div class="card-content">
+            <div>
+              <div>
+                <div class="row">
+                  <h3 class="center-align">The Team</h3>
+                </div>
+                <div class="row">
+                  <img src="/images/andy.jpg" class="col s12 m4 l4">
+                  <img src="/images/rhea.jpg" class="col s12 m4 l4">
+                  <img src="/images/jenn.jpg" class="col s12 m4 l4">
+                </div>
+                <div class="row">
+                  <p class="col s12 m4 l4 center-align" style="font-size:20px;">Andy Kuang</p>
+                  <p class="col s12 m4 l4 center-align" style="font-size:20px;">Rhea Lin</p>
+                  <p class="col s12 m4 l4 center-align" style="font-size:20px;">Jennifer McCleary</p>
+                </div>
+                <div class="row" style="font-size:20px; margin-top:2em">
+                  <p class="center-align grey-text">Q: Why is your team name "Hot Tea"?</p>
+                  <p class="center-align grey-text">A: Slowly say it a few times and you will understand why!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-    <div class="row">
-      <h5 class="center-align"><b>The Team</b></h5>
-    </div>
-      <div class="row">
-        <img src="/images/andy.jpg" class="col s12 m4 l4">
-        <img src="/images/rhea.jpg" class="col s12 m4 l4">
-        <img src="/images/jenn.jpg" class="col s12 m4 l4">
-      </div>
-      <div class="row">
-        <p class="col s12 m4 l4 center-align" style="font-size:20px;">Andy Kuang</p>
-        <p class="col s12 m4 l4 center-align" style="font-size:20px;">Rhea Lin</p>
-        <p class="col s12 m4 l4 center-align" style="font-size:20px;">Jennifer McCleary</p>
-      </div>
-      <div class="row" style="font-size:20px; margin-top:2em">
-        <p class="center-align">Q: Why is your team name "Hot Tea"?</p>
-        <p class="center-align">A: Slowly say it a few times and you will understand why!</p>
-      </div>
-{{>searchModal}}
-{{>signupModal}}
-{{>loginModal}}
-<div class="footer-line">
-  <hr>
-</div>
-{{>footer}}
+
+  {{>searchModal}}
+  {{>signupModal}}
+  {{>loginModal}}
+  {{>footer}}
+  
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/myscript.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
 </html>
