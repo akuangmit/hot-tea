@@ -38,6 +38,13 @@ nav ul li a {
 .profile-button {
 	margin-top: 3em;
 	margin-bottom: 0.5em;
+	width: 315px;
+	font-size: 0.8em;
+}
+
+.edit-desc-button {
+	width: 315px;
+	font-size: 0.8em;
 }
 
 .active-page {
@@ -428,4 +435,24 @@ hr {
 	font-family: 'Bree Serif', serif;
 	font-size: 150% !important;
 	margin-left: 2.5em;
+}
+
+.time-select {
+	margin: 2em;
+}
+
+.time-line {
+	margin-top: 3em;
+	margin-bottom: 3em;
+	width: 75%;
+}
+
+.wait-time {
+	width: 150px;
+	font-size: 0.75em;
+}
+
+.manualset {
+	width: 150px;
+	font-size: 0.75em;
 }
