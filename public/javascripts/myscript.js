@@ -370,7 +370,7 @@ $(document).ready(function(){
 			    		display: false
 			    	}, 
 			    	title: {
-                    display: true,
+                    display: false,
                     text: "Average Wait Times for Previous Week (Mins)"
                 },
 			        scales: {

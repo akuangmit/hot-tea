@@ -17,37 +17,22 @@
   {{>navbar}}
 <div class="topcontent">
   <div class="row">
-    <div class="col s12 m6 l4">
-      <div class="card pictureCard">
+    <div class="col s12 m12 l8 offset-l2">
+      <div class="card horizontal profile-card">
         <div class="card-image">
           <img src={{photo}}>
         </div>
-        {{#if currentUser}}
-        <div class="card-content">
-          <a class="white black-text waves-effect waves-light btn-large button" href="#pictureModal">Update Profile Picture</a>
-        </div>
-        {{/if}}
-      </div>
-    </div>
-    <div class="col s12 m6 l8">
-      <div class="card">
-        {{#if currentUser}}
-        <div class="card-content">
-          <!-- <a class="waves-effect waves-light" href="#descriptionModal">Edit Description</a> -->
-          <a class="white black-text waves-effect waves-light btn-large button" href="#descriptionModal">Edit Description</a>
-        </div>
-        {{/if}}
-        <div class="card-content">
-          <span id="restaurant-name" class="card-title">{{restaurantName}}</span>
-        </div>
-        <div class="card-content">
-          <p>Current Wait Time: {{waitTime}}</p>
-        </div>
-        <div class="card-content">
-          <p>Last Updated: {{timeSinceUpdate}}</p>
-        </div>
-        <div class="card-content">
-          <p>{{restaurantDescription}}</p>
+        <div class="card-stacked">
+          <div class="card-content">
+            <span id="restaurant-name" class="card-title">{{restaurantName}}</span>
+            <p>Current Wait Time: {{waitTime}}</p>
+            <p>Last Updated: {{timeSinceUpdate}}</p>
+            <p>{{restaurantDescription}}</p>
+            {{#if currentUser}}
+            <a class="white-text black waves-effect waves-light btn button profile-button" href="#descriptionModal">Edit Description</a>
+            <a class="white-text black waves-effect waves-light btn button" href="#pictureModal">Update Profile Picture</a>
+            {{/if}}
+          </div>
         </div>
       </div>
     </div>
@@ -66,6 +51,9 @@
     <li class="waves-effect"><a class="right-slider"><i class="material-icons">chevron_right</i></a></li>
   </ul>
 </div>
+
+<h5 class="center-align">Average Wait Times Last Week (in Minutes)<h5>
+
 <div class="bar-graph">
   <canvas id="myChart"></canvas>
 </div>
