@@ -46,7 +46,6 @@ function displayTime(time) {
 }
 
 var j = schedule.scheduleJob('0 0 0 * * *', function() {
-  //console.log("entering scheduler");
   Account.find({}, {_id:true, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     previousTimes: true, currentDay: true, lastWaitTime: true, id: true}, function(err, users){
       for (var index in users) {
@@ -62,11 +61,9 @@ var j = schedule.scheduleJob('0 0 0 * * *', function() {
         }
         user.markModified('currentDay');
         user.markModified('previousTimes');
-        //console.log(user);
         user.save();
       }
     });
-    //console.log("It works!!");
 });
 
 /* convert time since last wait time update in minutes to display time since update */
@@ -86,7 +83,6 @@ function displayTimeSinceUpdate(time) {
 /* calculate the average wait times per hour for a given day. Input should be an object,
     with hours mapping to arrays of objects. Those objects are minutes mapped to wait time. */
 function calculateAverageWait(input, previousTime) {
-  //console.log(input);
   if (input[0].length < 1) {
     var temp = {};
     temp[0] = previousTime;
@@ -120,9 +116,7 @@ function calculateAverageWait(input, previousTime) {
     var lastHour = Object.keys(input[i-1][input[i-1].length-1])[0];
     var lastWaitTime = input[i-1][input[i-1].length-1][lastHour]; 
     result[i] = Object.keys(input[i][0])[0]*lastWaitTime;
-    //console.dir(input[i]);
     for (var j = 0; j < input[i].length-1;j++) {
-      //console.log(i + " Hello");
       var currentMinutes = Object.keys(input[i][j])[0];
       var nextMinutes = Object.keys(input[i][j+1])[0];
       var currentWaitTime = input[i][j][currentMinutes];
@@ -142,7 +136,6 @@ router.get('/', function(req, res, next) {
     profilePicture: true, id: true}, function(err, users){
     var usersNew = [];
     for (var user in users) {
-      //console.log(users[user].restaurantName);
       usersNew[user] = {};
       usersNew[user].id = users[user].id;
       usersNew[user].restaurantName = users[user].restaurantName;
@@ -171,16 +164,13 @@ router.get('/updatewaittime', function(req, res, next) {
 
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
-  console.log(req.query);
   var page = req.query.page; 
   if (page === undefined) {
-    console.log("yes");
     page = 1;
   }
   var begin = (page-1)*20;
   var end = page*20;
   var total;
-  console.log(page);
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     profilePicture: true, id: true, restaurantDescription: true}, function(err, users){
     total = users.length;
@@ -202,10 +192,11 @@ router.get('/directory', function(req, res, next) {
       end = total;
     }
     if (req.user){
-      res.render('directory', {isLoggedIn: true, users: usersNew, begin: begin, end: end, total: total, url: req.user.id});
+      res.render('directory', {isLoggedIn: true, users: usersNew, begin: begin, end: end, total: total,
+       Title: "Restaurant Directory", url: req.user.id});
     }
     else {
-      res.render('directory', {isLoggedIn: false, begin: begin, end: end, total: total, users:usersNew});
+      res.render('directory', {isLoggedIn: false, begin: begin, end: end, total: total, users:usersNew, Title: "Restaurant Directory"});
     }
   }).sort({waitTime:1, timeOfUpdate:-1});
 })
@@ -249,11 +240,21 @@ router.get('/signupform', function(req, res, next) {
 
 /* GET search results page */
 router.get('/searchresults', function(req, res, next) {
-  if (req.user) {
-   res.render('searchresults', {isLoggedIn: true, title: 'Search Results', url: req.user.id});
-  } else {
-    res.render('searchresults', {isLoggedIn: false, title: 'Search Results' });
-  }
+  var query = req.query.search;
+  console.log(query);
+  Account.find({'restaurantName': new RegExp('^' + query, "i")}, function(err, users) {
+    console.log(users);
+    if (users.length > 0) {
+      console.log(users.length);
+    } else {
+      res.render('noresult');c
+    }
+  });   
+  // if (req.user) {
+  //  res.render('searchresults', {isLoggedIn: true, title: 'Search Results', url: req.user.id});
+  // } else {
+  //   res.render('searchresults', {isLoggedIn: false, title: 'Search Results' });
+  // }
 })
 
 /* POST search autocomplete */
@@ -264,7 +265,6 @@ router.post('/search_results', function(req,res) {
       restaurantName = users[user].restaurantName
       usersNew[restaurantName] = null;
     }
-    //console.log(usersNew);
     res.send(usersNew);
   });
 });
@@ -277,11 +277,54 @@ router.post('/search', function(req, res, next) {
       console.log("error");
     } else {
       if (user!=null){
-        //console.log('/users/' + user.id.toString());
         res.redirect('/users/' + user.id);
       }
       else{
-        res.render('noresult');
+        var page = req.query.page; 
+        if (page === undefined) {
+          page = 1;
+        }
+        var begin = (page-1)*20;
+        var end = page*20;
+        var total;
+        Account.find({'restaurantName': new RegExp('^' + input, "i")}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
+          profilePicture: true, id: true, restaurantDescription: true}, function(err, users){
+          total = users.length;
+          var usersNew = [];
+          for (var user in users) {
+            if (user >= begin && user < end) {
+              usersNew[user] = {};
+              usersNew[user].username = users[user].username;
+              usersNew[user].id = users[user].id;
+              usersNew[user].restaurantName = users[user].restaurantName;
+              usersNew[user].waitTime = displayTime(users[user].waitTime);
+              usersNew[user].timeSinceUpdate = displayTimeSinceUpdate(Date.now()-users[user].timeOfUpdate);
+              usersNew[user].profilePicture = users[user].profilePicture;
+              usersNew[user].restaurantDescription = users[user].restaurantDescription;
+            }
+          }
+          begin += 1;
+          if (end > total) {
+            end = total;
+          }
+          if (req.user){
+            res.render('directory', {isLoggedIn: true, users: usersNew, begin: begin, end: end, total: total,
+            Title: "Search Results", url: req.user.id});
+          }
+          else {
+            res.render('directory', {isLoggedIn: false, begin: begin, end: end, total: total, users:usersNew, Title: "Search Results"});
+          }
+        }).sort({waitTime:1, timeOfUpdate:-1});
+        // var query = encodeURIComponent(input);
+        // res.redirect('/searchresults?search=' + query);
+        // Account.find({'restaurantName': new RegExp('^' + input, "i")}, function(err, users) {
+        //   console.log(users);
+        //   if (users.length > 0) {
+        //     console.log(users.length);
+        //   } else {
+        //     res.render('noresult');
+        //   }
+        // });   
       }
     }
   });
@@ -294,41 +337,32 @@ router.get('/sign-s3', (req, res) => {
     secretAccessKey: process.env.S3_SECRET
   });
   var fileName = req.query['file-name'];
+  fileName = uuidV4();
   console.log(fileName);
-  console.log(fileName.endsWith('jpg') || fileName.endsWith('png'));
-  //fileName = encodeURIComponent(fileName);
-  //if (fileName.endsWith('jpg') || fileName.endsWith('png')) {
-    console.log("yay!");
-    fileName = uuidV4();
-    console.log(fileName);
-    const fileType = req.query['file-type'];
-    const s3Params = {
-      Bucket: process.env.S3_BUCKET_NAME,
-      Key: fileName,
-      Expires: 60,
-      ContentType: fileType,
-      ACL: 'public-read'
+  const fileType = req.query['file-type'];
+  const s3Params = {
+    Bucket: process.env.S3_BUCKET_NAME,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: 'public-read'
+  };
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if(err){
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`
     };
-    s3.getSignedUrl('putObject', s3Params, (err, data) => {
-      if(err){
-        console.log(err);
-        return res.end();
-      }
-      const returnData = {
-        signedRequest: data,
-        url: `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`
-      };
-      res.write(JSON.stringify(returnData));
-      res.end();
-    });
-  // } else {
-  //   return res.end();
-  // }
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
 });
 
 /* POST upload file */
 router.post('/save-picture', function(req, res) {
-  console.log(req.body);
   Account.findOne({'username':req.user.username}, function(err,user) {
     if (err) {
       console.log('error');
@@ -336,7 +370,6 @@ router.post('/save-picture', function(req, res) {
     user.profilePicture = req.body.picture;
     user.save();
     res.send("success");
-    //res.redirect('/users/' + req.user.id);
   }) 
 });
 
@@ -345,13 +378,11 @@ router.get('/logout', function(req, res, next) {
   if (req.user) {
     req.logout();
   }
-  // res.render('index');
   res.redirect('/');
 })
 
 /* POST bar graph */
 router.post('/bar_graph', function(req, res, next) {
-  //console.log(req.body);
   Account.findOne({'restaurantName': req.body.name}, function(err,user){
     if (err) {
       console.log('error');
@@ -364,7 +395,6 @@ router.post('/bar_graph', function(req, res, next) {
 router.post('/page_numbers', function(req, res, next) {
   Account.find({}, {_id:true, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     previousTimes: true, currentDay: true, lastWaitTime: true, id: true}, function(err, users){
-      console.log(users.length);
       res.send({length: users.length});
   });
 });
@@ -388,8 +418,6 @@ router.post('/waittime', function(req, res, next) {
     var temp = {};
     temp[minutes] = time;
     user.currentDay[hour].push(temp);
-    // console.log("after");
-    // console.log(user.currentDay);
     user.markModified('currentDay');
     user.save();
     res.send("success");
@@ -399,21 +427,15 @@ router.post('/waittime', function(req, res, next) {
 /* POST add user */
 router.post('/adduser', function(req, res, next) {
   Account.findOne({'username': req.body.username}, function(err, user) {
-    console.log("hello");
     if (user != null) {
-      console.log("yes");
-      // res.redirect('/signuperror');
       res.render('signuperror');
     } else {
       Account.register(new Account({ username : req.body.username}), req.body.password, function(err, account) {
         if (err) {
             console.log("error", err);
-            console.log(req.body);
             return res.render('index', { account : account });
         }
         passport.authenticate('local')(req, res, function () {
-            console.log("hello");
-            console.log(req.body);
             res.redirect('/');
         });
         account.waitTime=240;
@@ -479,7 +501,6 @@ router.get('/users/:id', function(req,res,next) {
         console.log('error');
       } else {
         if (currentUser) {
-          //user.restaurantDescription = user.restaurantDescription.replace("\w","&nbsp;")
           res.render('profile', {isLoggedIn: true, currentUser: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
             title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
             restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture});
@@ -496,8 +517,6 @@ router.get('/users/:id', function(req,res,next) {
       if (err) {
         console.log('error');
       } else {
-        // console.log(user);
-        // console.log(user.restaurantName);
         res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
           timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
           restaurantDescription: user.restaurantDescription, title: user.restaurantName});
