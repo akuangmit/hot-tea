@@ -436,13 +436,7 @@ footer.page-footer {
 	border-bottom: 0px !important;
 }
 
-/*#toast-container {
-	top: auto !important;
-	right: auto !important;
-	bottom: 65%;
-	left: 50%;
-}*/
-
-/*.landing-search-bar {
-	background-color:#b0d520;
-}*/
+#map {
+	height: 25em;
+    width: 25em;
+}

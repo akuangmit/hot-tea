@@ -493,24 +493,24 @@ router.post('/editProfile', function(req, res, next) {
     if (err) {
       console.log('error');
     }
-    console.log(req.body);
     user.restaurantDescription = req.body.restaurantDescription;
-    console.log(user.address);
     user.address["Street"] = req.body.streetAddress;
     user.address["City"] = req.body.city;
     user.address["State"] = req.body.state;
     user.address["Zip"] = req.body.zip;
     user.markModified('address');
-    console.log(user.address);
     user.save();
     res.redirect('/users/' + req.user.id);
   });
 });
 
-// /* GET test map page */
-// router.get('/map', function(req, res, next) {
-//   res.render('map');
-// })
+/* POST get map location */
+router.post('/map_location', function(req, res, next) {
+  var userID = req.body.id;
+  Account.findOne({'id': userID}, function(err, user) {
+    res.send(displayAddress(user.address));
+  });
+});
 
 /* GET individual restaurant profile page */
 router.get('/users/:id', function(req,res,next) {
@@ -533,12 +533,12 @@ router.get('/users/:id', function(req,res,next) {
             title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
             restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
             streetAddress: user.address["Street"], city: user.address["City"], 
-            state: user.address["State"], zip: user.address["Zip"], address: address});
+            state: user.address["State"], zip: user.address["Zip"], address: address, userID: user.id});
         } else {
           res.render('profile', {isLoggedIn: true, currentUser: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
             title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
             restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
-            address: address});
+            address: address, userID: user.id});
         }
         
       }
@@ -551,7 +551,8 @@ router.get('/users/:id', function(req,res,next) {
       } else {
         res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
           timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
-          restaurantDescription: user.restaurantDescription, title: user.restaurantName, address: address});
+          restaurantDescription: user.restaurantDescription, title: user.restaurantName, address: address,
+          userID: user.id});
       }
     });
   }
