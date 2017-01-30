@@ -490,7 +490,7 @@ $(document).ready(function(){
     	}
     });
 
-    $('#autocomplete-input').focus(function(){
+    $('.search-input').focus(function(){
     	console.log("hello");
     	var names;
     	$.ajax({
@@ -507,15 +507,25 @@ $(document).ready(function(){
 				});
 			}
 		});
-		// $('#autocomplete-input').autocomplete({   	
-		//     // data: {
-		//     //   "Apple": null,
-		//     //   "Microsoft": null,
-		//     //   "Google": 'http://placehold.it/250x250'
-		//     // },
-		//     data: names,
-		//     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-		// });
+    })
+
+    $('#search-landing').focus(function(){
+    	console.log("hello");
+    	var names;
+    	$.ajax({
+			type: 'POST',
+			url: '/search_results',
+			async: false,
+			success: function(data) {
+				//console.log(data);
+				names = data;
+				console.log(names);
+				$('#search-landing').autocomplete({  
+				    data: names,
+				    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+				});
+			}
+		});
     })
 
     

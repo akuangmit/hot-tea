@@ -57,18 +57,26 @@
         <div class="col s12 center">
           <h5 style="font-size:30px; margin-top:1em; margin-bottom:2em;"> Search For A Restaurant </h5>
           <h3><i class="mdi-content-send brown-text"></i></h3>
-          <nav id="searchbar" class="landing-search-bar">
-            <div class="nav-wrapper">
-              <form id="searchform">
+          <!-- <nav id="searchbar" class="landing-search-bar"> -->
+            <!-- <div class="nav-wrapper"> -->
+              <form id="searchform" method="post" action="/search" autocomplete="off">
+                  <div class="input-field white searchInput" style="border:1px; border-color: rgba(0, 0, 0, 0.3); border-style: solid;">
+                    <input id="search-landing" class="search-input autocomplete" type="search" name="searchInput" autocomplete="off">
+                    <label for="search-landing"></label>
+                    <!-- <i class="material-icons close-landing">close</i> -->
+                  </div>
+                  <button href="#!" type="submit" class="modal-action black white-text waves-effect waves-light btn-flat modalPseudoFooter search black-text" style="float: right; margin-top:2.5em">Search</button>
+              </form>
+              <!-- <form id="searchform" method="post" action="/search" autocomplete="off">
                 <div class="input-field white" style="border:1px; border-color: rgba(0, 0, 0, 0.3); border-style: solid;">
-                  <input id="search-landing" type="search" required>
-                  <label for="search"></label>
+                  <input id="search-landing" type="search" class="searchInput autocomplete" autocomplete = "off">
+                  <label for="search-landing"></label>
                   <i class="material-icons close-landing">close</i>
                 </div>
-              </form>
-              <button href="#!" type="submit" class="modal-action black white-text waves-effect waves-light btn-large search black-text" style="float: right; margin-top:2.5em">Search</button>
-            </div>
-          </nav>
+                <button type="submit" class="modal-action black white-text waves-effect waves-light btn-large search black-text search" style="float: right; margin-top:2.5em">Search</button>
+              </form> -->
+            <!-- </div> -->
+          <!-- </nav> -->
           <!-- <h4>Find Restaurants by Wait Time</h4>
           <div class="carousel">
           {{#each users}}

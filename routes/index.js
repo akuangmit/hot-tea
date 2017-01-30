@@ -247,7 +247,7 @@ router.get('/searchresults', function(req, res, next) {
     if (users.length > 0) {
       console.log(users.length);
     } else {
-      res.render('noresult');c
+      res.render('noresult');
     }
   });   
   // if (req.user) {
@@ -271,7 +271,10 @@ router.post('/search_results', function(req,res) {
 
 /* POST search */
 router.post('/search', function(req, res, next) {
+  console.log("hello");
+  console.log(req.body);
   var input = req.body.searchInput;
+  console.log(input);
   Account.findOne({'restaurantName': new RegExp('^' + input + '$', "i")}, function(err, user) {
     if (err) {
       console.log("error");
@@ -290,6 +293,7 @@ router.post('/search', function(req, res, next) {
         Account.find({'restaurantName': new RegExp('^' + input, "i")}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
           profilePicture: true, id: true, restaurantDescription: true}, function(err, users){
           total = users.length;
+          if (total > 0) {
           var usersNew = [];
           for (var user in users) {
             if (user >= begin && user < end) {
@@ -314,17 +318,10 @@ router.post('/search', function(req, res, next) {
           else {
             res.render('directory', {isLoggedIn: false, begin: begin, end: end, total: total, users:usersNew, Title: "Search Results"});
           }
-        }).sort({waitTime:1, timeOfUpdate:-1});
-        // var query = encodeURIComponent(input);
-        // res.redirect('/searchresults?search=' + query);
-        // Account.find({'restaurantName': new RegExp('^' + input, "i")}, function(err, users) {
-        //   console.log(users);
-        //   if (users.length > 0) {
-        //     console.log(users.length);
-        //   } else {
-        //     res.render('noresult');
-        //   }
-        // });   
+          } else {
+            res.render('noresult');
+          }
+        }).sort({waitTime:1, timeOfUpdate:-1});  
       }
     }
   });
