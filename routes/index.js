@@ -156,16 +156,6 @@ router.get('/', function(req, res, next) {
   }).sort({waitTime:1, timeOfUpdate:-1});
 })
 
-/* GET update wait time page */
-router.get('/updatewaittime', function(req, res, next) {
-  if (req.user) {
-   res.render('updatewaittime', {isLoggedIn: true, title: 'Update Wait Time', 
-    restaurantName: req.user.restaurantName, waitTime: displayTime(req.user.waitTime), 
-    timeSinceUpdate: displayTimeSinceUpdate(Date.now()-req.user.timeOfUpdate), url: req.user.id});
-  } else {
-    res.render('error', {isLoggedIn: false, title: 'Error'});
-  }})
-
 /* GET directory page */
 router.get('/directory', function(req, res, next) {
   var page = req.query.page; 
