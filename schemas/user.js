@@ -14,7 +14,7 @@ var Account = new Schema({
     previousTimes: Object,
     currentDay: Object,
     lastWaitTime: Number,
-    address: String
+    address: Object
 });
 
 Account.plugin(passportLocalMongoose);

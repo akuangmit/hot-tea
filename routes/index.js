@@ -45,6 +45,10 @@ function displayTime(time) {
   }
 }
 
+function displayAddress(address) {
+  return address["Street"] + ", " + address["City"] + ", " + address["State"] + " " + address["Zip"];
+}
+
 var j = schedule.scheduleJob('0 0 0 * * *', function() {
   Account.find({}, {_id:true, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
     previousTimes: true, currentDay: true, lastWaitTime: true, id: true}, function(err, users){
@@ -440,7 +444,8 @@ router.post('/adduser', function(req, res, next) {
         account.id = uuidV4();
         account.restaurantName = req.body.restaurantName;
         account.timeOfUpdate = Date.now();
-        account.restaurantDescription = "hello";
+        account.restaurantDescription = "";
+        account.address = {"Street": "", "City": "", "State": "", "Zip": ""};
         
         var ppArray = ['ramen.jpg', 'burger.jpg', 'sandwich.jpg', 'strawberries.jpg', 'cookies3.jpg'];
         var pp = ppArray[Math.floor(Math.random() * ppArray.length)]; 
@@ -482,6 +487,31 @@ router.post('/editDescription', function(req, res, next) {
   });
 });
 
+/* POST edit profile */
+router.post('/editProfile', function(req, res, next) {
+  Account.findOne({'username': req.user.username}, function(err, user) {
+    if (err) {
+      console.log('error');
+    }
+    console.log(req.body);
+    user.restaurantDescription = req.body.restaurantDescription;
+    console.log(user.address);
+    user.address["Street"] = req.body.streetAddress;
+    user.address["City"] = req.body.city;
+    user.address["State"] = req.body.state;
+    user.address["Zip"] = req.body.zip;
+    user.markModified('address');
+    console.log(user.address);
+    user.save();
+    res.redirect('/users/' + req.user.id);
+  });
+});
+
+// /* GET test map page */
+// router.get('/map', function(req, res, next) {
+//   res.render('map');
+// })
+
 /* GET individual restaurant profile page */
 router.get('/users/:id', function(req,res,next) {
   var id = req.params.id;
@@ -491,32 +521,37 @@ router.get('/users/:id', function(req,res,next) {
       currentUser = true;
     }
   }
-  
   if (req.user) {
     Account.findOne({'id': id}, function(err, user) {
+      address = displayAddress(user.address);
+      console.log(address);
       if (err) {
         console.log('error');
       } else {
         if (currentUser) {
           res.render('profile', {isLoggedIn: true, currentUser: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
             title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-            restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture});
+            restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
+            streetAddress: user.address["Street"], city: user.address["City"], 
+            state: user.address["State"], zip: user.address["Zip"], address: address});
         } else {
           res.render('profile', {isLoggedIn: true, currentUser: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
             title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-            restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture});
+            restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
+            address: address});
         }
         
       }
     });
   } else {
     Account.findOne({'id': id}, function(err, user) {
+      address = displayAddress(user.address);
       if (err) {
         console.log('error');
       } else {
         res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
           timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
-          restaurantDescription: user.restaurantDescription, title: user.restaurantName});
+          restaurantDescription: user.restaurantDescription, title: user.restaurantName, address: address});
       }
     });
   }

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<!-- Modal Structure -->
+<div id="edit-profile" class="modal">
+  <div class="modal-content">
+    <h4 class="modalTitle modalTop black-text">Edit Profile</h4>
+    <button href="#!" class="modalTop Topmodal-action modal-close waves-effect waves-light btn-flat" style="float: right"><i class="material-icons">close</i></button>
+
+    <div class="row modalText">
+      <form id="loginmodalform" class="col s12" method="post" action="/editProfile">
+        <div class="row modal-form-row">
+          <div class="input-field col s6">
+            <input value = "{{restaurantDescription}}" id="restaurantDescription" type="text" class="validate" required="" aria-required="true" name="restaurantDescription">
+            <label class="active" for="restaurantDescription">Description</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s6">
+            <input value = "{{streetAddress}}" id="street-address" type="text" class="validate" required="" aria-required="true" name="streetAddress">
+            <label class="active" for="street">Street Address</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s6">
+            <input value = "{{city}}" id="city" type="text" class="validate" required="" aria-required="true" name="city">
+            <label class="active" for="city">City</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s6">
+            <input value = "{{state}}" id="state" type="text" class="validate" required="" aria-required="true" name="state">
+            <label class="active" for="state">State</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s6">
+            <input value = "{{zip}}" id="zip" type="text" class="validate" required="" aria-required="true" name="zip">
+            <label class="active" for="zip">Zip Code</label>
+          </div>
+        </div>
+        <button href="#!" type="submit" class="modal-action black white-text waves-effect waves-light btn-flat" style="float: right;">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
