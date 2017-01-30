@@ -432,6 +432,10 @@ footer.page-footer {
 	margin: auto;
 }
 
+#search-landing{
+	border-bottom: 0px !important;
+}
+
 /*#toast-container {
 	top: auto !important;
 	right: auto !important;

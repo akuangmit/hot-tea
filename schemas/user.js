@@ -13,7 +13,8 @@ var Account = new Schema({
     profilePicture: String,
     previousTimes: Object,
     currentDay: Object,
-    lastWaitTime: Number
+    lastWaitTime: Number,
+    address: String
 });
 
 Account.plugin(passportLocalMongoose);
