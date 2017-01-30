@@ -55,23 +55,34 @@
 
       <div class="row">
         <div class="col s12 center">
+          <h5 style="font-size:30px; margin-top:1em; margin-bottom:2em;"> Search For A Restaurant </h5>
           <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Find Restaurants by Wait Time</h4>
+          <nav id="searchbar" class="landing-search-bar">
+            <div class="nav-wrapper">
+              <form id="searchform">
+                <div class="input-field white" style="border:1px; border-color: rgba(0, 0, 0, 0.3); border-style: solid;">
+                  <input id="search-landing" type="search" required>
+                  <label for="search"></label>
+                  <i class="material-icons close-landing">close</i>
+                </div>
+              </form>
+              <button href="#!" type="submit" class="modal-action black white-text waves-effect waves-light btn-large search black-text" style="float: right; margin-top:2.5em">Search</button>
+            </div>
+          </nav>
+          <!-- <h4>Find Restaurants by Wait Time</h4>
           <div class="carousel">
           {{#each users}}
             <div class="card carousel-item">
               <div class="card-image">
                 <img src={{profilePicture}}>
-                <!-- <span class="card-title">Card Title</span> -->
               </div>
               <div class="card-content left-align">
                 <a href="/users/{{id}}"><h6>{{restaurantName}}</h6></a>
                 <p>Current Wait Time: {{waitTime}} (updated {{timeSinceUpdate}})</p>
               </div>
             </div>
-            <!-- <a class="carousel-item" href="/users/{{id}}"><img src={{profilePicture}}></a> -->
           {{/each}}
-          </div>
+          </div> -->
         </div>
       </div>
 
