@@ -454,3 +454,7 @@ footer.page-footer {
 	height: 25em;
     width: 25em;
 }
+
+.register-buttons {
+	display: block;
+}

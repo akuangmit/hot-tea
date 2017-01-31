@@ -1,12 +1,12 @@
 $(document).ready(function(){
 	/* randomize background pics */
-	var myChart;
-	var bgArray = ['macarons.jpg', 'brownies.jpg', 'choco.jpg'];
-    var bg1 = bgArray[Math.floor(Math.random() * bgArray.length)];
+	// var myChart;
+	// var bgArray = ['macarons.jpg', 'brownies.jpg', 'choco.jpg'];
+ //    var bg1 = bgArray[Math.floor(Math.random() * bgArray.length)];
 
-    $('#parallax1').attr('src', '../images/' + bg1);
+ //    $('#parallax1').attr('src', '../images/' + bg1);
     
-    var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'pasta.jpg', 'sushi.jpg', 'applepie.jpg', 'tableofcookies.jpg'];
+    var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'applepie.jpg'];
     var picIndex = Math.floor(Math.random() * bgArray.length);
     var bg2 = bgArray[picIndex]
 
