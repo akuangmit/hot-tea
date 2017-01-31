@@ -1,46 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html class="update-wait-time-page">
 <head>
-  
-  <title>{{Title}}</title>
+
+  <title>About</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:light|Bree+Serif" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 </head>
+
 <body>
+
   {{>navbar}}
-<div class="topcontent directory-top">
-  <h3 style="text-align: center;">{{Title}}</h3>
-</div>
-<div class="content">
-  <div class="directoryRestaurants">
+  <div class="about-content">
+    <div class="row">
+      <div class="col s12 m12 l8 offset-l2">
+        <h3 style="text-align: center; margin-top:1.5em;margin-bottom:1.5em" class="white-text">{{Title}}</h3>
+        <div class="card about-card" style="margin-bottom: 2em">
+          <div class="directoryRestaurants">
       <table class="bordered highlight">
-        <!-- <thead>
-          <tr>
-              <th></th>
-              <th data-field="profilepic">Photo</th>
-              <th data-field="restaurantname">Restaurant Name</th>
-              <th data-field="waittime">Current Wait Time (minutes)</th>
-              <th data-field="timeSinceUpdate">Last Updated</th>
-          </tr>
-        </thead> -->
         <tbody>
         {{#each users}}
             <tr>
               <td><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
-              <td><a style="display: block; font-size: 1.5em; margin-left: 50px; margin-right: 50px;" href="/users/{{ id }}">{{restaurantName}}</a><div style="margin-left: 50px; margin-right: 50px;">{{restaurantDescription}}</div></td>
+              <td><a style="display: block; font-size: 1.5em;" href="/users/{{ id }}">{{restaurantName}}</a>
+                <div>{{restaurantDescription}}</div></td>
               <td><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td>
             </tr>
         {{/each}}
         </tbody>
       </table>
-    </div>
-</div>
-<div id="pagination-short"></div>
+      <div id="pagination-short"></div>
 <div id="page-display">Displaying results {{begin}} to {{end}} out of {{total}}</div>
 <div id="bottom">
+  <!-- <td><a style="display: block; font-size: 1.5em; margin-left: 50px; margin-right: 50px;" href="/users/{{ id }}">{{restaurantName}}</a><div style="margin-left: 50px; margin-right: 50px;">{{restaurantDescription}}</div></td>
+              <td><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td> -->
  <!--  <div id="pagination-long"></div> -->
 
   <!-- <ul id="pagination" class="pagination">
@@ -53,16 +50,21 @@
     <li class="waves-effect"><a class="right-slider-directory"><i class="material-icons">chevron_right</i></a></li>
   </ul> -->
 </div>
-{{>searchModal}}
-{{>signupModal}}
-{{>loginModal}}
-<div class="footer-line">
-  <hr>
-</div>
-{{>footer}}
+    </div>
+        </div>
+      </div>
+    </div>
+
+  {{>searchModal}}
+  {{>signupModal}}
+  {{>loginModal}}
+  {{>footer}}
+  
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/myscript.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 <script type="text/javascript" src="/javascripts/materialize-pagination.min.js"></script>
+
 </html>
