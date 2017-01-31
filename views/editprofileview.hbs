@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  
+  <title>Edit Profile</title>
+
+  <!-- CSS  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:light|Bree+Serif" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+</head>
+<body>
+
+  {{>navbar}}
+
+  <div id="index-banner" class="valign-wrapper loginform topcontent">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h4 class="header center white-text" style="font-size:26px">Thanks for Registering. Start By Entering Your Address</h4>
+        <div class="row center">
+          <div class="row modalText">
+      <form id="loginmodalform" class="col s12 white" method="post" action="/editProfile" style="padding-bottom:1.5em">
+        <div class="row modal-form-row">
+          <!-- <div class="input-field col s12 l6 offset-l3">
+            <input value = "{{restaurantDescription}}" id="restaurantDescription" type="text" class="validate" required="" aria-required="true" name="restaurantDescription">
+            <label class="active" for="restaurantDescription">Description</label>
+          </div> -->
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s12 l8 offset-l2">
+            <input value = "{{streetAddress}}" id="street-address" type="text" class="validate" required="" aria-required="true" name="streetAddress">
+            <label class="active" for="street">Street Address</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s12 l8 offset-l2">
+            <input value = "{{city}}" id="city" type="text" class="validate" required="" aria-required="true" name="city">
+            <label class="active" for="city">City</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s12 l8 offset-l2">
+            <input value = "{{state}}" id="state" type="text" class="validate" required="" aria-required="true" name="state">
+            <label class="active" for="state">State</label>
+          </div>
+        </div>
+        <div class="row modal-form-row">
+          <div class="input-field col s12 l8 offset-l2">
+            <input value = "{{zip}}" id="zip" type="text" class="validate" required="" aria-required="true" name="zip">
+            <label class="active" for="zip">Zip Code</label>
+          </div>
+        </div>
+        <a href="/" class="modal-action black white-text waves-effect waves-light btn-large" style="margin:auto">Skip</a>
+        <button href="#!" type="submit" class="modal-action black white-text waves-effect waves-light btn-large" style="margin:auto">Submit</button>
+      </form>
+    </div>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="../images/rhubarb.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+{{>searchModal}}
+{{>loginModal}}
+{{>signupModal}}
+{{>footer}}
+
+<!--  Scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/myscript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../javascripts/materialize.js"></script>
+<script src="../javascripts/init.js"></script>
+
+</body>
+
+</html>

@@ -425,7 +425,7 @@ router.post('/adduser', function(req, res, next) {
             return res.render('index', { account : account });
         }
         passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
+            res.redirect('/editprofileview');
         });
         account.waitTime=240;
         
@@ -456,6 +456,16 @@ router.post('/adduser', function(req, res, next) {
     }
   });  
 });
+
+
+/* GET about page */
+router.get('/editprofileview', function(req, res, next) {
+  if (req.user) {
+   res.render('editprofileview', {isLoggedIn: true, title: 'Edit Profile View', url: req.user.id});
+  } else {
+    res.render('error', {isLoggedIn: false, title: 'Edit Profile View' });
+  }
+})
 
 /* POST login user */
 router.post('/loginuser', passport.authenticate('local', {
