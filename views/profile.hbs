@@ -45,6 +45,25 @@
     </div>
   </div>
   <div id="map" class="{{userID}}"></div>
+  <div class="input-field col s6">
+    <input id="start" type="text" class="validate" required="" aria-required="true" name="start">
+    <label class="active" for="directions">Start Address</label>
+  </div>
+  <div class="input-field col s6">
+    <input value="{{address}}" id="end" type="text" class="validate" required="" aria-required="true" name="end">
+    <label class="active" for="directions">End Address</label>
+  </div>
+  <div href='#' class="transport">
+    <select>
+      <option disabled selected>Method of transport</option>
+      <option value="DRIVING" selected="selected">Driving</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+      <option value="WALKING">Walking</option>
+    </select>
+  </div>
+  <button id="get-directions" class="black white-text waves-effect waves-light btn-flat" style="float: right;">Submit</button>
+  <div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
 
   <div style="margin: auto;" class="chart-pages">
     <ul class="pagination">
@@ -69,6 +88,7 @@
   <div>
     <hr>
   </div>
+  {{>directions}}
   {{>editProfile}}
   {{>pictureModal}}
   {{>searchModal}}
