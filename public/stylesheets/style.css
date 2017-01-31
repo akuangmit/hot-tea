@@ -201,6 +201,17 @@ footer.page-footer {
 
 /* profile */ 
 
+.pp {
+	height: 120px;
+	width: 120px;
+	overflow: hidden !important;
+}
+
+img.pp {
+	width: 100%;
+	height: 100%;
+}
+
 .profile-page {
 	background-image: url('../images/pasta.jpg');
 }
