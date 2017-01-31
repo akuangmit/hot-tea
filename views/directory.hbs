@@ -21,39 +21,25 @@
         <h3 style="text-align: center; margin-top:1.5em;margin-bottom:1.5em" class="white-text">{{Title}}</h3>
         <div class="card about-card" style="margin-bottom: 2em; padding-top: 2em">
           <div class="directoryRestaurants">
-      <table class="bordered highlight">
-        <tbody>
-        {{#each users}}
-            <tr>
-              <td><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
-              <td><a style="display: block; font-size: 1.5em;" href="/users/{{ id }}">{{restaurantName}}</a>
-                <div>{{restaurantDescription}}</div></td>
-              <td><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td>
-            </tr>
-        {{/each}}
-        </tbody>
-      </table>
-      <div id="pagination-short"></div>
-<div id="page-display">Displaying results {{begin}} to {{end}} out of {{total}}</div>
-<div id="bottom">
-  <!-- <td><a style="display: block; font-size: 1.5em; margin-left: 50px; margin-right: 50px;" href="/users/{{ id }}">{{restaurantName}}</a><div style="margin-left: 50px; margin-right: 50px;">{{restaurantDescription}}</div></td>
-              <td><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td> -->
- <!--  <div id="pagination-long"></div> -->
-
-  <!-- <ul id="pagination" class="pagination">
-    <li class="disabled"><a class="left-slider-directory"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active number-page active-page" id="page-1"><a class="number-page-inner">1</a></li>
-    <li class="waves-effect number-page" id="page-2"><a class="number-page-inner">2</a></li>
-    <li class="waves-effect number-page" id="page-3"><a class="number-page-inner">3</a></li>
-    <li class="waves-effect number-page" id="page-4"><a class="number-page-inner">4</a></li>
-    <li class="waves-effect number-page" id="page-5"><a class="number-page-inner">5</a></li>
-    <li class="waves-effect"><a class="right-slider-directory"><i class="material-icons">chevron_right</i></a></li>
-  </ul> -->
-</div>
-    </div>
+            <table class="bordered highlight">
+              <tbody>
+              {{#each users}}
+                  <tr>
+                    <td><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
+                    <td><a style="display: block; font-size: 1.5em;" href="/users/{{ id }}">{{restaurantName}}</a>
+                      <div>{{restaurantDescription}}</div></td>
+                    <td><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td>
+                  </tr>
+              {{/each}}
+              </tbody>
+            </table>
+            <div id="pagination-short"></div>
+            <div id="page-display">Displaying results {{begin}} to {{end}} out of {{total}}</div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
   {{>searchModal}}
   {{>signupModal}}
