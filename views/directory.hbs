@@ -42,26 +42,27 @@
     </div>
   </div>
 
-  <div class="about-content" id="nav-mobile">
+  <div class="about-content hide-on-med-and-up">
     <div class="row">
       <div class="col s12 m12 l8 offset-l2">
         <h3 style="text-align: center; margin-top:1.5em;margin-bottom:1.5em" class="white-text">{{Title}}</h3>
         <div class="card about-card" style="margin-bottom: 2em; padding-top: 2em">
           <div class="directoryRestaurants">
-            <div id="page-display">Displaying results {{begin}} to {{end}} out of {{total}}</div>
             <table class="bordered highlight responsive-table">
               <tbody>
               {{#each users}}
                   <tr>
                     <td><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
-                    <td><a style="display: block; font-size: 1.5em; padding-left: 10px; padding-right: 10px;" href="/users/{{ id }}">{{restaurantName}}</a>
-                      <div style="padding-left: 10px; padding-right: 10px;">{{displayAddress}}</div></td>
+                    <td><a style="display: block; font-size: 1.5em; padding-left: 10px; padding-right: 10px; margin-left:-10px" href="/users/{{ id }}">{{restaurantName}}</a>
+                      <div style="padding-left: 10px; padding-right: 10px; margin-left:-10px">{{displayAddress}}</div></td>
                     <td><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td>
                   </tr>
               {{/each}}
               </tbody>
             </table>
             <div id="pagination-short"></div>
+            <hr class="directory-line">
+            <div id="page-display" class="grey-text">(Scroll Horizontally)</div>
             <div id="page-display">Displaying results {{begin}} to {{end}} out of {{total}}</div>
           </div>
         </div>
