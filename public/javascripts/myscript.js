@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	/* randomize background pics */
-	// var myChart;
+	var myChart;
 	// var bgArray = ['macarons.jpg', 'brownies.jpg', 'choco.jpg'];
  //    var bg1 = bgArray[Math.floor(Math.random() * bgArray.length)];
 
