@@ -1,6 +1,7 @@
 var directionsDisplay;
 
 $(document).ready(function() {
+
   var map = document.getElementById('map');
   var id = map.className;
   var directionsService = new google.maps.DirectionsService();
@@ -32,6 +33,7 @@ $(document).ready(function() {
         }
       }
   }); 
+  google.maps.event.trigger(map, 'resize');
   //console.log("Hello");
   $('#get-directions').click(function() {
     directionsDisplay.setMap(null);

@@ -520,66 +520,74 @@ router.get('/users/:id', function(req,res,next) {
   }
   if (req.user) {
     Account.findOne({'id': id}, function(err, user) {
-      var address = displayAddress(user.address);
-      var hasAddress = true;
-      if (address === "") {
-        hasAddress = false;
-      }
-      if (err) {
-        console.log('error');
-      } else {
-        if (currentUser) {
-          if (hasAddress) {
-            res.render('profile', {isLoggedIn: true, currentUser: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-              title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-              restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
-              streetAddress: user.address["Street"], city: user.address["City"], 
-              state: user.address["State"], zip: user.address["Zip"], address: address, userID: user.id,
-              hasAddress: true, header: "Your Profile"});
-          } else {
-            res.render('profile', {isLoggedIn: true, currentUser: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-              title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-              restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
-              streetAddress: user.address["Street"], city: user.address["City"], hasAddress: false,
-              state: user.address["State"], zip: user.address["Zip"], address: address, userID: user.id, header: "Your Profile"});
-          }
-        } else {
-          if (hasAddress) {
-            res.render('profile', {isLoggedIn: true, currentUser: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-              title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-              restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
-              address: address, userID: user.id, hasAddress: true, header: user.restaurantName});
-          } else {
-            res.render('profile', {isLoggedIn: true, currentUser: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-              title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
-              restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
-              address: address, userID: user.id, hasAddress: false, header: user.restaurantName});
-          }
+      try {
+        var address = displayAddress(user.address);
+        var hasAddress = true;
+        if (address === "") {
+          hasAddress = false;
         }
-        
+        if (err) {
+          console.log('error');
+        } else {
+          if (currentUser) {
+            if (hasAddress) {
+              res.render('profile', {isLoggedIn: true, currentUser: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+                title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
+                restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
+                streetAddress: user.address["Street"], city: user.address["City"], 
+                state: user.address["State"], zip: user.address["Zip"], address: address, userID: user.id,
+                hasAddress: true, header: "Your Profile"});
+            } else {
+              res.render('profile', {isLoggedIn: true, currentUser: true, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+                title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
+                restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
+                streetAddress: user.address["Street"], city: user.address["City"], hasAddress: false,
+                state: user.address["State"], zip: user.address["Zip"], address: address, userID: user.id, header: "Your Profile"});
+            }
+          } else {
+            if (hasAddress) {
+              res.render('profile', {isLoggedIn: true, currentUser: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+                title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
+                restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
+                address: address, userID: user.id, hasAddress: true, header: user.restaurantName});
+            } else {
+              res.render('profile', {isLoggedIn: true, currentUser: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+                title: user.restaurantName, timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), 
+                restaurantDescription: user.restaurantDescription, url: req.user.id, photo: user.profilePicture,
+                address: address, userID: user.id, hasAddress: false, header: user.restaurantName});
+            }
+          }
+          
+        }
+      } catch (err) {
+        res.render('/directory');
       }
     });
   } else {
     Account.findOne({'id': id}, function(err, user) {
-      var address = displayAddress(user.address);
-      var hasAddress = true;
-      if (address.length === 0) {
-        hasAddress = false;
-      }
-      if (err) {
-        console.log('error');
-      } else {
-        if (hasAddress) {
-          res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-            timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
-            restaurantDescription: user.restaurantDescription, title: user.restaurantName, address: address,
-            userID: user.id, hasAddress: true, header: user.restaurantName});
-        } else {
-          res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
-            timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
-            restaurantDescription: user.restaurantDescription, title: user.restaurantName, address: address,
-            userID: user.id, hasAddress: false, header: user.restaurantName});
+      try {
+        var address = displayAddress(user.address);
+        var hasAddress = true;
+        if (address.length === 0) {
+          hasAddress = false;
         }
+        if (err) {
+          console.log('error');
+        } else {
+          if (hasAddress) {
+            res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+              timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
+              restaurantDescription: user.restaurantDescription, title: user.restaurantName, address: address,
+              userID: user.id, hasAddress: true, header: user.restaurantName});
+          } else {
+            res.render('profile', {isLoggedIn: false, restaurantName: user.restaurantName, waitTime: displayTime(user.waitTime), 
+              timeSinceUpdate: displayTimeSinceUpdate(Date.now()-user.timeOfUpdate), photo: user.profilePicture, 
+              restaurantDescription: user.restaurantDescription, title: user.restaurantName, address: address,
+              userID: user.id, hasAddress: false, header: user.restaurantName});
+          }
+        }
+      } catch (err) {
+        res.redirect('/directory');
       }
     });
   }
