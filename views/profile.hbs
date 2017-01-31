@@ -21,16 +21,16 @@
 
   <div class="topcontent">
     <div class="row">
-      <div class="col s12 m12 l8 offset-l2">
-        <div class="card horizontal profile-card">
-          <div class="card-image">
+      <div class="col s12 m12 l4 offset-l4">
+        <div class="card profile-card">
+          <div class="card-image" style="margin:auto; height:auto;width:auto;max-width:50%;max-height:50%;">
             <img src={{photo}}>
           </div>
           <div class="card-stacked">
-            <div class="card-content">
-              <span id="restaurant-name" class="card-title">{{restaurantName}}</span>
-              <p>Current Wait Time: {{waitTime}}</p>
-              <p>Last Updated: {{timeSinceUpdate}}</p>
+            <div class="card-content center-align">
+              <span id="restaurant-name" class="card-title" style="font-size:28px">{{restaurantName}}</span>
+              <p><b>Current Wait Time:</b> {{waitTime}}</p>
+              <p><b>Last Updated:</b> {{timeSinceUpdate}}</p>
               <p>{{restaurantDescription}}</p>
               <p>{{address}}</p>
               {{#if currentUser}}
