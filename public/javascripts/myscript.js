@@ -96,10 +96,10 @@ $(document).ready(function(){
 		$(this).css("text-decoration", "none");
 	});
 
-	$('#abouttext').mouseenter(function(){
+	$('.footer-about').mouseenter(function(){
 		$(this).css("text-decoration", "underline");
 	});
-	$('#abouttext').mouseleave(function(){
+	$('.footer-about').mouseleave(function(){
 		$(this).css("text-decoration", "none");
 	});
 	$('.parallax').parallax(); 
@@ -496,6 +496,11 @@ $(document).ready(function(){
 	$('.close-landing').click(function() {
    		$('#search-landing').val("");
    });
-	$('.landing-search').removeClass('active');
+
+	// $('#search-landing').click(function() {
+	// 	$('.search-label').removeClass('active');
+	// })
+
+
 
 });
