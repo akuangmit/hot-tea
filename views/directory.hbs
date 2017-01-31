@@ -18,7 +18,8 @@
   <div class="about-content hide-on-small-only">
     <div class="row">
       <div class="col s12 m12 l8 offset-l2">
-        <h3 style="text-align: center; margin-top:1.5em;margin-bottom:1.5em" class="white-text">{{Title}}</h3>
+        <h3 style="text-align: center; margin-top:1.5em;margin-bottom:0.5em" class="white-text">{{Title}}</h3>
+        <h5 class="white-text">Find Restaurants Sorted By Wait Time</h5>
         <div class="card about-card" style="margin-bottom: 2em; padding-top: 2em">
           <div class="directoryRestaurants">
             <div id="page-display">Displaying results {{begin}} to {{end}} out of {{total}}</div>
@@ -42,27 +43,29 @@
     </div>
   </div>
 
+<!-- Mobile Version -->
   <div class="about-content hide-on-med-and-up">
     <div class="row">
-      <div class="col s12 m12 l8 offset-l2">
-        <h3 style="text-align: center; margin-top:1.5em;margin-bottom:1.5em" class="white-text">{{Title}}</h3>
+      <div>
+        <h3 style="text-align: center; margin-top:1.5em;margin-bottom:0.5em" class="white-text">{{Title}}</h3>
+        <h5 class="white-text">Find Restaurants Sorted By Wait Time</h5>
         <div class="card about-card" style="margin-bottom: 2em; padding-top: 2em">
           <div class="directoryRestaurants">
-            <div id="page-display">Displaying top {{end}} results</div>
+            <div id="page-display">Top {{end}} results</div>
             <table class="bordered highlight">
               <tbody>
               {{#each users}}
                   <tr>
-                    <td><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
-                    <td><a style="display: block; font-size: 1.5em; padding-left: 10px; padding-right: 10px; margin-left:-10px" href="/users/{{ id }}">{{restaurantName}}</a>
+                    <td class="col s12"><a href="/users/{{ id }}"><img style="margin-top:2em"src={{profilePicture}}></a></td>
+                    <td class="col s12"><a style="display: block; font-size: 1.5em; padding-left: 10px; padding-right: 10px; margin-left:-10px" href="/users/{{ id }}">{{restaurantName}}</a>
                       <div style="padding-left: 10px; padding-right: 10px; margin-left:-10px">{{displayAddress}}</div></td>
-                    <td><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td>
+                    <td class="col s12"><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text" style="padding-bottom:2em">Updated {{timeSinceUpdate}}</div></td>
                   </tr>
               {{/each}}
               </tbody>
             </table>
             <div id="pagination-short"></div>
-            <div id="page-display">Displaying top {{end}} results</div>
+            <div id="page-display" style="margin-top:2em; padding-bottom:2em">Top {{end}} results</div>
           </div>
         </div>
       </div>
