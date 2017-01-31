@@ -244,11 +244,6 @@ router.get('/searchresults', function(req, res, next) {
       res.render('noresult');
     }
   });   
-  // if (req.user) {
-  //  res.render('searchresults', {isLoggedIn: true, title: 'Search Results', url: req.user.id});
-  // } else {
-  //   res.render('searchresults', {isLoggedIn: false, title: 'Search Results' });
-  // }
 })
 
 /* POST search autocomplete */
