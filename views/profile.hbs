@@ -3,7 +3,7 @@
 
 <head>
 
-  <title>Your Profile</title>
+  <title>{{header}}</title>
 
   <meta charset="utf-8"/>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
@@ -66,36 +66,40 @@
     <canvas id="myChart"></canvas>
   </div>
 
-  <hr class="time-line">
-  
-  <h3 class="center-align" style="padding-bottom: 0.5em;">Directions</h3>
+  {{#if hasAddress}}
 
-  <div class="row">
-    <div id="map" class="{{userID}}"></div>
-  </div>
+    <hr class="time-line">
+    
+    <h3 class="center-align" style="padding-bottom: 0.5em;">Directions</h3>
 
-  <div class="input-field" style="width: 75%; margin: auto">
-    <input id="start" type="text" class="validate" required="" aria-required="true" name="start">
-    <label class="active" for="directions">Start Address</label>
-  </div>
-  <div class="input-field" style="width: 75%; margin: auto">
-    <input value="{{address}}" id="end" type="text" class="validate" required="" aria-required="true" name="end">
-    <label class="active" for="directions">End Address</label>
-  </div>
-  <div href='#' class="transport" style="width: 75%; margin: auto">
-    <select>
-      <option disabled selected>Method of transport</option>
-      <option value="DRIVING" selected="selected">Driving</option>
-      <option value="BICYCLING">Bicycling</option>
-      <option value="TRANSIT">Transit</option>
-      <option value="WALKING">Walking</option>
-    </select>
-  </div>
-  <button id="get-directions" class="black white-text waves-effect waves-light btn" style="width: 200px; margin: auto; margin-bottom: 2em;">Submit</button>
-  
-  <div class="row">
-    <div id="directionsPanel" style="width:75%; margin: auto; margin-bottom: 1em;"></div>
-  </div>
+    <div class="row">
+      <div id="map" class="{{userID}}"></div>
+    </div>
+
+    <div class="input-field" style="width: 75%; margin: auto">
+      <input id="start" type="text" class="validate" required="" aria-required="true" name="start">
+      <label class="active" for="directions">Start Address</label>
+    </div>
+    <div class="input-field" style="width: 75%; margin: auto">
+      <input value="{{address}}" id="end" type="text" class="validate" required="" aria-required="true" name="end">
+      <label class="active" for="directions">End Address</label>
+    </div>
+    <div href='#' class="transport" style="width: 75%; margin: auto">
+      <select>
+        <option disabled selected>Method of transport</option>
+        <option value="DRIVING" selected="selected">Driving</option>
+        <option value="BICYCLING">Bicycling</option>
+        <option value="TRANSIT">Transit</option>
+        <option value="WALKING">Walking</option>
+      </select>
+    </div>
+    <button id="get-directions" class="black white-text waves-effect waves-light btn" style="width: 200px; margin: auto; margin-bottom: 2em;">Submit</button>
+    
+    <div class="row">
+      <div id="directionsPanel" style="width:75%; margin: auto; margin-bottom: 1em;"></div>
+    </div>
+
+  {{/if}}
 
   <div>
     <hr>

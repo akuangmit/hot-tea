@@ -10,6 +10,7 @@ $(document).ready(function() {
       url: '/map_location',
       data: {id: id},
       success: function(data) {
+        console.log(data);
         address = data;
         if (data != "") {
           //console.log(data);
@@ -19,6 +20,7 @@ $(document).ready(function() {
             zoom: 15
           });
           geocoder.geocode({'address': data}, function(results, status) {
+            console.log(status);
             if (status === 'OK') {
               map.setCenter(results[0].geometry.location);
               var marker = new google.maps.Marker({
