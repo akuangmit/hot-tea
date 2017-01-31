@@ -44,6 +44,9 @@ function displayTime(time) {
 }
 
 function displayAddress(address) {
+  if (address["Street"] === "") {
+    return "";
+  }
   return address["Street"] + ", " + address["City"] + ", " + address["State"] + " " + address["Zip"];
 }
 
@@ -251,11 +254,19 @@ router.get('/searchresults', function(req, res, next) {
 
 /* POST search autocomplete */
 router.post('/search_results', function(req,res) {
-  Account.find({}, {_id:true, restaurantName: true}, function(err, users){
+  Account.find({}, {_id:true, restaurantName: true, address: true}, function(err, users){
     var usersNew = {}
     for (var user in users) {
-      restaurantName = users[user].restaurantName
-      usersNew[restaurantName] = null;
+      var address = users[user].address;
+      var addressString = address["Street"] + ", " + address["City"] + ", " + address["State"];
+      var restaurantName = users[user].restaurantName;
+      var title;
+      if (displayAddress(address) === "") {
+        title = restaurantName;
+      } else {
+        title = restaurantName + ": " + addressString;
+      }
+      usersNew[title] = null;
     }
     res.send(usersNew);
   });
