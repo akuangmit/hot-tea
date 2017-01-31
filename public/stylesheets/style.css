@@ -359,6 +359,10 @@ footer.page-footer {
 	margin-bottom: 1.5em;
 }
 
+a.nyan {
+	color: inherit;
+}
+
 /* end about */
 
 
