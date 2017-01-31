@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 	/* randomize background pics */
     
-    var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'applepie.jpg'];
+    var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'applepie.jpg', 'brownies.jpg', 'choco.jpg'];
     var picIndex = Math.floor(Math.random() * bgArray.length);
     var bg2 = bgArray[picIndex]
 
