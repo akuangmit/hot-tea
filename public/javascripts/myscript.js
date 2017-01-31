@@ -1,10 +1,8 @@
 $(document).ready(function(){
-	/* randomize background pics */
-	var myChart;
-	// var bgArray = ['macarons.jpg', 'brownies.jpg', 'choco.jpg'];
- //    var bg1 = bgArray[Math.floor(Math.random() * bgArray.length)];
 
- //    $('#parallax1').attr('src', '../images/' + bg1);
+	var myChart;
+
+	/* randomize background pics */
     
     var bgArray = ['jellycookies.jpg', 'bowls.jpg', 'beefnoodlesoup.jpg', 'applepie.jpg'];
     var picIndex = Math.floor(Math.random() * bgArray.length);
@@ -16,12 +14,6 @@ $(document).ready(function(){
     bg3 = bgArray[picIndex];
     
     $('#parallax3').attr('src', '../images/' + bg3);
-
-    // var bgArray = ['pasta.jpg'];
-    // var picIndex = Math.floor(Math.random() * bgArray.length);
-    // var waitBg = bgArray[picIndex]
-
-    // $('.update-wait-time-page').css('background-image', 'url(' + '../images/' + waitBg + ')');
 
 
 	$('.button-collapse').sideNav({
