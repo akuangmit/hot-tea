@@ -7,12 +7,12 @@ Live website at: https://hot-tea.herokuapp.com/
 * Jquery
 * Materialize CSS
 * Passport.js
-* Michael Herman Passport.js Tutorial
+* [Michael Herman Passport.js Tutorial](http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/#.WJCAkbYrInU)
 * Mongoose
 * Passport-local-mongoose
 * Node-scheduler
 * Chart.js
-* Amazon AWS
+* [Amazon AWS](https://devcenter.heroku.com/articles/s3-upload-node)
 * Google Maps API
 * Yelp API
 * Jquery Materialize Pagination Plugin
