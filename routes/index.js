@@ -509,6 +509,14 @@ router.post('/map_location', function(req, res, next) {
   });
 });
 
+/* POST get state information */
+router.post('/state', function(req, res, next) {
+  var userID = req.body.id;
+  Account.findOne({'id': userID}, function(err, user) {
+    res.send(user.address["State"]);
+  });
+});
+
 /* GET individual restaurant profile page */
 router.get('/users/:id', function(req,res,next) {
   var id = req.params.id;

@@ -9,7 +9,7 @@
       <form id="loginmodalform" class="col s12" method="post" action="/editProfile">
         <div class="row modal-form-row">
           <div class="input-field col s6">
-            <input value = "{{restaurantDescription}}" id="restaurantDescription" type="text" class="validate" required="" aria-required="true" name="restaurantDescription">
+            <input value = "{{restaurantDescription}}" id="restaurantDescription" type="text" class="validate" name="restaurantDescription">
             <label class="active" for="restaurantDescription">Description</label>
           </div>
         </div>
@@ -25,17 +25,11 @@
             <label class="active" for="city">City</label>
           </div>
         </div>
-        <!-- <div class="row modal-form-row">
-          <div class="input-field col s6">
-            <input value = "{{state}}" id="state" type="text" class="validate" required="" aria-required="true" name="state">
-            <label class="active" for="state">State</label>
-          </div>
-        </div> -->
-        <div class="row modal-form-row">
-          <div class="input-field col s6">
+        <div id="state-selector" class="row modal-form-row">
+          <div id="{{userID}}" class="input-field col s6 select-state">
             <select name="state">
               <option value="" disabled selected>Choose a state</option>
-              <option value="AL">Alabama</option>
+              <option value="AL" id="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
               <option value="AR">Arkansas</option>
@@ -95,7 +89,7 @@
             <label class="active" for="zip">Zip Code</label>
           </div>
         </div>
-        <button href="#!" type="submit" class="modal-action black white-text waves-effect waves-light btn-flat" style="float: right;">Submit</button>
+        <button href="#!" type="submit" class="modal-action black white-text waves-effect waves-light btn-flat address-button" style="float: right;">Submit</button>
       </form>
     </div>
   </div>
