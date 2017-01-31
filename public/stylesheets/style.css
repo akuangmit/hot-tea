@@ -252,6 +252,10 @@ footer.page-footer {
 
 /* directory */
 
+.directory-page {
+	background-image: url("../images/pasta.jpg");
+}
+
 /*.directory-top {
 	background-image: url("../images/naturebanner.jpg");
 	color: white;
@@ -274,7 +278,7 @@ footer.page-footer {
 /* update wait time */
 
 .update-wait-time-page {
-	background-image: url('../images/pasta.jpg');
+	background-image: url('../images/pasta2.jpg');
 }
 
 .waitTimeRestaurant {
@@ -328,6 +332,10 @@ footer.page-footer {
 
 
 /* about */
+
+.about-page {
+	background-image: url('../images/copypasta.jpg')
+}
 
 .about-logo {
 	width: 15%;
