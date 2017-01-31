@@ -201,6 +201,21 @@ footer.page-footer {
 
 /* profile */ 
 
+.profile-page {
+	background-image: url('../images/pasta.jpg');
+}
+
+.profile-content {
+	text-align: center;
+}
+
+.pro-pic {
+	width: auto;
+	height: auto;
+	max-width: 25%;
+	max-height: 25%;
+}
+
 .profile-card {
 	margin-top: 2em;
 }
@@ -226,16 +241,11 @@ footer.page-footer {
 	margin:auto;
 	width:70%;
 	height:100%;
-	padding-bottom: 100px;
 }
 
-/*Good settings*/
-/*.bar-graph{
-	margin:auto;
-	width:80%;
-	height:100%;
+.directions-input {
+	margin: 1em;
 }
-*/
 
 /* end profile */
 

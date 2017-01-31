@@ -167,7 +167,7 @@ router.get('/directory', function(req, res, next) {
   var end = page*20;
   var total;
   Account.find({}, {_id:false, username: true, waitTime: true, restaurantName: true, timeOfUpdate: true, 
-    profilePicture: true, id: true, restaurantDescription: true}, function(err, users){
+    profilePicture: true, id: true, restaurantDescription: true, address: true}, function(err, users){
     total = users.length;
     var usersNew = [];
     for (var user in users) {
@@ -180,6 +180,7 @@ router.get('/directory', function(req, res, next) {
         usersNew[user].timeSinceUpdate = displayTimeSinceUpdate(Date.now()-users[user].timeOfUpdate);
         usersNew[user].profilePicture = users[user].profilePicture;
         usersNew[user].restaurantDescription = users[user].restaurantDescription;
+        usersNew[user].displayAddress = displayAddress(users[user].address);
       }
     }
     begin += 1;

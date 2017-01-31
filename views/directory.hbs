@@ -27,8 +27,8 @@
               {{#each users}}
                   <tr>
                     <td><a href="/users/{{ id }}"><img src={{profilePicture}}></a></td>
-                    <td><a style="display: block; font-size: 1.5em;" href="/users/{{ id }}">{{restaurantName}}</a>
-                      <div>{{restaurantDescription}}</div></td>
+                    <td><a style="display: block; font-size: 1.5em; padding-left: 10px; padding-right: 10px;" href="/users/{{ id }}">{{restaurantName}}</a>
+                      <div style="padding-left: 10px; padding-right: 10px;">{{displayAddress}}</div></td>
                     <td><div style="font-size: 1.25em; white-space: nowrap;">{{waitTime}}</div><div class="grey-text">Updated {{timeSinceUpdate}}</div></td>
                   </tr>
               {{/each}}
