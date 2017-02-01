@@ -22,16 +22,20 @@
   <div class="topcontent">
     <div class="row">
       <div class="col s12 m12 l4 offset-l4">
-        <div class="card profile-card">
-          <div class="card-image" style="margin:auto; height:auto;width:auto;max-width:50%;max-height:50%;">
-            <img src={{photo}}>
+        <div class="card">
+          <div class="card-stacked">
+          <br>
+          </div>
+          <div class="card-image" style="margin: auto; height: auto; width: auto; max-width:50%; max-height:50%;">
+            <img style="margin-top: 1em;" src={{photo}}>
           </div>
           <div class="card-stacked">
             <div class="card-content center-align">
-              <span id="restaurant-name" class="card-title" style="font-size:28px">{{restaurantName}}</span>
-              <p><b>Current Wait Time:</b> {{waitTime}}</p>
-              <p><b>Last Updated:</b> {{timeSinceUpdate}}</p>
+              <span id="restaurant-name" class="card-title" style="font-size: 32px">{{restaurantName}}</span>
               <p>{{restaurantDescription}}</p>
+              <hr class="profile-line">
+              <div style="font-size: 18px"><b>Current Wait Time:</b> {{waitTime}}</div>
+              <p><b>Last Updated:</b> {{timeSinceUpdate}}</p>
               <p>{{address}}</p>
               {{#if currentUser}}
                 <a class="white-text black waves-effect waves-light btn button profile-button" href="#edit-profile">Edit Profile</a>
@@ -74,29 +78,31 @@
 
     <div class="row">
       <div id="map" class="{{userID}}"></div>
+        <div class="input-field">
+        <input id="start" type="text" class="validate" required="" aria-required="true" name="start">
+        <label class="active" for="directions">Start Address</label>
+      </div>
+      <div class="input-field">
+        <input value="{{address}}" id="end" type="text" class="validate" required="" aria-required="true" name="end">
+        <label class="active" for="directions">End Address</label>
+      </div>
+      <div href='#' class="transport">
+        <select>
+          <option disabled selected>Method of transport</option>
+          <option value="DRIVING" selected="selected">Driving</option>
+          <option value="BICYCLING">Bicycling</option>
+          <option value="TRANSIT">Transit</option>
+          <option value="WALKING">Walking</option>
+        </select>
+      </div>
     </div>
 
-    <div class="input-field" style="width: 75%; margin: auto">
-      <input id="start" type="text" class="validate" required="" aria-required="true" name="start">
-      <label class="active" for="directions">Start Address</label>
-    </div>
-    <div class="input-field" style="width: 75%; margin: auto">
-      <input value="{{address}}" id="end" type="text" class="validate" required="" aria-required="true" name="end">
-      <label class="active" for="directions">End Address</label>
-    </div>
-    <div href='#' class="transport" style="width: 75%; margin: auto">
-      <select>
-        <option disabled selected>Method of transport</option>
-        <option value="DRIVING" selected="selected">Driving</option>
-        <option value="BICYCLING">Bicycling</option>
-        <option value="TRANSIT">Transit</option>
-        <option value="WALKING">Walking</option>
-      </select>
-    </div>
     <button id="get-directions" class="black white-text waves-effect waves-light btn" style="width: 200px; margin: auto; margin-bottom: 6em;">Submit</button>
     
-    <div class="row">
-      <div id="directionsPanel" style="width:75%; margin: auto; margin-bottom: 1em;"></div>
+    <div class="row google-directions">
+      <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div id="directionsPanel" style="margin: auto; margin-bottom: 1em;"></div>
+      </div>
     </div>
 
   {{/if}}
