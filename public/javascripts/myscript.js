@@ -425,7 +425,11 @@ $(document).ready(function(){
 		});
     })
 
-    
+	$("#get-directions").click(function() {
+	    $('html, body').animate({
+	        scrollTop: $(".google-directions").offset().top},
+	        'slow');
+	});    
 
   	$('.collapsible').collapsible();
 

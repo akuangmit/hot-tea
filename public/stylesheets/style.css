@@ -208,8 +208,8 @@ footer.page-footer {
 }
 
 img.pp {
-	width: 100%;
 	height: 100%;
+	width: 100%;
 }
 
 .profile-page {
@@ -234,12 +234,12 @@ img.pp {
 .profile-button {
 	margin-top: 3em;
 	margin-bottom: 0.5em;
-	width: 315px;
+	width: 100%;
 	font-size: 0.8em;
 }
 
 .edit-desc-button {
-	width: 315px;
+	width: 100%;
 	font-size: 0.8em;
 }
 
@@ -321,6 +321,12 @@ img.pp {
 .time-line {
 	margin-top: 2em;
 	margin-bottom: 2em;
+	width: 75%;
+}
+
+.profile-line {
+	margin-top: 1em;
+	margin-bottom: 1em;
 	width: 75%;
 }
 
