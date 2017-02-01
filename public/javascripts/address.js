@@ -9,7 +9,7 @@ $(document).ready(function() {
       if (data != "") {
         $('select option[value="' + data + '"]').attr("selected",true);
       } else {
-        $('select option[value="' + MA + '"]').attr("selected",true);
+        $('select option[value="AL"]').attr("selected",true);
       }
     }
   });
