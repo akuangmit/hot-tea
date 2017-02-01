@@ -1,11 +1,9 @@
 var directionsDisplay;
+var map;
 
-$(document).ready(function() {
-
-  var map = document.getElementById('map');
+function initMap() {
+  map = document.getElementById('map');
   var id = map.className;
-  var directionsService = new google.maps.DirectionsService();
-  var directionsDisplay = new google.maps.DirectionsRenderer();
   $.ajax({
     type: 'POST',
       url: '/map_location',
@@ -30,7 +28,11 @@ $(document).ready(function() {
         }
       }
   }); 
-  google.maps.event.trigger(map, 'resize');
+}
+
+$(document).ready(function() {
+  var directionsService = new google.maps.DirectionsService();
+  var directionsDisplay = new google.maps.DirectionsRenderer();
   $('#get-directions').click(function() {
     directionsDisplay.setMap(null);
     directionsDisplay = null;
