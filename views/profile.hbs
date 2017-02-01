@@ -32,11 +32,17 @@
           <div class="card-stacked">
             <div class="card-content center-align">
               <span id="restaurant-name" class="card-title" style="font-size: 32px">{{restaurantName}}</span>
-              <p>{{restaurantDescription}}</p>
+            
               <hr class="profile-line">
-              <div style="font-size: 18px"><b>Current Wait Time:</b> {{waitTime}}</div>
-              <p><b>Last Updated:</b> {{timeSinceUpdate}}</p>
-              <p>{{address}}</p>
+
+              <div style="font-size: 24px"><b>Wait Time: {{waitTime}} </b></div>
+              <p class="grey-text"><b>Last Updated:</b> {{timeSinceUpdate}}</p>
+
+              <hr class="profile-line">
+
+              <p>{{restaurantDescription}}</p>
+              <p class="grey-text">{{address}}</p>
+
               {{#if currentUser}}
                 <a class="white-text black waves-effect waves-light btn button profile-button" href="#edit-profile">Edit Profile</a>
                 <a class="white-text black waves-effect waves-light btn button edit-desc-button" href="#pictureModal">Update Profile Picture</a>
