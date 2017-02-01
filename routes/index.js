@@ -30,12 +30,16 @@ function displayTime(time) {
   }
 
   else if (time > 60) {
+    var stringHours = " hours";
     var hours = Math.floor(time/60);
+    if (hours == 1) {
+      stringHours = " hour";
+    }
     var minutes = time%60;
     if (minutes == 0) {
-      return hours.toString() + " hours";
+      return hours.toString() + stringHours;
     }
-    return hours.toString() + " hours " + minutes.toString() + " minutes";
+    return hours.toString() + stringHours + " " + minutes.toString() + " minutes";
   } 
 
   else {
